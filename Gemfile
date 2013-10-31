@@ -45,5 +45,7 @@ end
 # gem 'debugger', group: [:development, :test]
 
 group :development, :test do
+  gem 'coveralls', require: false
   gem 'rspec-rails', '~> 2.0'
 end
+
