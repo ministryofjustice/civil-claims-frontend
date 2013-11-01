@@ -1,14 +1,12 @@
-ENV["RAILS_ENV"] ||= 'test'
-
-require 'rack/test'
-
 unless ENV['HOME'].to_s[/\/Users/]
   # Coveralls for code coverage on Travis builds
+  puts 'Running Coveralls...'
   require 'coveralls'
   Coveralls.wear!
 end
 
 # This file is copied to spec/ when you run 'rails generate rspec:install'
+ENV["RAILS_ENV"] ||= 'test'
 require File.expand_path("../../config/environment", __FILE__)
 require 'rspec/rails'
 require 'rspec/autorun'
