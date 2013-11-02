@@ -1,6 +1,6 @@
 # Civil Claims Frontend
 
-[![Build Status](https://travis-ci.org/ministryofjustice/civil-claims-frontend.png?branch=master)](https://travis-ci.org/ministryofjustice/civil-claims-frontend)
+[![Build Status](https://travis-ci.org/ministryofjustice/civil-claims-frontend-claimant.png?branch=master)](https://travis-ci.org/ministryofjustice/civil-claims-frontend-claimant)
 [![Code Climate](https://codeclimate.com/github/ministryofjustice/civil-claims-frontend.png)](https://codeclimate.com/github/ministryofjustice/civil-claims-frontend)
 [![Coverage Status](https://coveralls.io/repos/ministryofjustice/civil-claims-frontend/badge.png?branch=master)](https://coveralls.io/r/ministryofjustice/civil-claims-frontend?branch=master)
 
