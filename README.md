@@ -2,7 +2,7 @@
 
 [![Build Status](https://travis-ci.org/ministryofjustice/civil-claims-frontend-claimant.png?branch=master)](https://travis-ci.org/ministryofjustice/civil-claims-frontend-claimant)
 [![Code Climate](https://codeclimate.com/github/ministryofjustice/civil-claims-frontend-claimant.png)](https://codeclimate.com/github/ministryofjustice/civil-claims-frontend-claimant)
-[![Coverage Status](https://coveralls.io/repos/ministryofjustice/civil-claims-frontend/badge.png?branch=master)](https://coveralls.io/r/ministryofjustice/civil-claims-frontend?branch=master)
+[![Coverage Status](https://coveralls.io/repos/ministryofjustice/civil-claims-frontend-claimant/badge.png?branch=master)](https://coveralls.io/r/ministryofjustice/civil-claims-frontend-claimant?branch=master)
 
 
 This application manages repossesion claims for local authority councils.
