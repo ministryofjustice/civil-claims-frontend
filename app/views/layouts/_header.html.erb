@@ -1,0 +1,20 @@
+<% unless @hide_user_nav %>
+<div class='user-data clearfix navbar' id='user-nav'>
+  <ul class="nav navbar-nav">
+    <li class='dropdown'>
+      <%# @user.full_name  %>
+      <a class='dropdown-toggle fake-link' data-toggle='dropdown'> Hardcoded User <b class='caret'></b></a>
+      <ul class='dropdown-menu'>
+        <li class='indent'>Application roles:</li>
+        <li class='divider'></li>
+        <li><%# login_link_to_role 'claimant' %></li>
+        <li><%# login_link_to_role 'defendant' %></li>
+        <li><%# login_link_to_role 'staff' %></li>
+        <li><%# login_link_to_role 'judge' %></li>
+      </ul>
+    </li>
+    <li><%# link_to 'Your account details', role_select_path %></li>
+    <li><%# link_to 'Sign out', claims_delete_all_path %></li>
+  </ul>
+</div>
+<% end %>

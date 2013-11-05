@@ -19,5 +19,18 @@ module CivilClaimsFrontend
     # The default locale is :en and all translations from config/locales/*.rb,yml are auto loaded.
     # config.i18n.load_path += Dir[Rails.root.join('my', 'locales', '*.{rb,yml}').to_s]
     # config.i18n.default_locale = :de
+
+     # app title appears in the header bar
+    config.app_title = 'Civil Claims'
+    # phase governs text indicators and highlight colours
+    # presumed values: alpha, beta, live
+    config.phase = 'alpha'
+    # product type may also govern highlight colours
+    # known values: information, service
+    config.product_type = 'service'
+    # govbranding switches on or off the crown logo, full footer and NTA font
+    config.govbranding = true
+    # feedback_email is the address linked in the alpha/beta bar asking for feedback
+    config.feedback_email = 'test@example.com'
   end
 end

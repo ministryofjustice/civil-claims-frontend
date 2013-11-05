@@ -47,7 +47,22 @@ end
 group :development, :test do
   gem 'coveralls', require: false
   gem 'rspec-rails', '~> 2.0'
+  gem 'better_errors'
+  gem 'binding_of_caller'
+  gem 'meta_request'
+  gem 'awesome_print'
+  gem 'factory_girl_rails'
+  gem 'faker'
+  gem 'hirb'
+  gem 'wirble'
+  gem 'wirb'
 end
+
+# Enable HAML (required for MOJ toolkit)
+gem 'haml-rails'
+
+# Gov.uk styles
+gem 'govuk_frontend_toolkit'
 
 # MOJ styles
 gem 'moj_frontend_toolkit_gem', git: 'https://github.com/ministryofjustice/moj_frontend_toolkit_gem.git', tag: 'v0.0.40'
