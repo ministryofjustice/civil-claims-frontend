@@ -1,4 +1,4 @@
-# Civil Claims Frontend
+# Civil Claims Frontend Claimant
 
 [![Build Status](https://travis-ci.org/ministryofjustice/civil-claims-frontend-claimant.png?branch=master)](https://travis-ci.org/ministryofjustice/civil-claims-frontend-claimant)
 [![Code Climate](https://codeclimate.com/github/ministryofjustice/civil-claims-frontend-claimant.png)](https://codeclimate.com/github/ministryofjustice/civil-claims-frontend-claimant)
@@ -6,6 +6,7 @@
 
 
 This application manages repossesion claims for local authority councils.
+It implements the claimant flow that starts with the submission of a repossesion claim.
 
 Things you may want to cover:
 
