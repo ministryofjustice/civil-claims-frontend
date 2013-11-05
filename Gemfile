@@ -49,3 +49,5 @@ group :development, :test do
   gem 'rspec-rails', '~> 2.0'
 end
 
+# MOJ styles
+gem 'moj_frontend_toolkit_gem', git: 'https://github.com/ministryofjustice/moj_frontend_toolkit_gem.git', tag: 'v0.0.40'

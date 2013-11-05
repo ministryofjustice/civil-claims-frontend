@@ -1,3 +1,10 @@
+GIT
+  remote: https://github.com/ministryofjustice/moj_frontend_toolkit_gem.git
+  revision: d61df6019230dad6dcb82d776046a8421964e600
+  tag: v0.0.40
+  specs:
+    moj_frontend_toolkit_gem (0.0.1)
+
 GEM
   remote: https://rubygems.org/
   specs:
@@ -144,6 +151,7 @@ DEPENDENCIES
   coveralls
   jbuilder (~> 1.2)
   jquery-rails
+  moj_frontend_toolkit_gem!
   rails (= 4.0.0)
   rspec-rails (~> 2.0)
   sass-rails (~> 4.0.0)
