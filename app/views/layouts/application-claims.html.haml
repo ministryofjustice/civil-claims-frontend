@@ -4,7 +4,7 @@
     :javascript
       document.documentElement.className += " js-enabled";
     = render "shared/head", :title => Rails.configuration.app_title, :noapp => true
-    = stylesheet_link_tag    "application-rebuild", media: "all"
+    = stylesheet_link_tag    "application", media: "all"
   %body{:class => Rails.configuration.phase}
     = render 'shared/header', :proposition => 'Repossess a property'
     = render 'shared/phase_indicator'
@@ -18,11 +18,11 @@
           %em (width: 1020px)
 
         %p.template-label Header
-        
+
         = render partial: 'shared/header_message_rebuild'
 
         %p.template-label.closed /Header
-        
+
         = yield
 
     = render'shared/footer'
