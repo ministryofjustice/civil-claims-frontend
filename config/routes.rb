@@ -1,5 +1,6 @@
 CivilClaimsFrontend::Application.routes.draw do
   get '/templates' => 'templates#templates'
+  get '/step1' => 'templates#step1'
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
