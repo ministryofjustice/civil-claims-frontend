@@ -58,6 +58,7 @@ group :development, :test do
   gem 'wirble'
   gem 'wirb'
   gem 'jazz_hands'
+  gem 'capybara', '2.1.0'
 end
 
 # Enable HAML (required for MOJ toolkit)
