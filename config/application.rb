@@ -32,5 +32,29 @@ module CivilClaimsFrontend
     config.govbranding = true
     # feedback_email is the address linked in the alpha/beta bar asking for feedback
     config.feedback_email = 'test@example.com'
+
+    # Enable the asset pipeline
+    config.assets.enabled = true
+    config.assets.precompile += %w(
+      gov-static/gov-goodbrowsers.css
+      gov-static/gov-ie6.css
+      gov-static/gov-ie7.css
+      gov-static/gov-ie8.css
+      gov-static/gov-fonts.css
+      gov-static/gov-fonts-ie8.css
+      gov-static/gov-print.css
+      moj-base.css
+
+      claims-mixins
+      claims-global
+      claims-layout
+      claims-components
+      components/claims-forms
+      components/claims-intro
+      components/claims-usernav
+      components/claims-progressnav
+      
+      gov-static/gov-ie.js
+    )
   end
 end
