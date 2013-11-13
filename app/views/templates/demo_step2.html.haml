@@ -24,7 +24,7 @@
         %legend Your reasons for repossession
         .options
           .row
-            %input#casereasons-unpaidrent.js-depend(type='checkbox' data-depend='unpaid-rent')
+            %input#casereasons-unpaidrent(type='checkbox')
             %label(for='casereasons-unpaidrent') Unpaid rent
           .row
             %input#casereasons-antisocial(type='checkbox')
@@ -138,11 +138,6 @@
             %option(value='1990') 1990
       .row.rel.help-link
         %a(href='#') About notices
-      .row.full.warning.hide.js-tenant-notice-no
-        %p.nomargin
-          You will not be able to continue to submit a repossession case until you have correctly sent the tenants a notice.
-          %a(href='#')
-            About sending the tenants a notice
 
 %section.about-tenancy
   %h3.section-header About the tenancy
