@@ -2,7 +2,7 @@
 %html
   %head
     :javascript
-      document.documentElement.className += " js-enabled";
+      // document.documentElement.className += " js-enabled";
     = render "shared/head", :title => Rails.configuration.app_title, :noapp => true
     = stylesheet_link_tag    "application", media: "all"
   %body{:class => Rails.configuration.phase}
