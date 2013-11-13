@@ -17,6 +17,7 @@ feature 'Submit a Claim' do
        Title\ number
        About\ title\ numbers
 
+       Landlord\ details
        Company\ name
        Street Town Postcode Title
        Full\ name Phone Mobile Email
