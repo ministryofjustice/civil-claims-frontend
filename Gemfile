@@ -1,6 +1,8 @@
 source 'https://rubygems.org'
 source 'https://BnrJb6FZyzspBboNJzYZ@gem.fury.io/govuk/'
 
+ruby '2.0.0'
+
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.0.0'
 
@@ -69,3 +71,6 @@ gem 'govuk_frontend_toolkit'
 
 # MOJ styles
 gem 'moj_frontend_toolkit_gem', git: 'https://github.com/ministryofjustice/moj_frontend_toolkit_gem.git', tag: 'v0.0.40'
+
+# Heroku dependencies
+gem 'rails_12factor'
