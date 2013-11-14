@@ -1,0 +1,4 @@
+test:
+  adapter: postgresql
+  database: civil-claims-beta_test
+  host: localhost
