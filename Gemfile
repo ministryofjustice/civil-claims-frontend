@@ -60,7 +60,10 @@ group :development, :test do
   gem 'wirble'
   gem 'wirb'
   gem 'jazz_hands'
-  gem 'capybara', '2.1.0'
+  gem 'capybara'
+  gem 'launchy'
+  #gem 'rubyzip2'
+  #gem 'selenium-webdriver', "~> 2.37.0"
 end
 
 # Enable HAML (required for MOJ toolkit)
