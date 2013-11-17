@@ -1,6 +1,7 @@
 CivilClaimsFrontend::Application.routes.draw do
   get '/templates' => 'templates#templates'
   get '/step1' => 'claims#new'
+  post '/step1' => 'claims#new'
   get '/step2' => 'templates#step2'
 
   # The priority is based upon order of creation: first created -> highest priority.
