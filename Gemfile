@@ -62,6 +62,7 @@ group :development, :test do
   gem 'jazz_hands'
   gem 'capybara'
   gem 'launchy'
+  gem 'dotenv-rails'
   #gem 'rubyzip2'
   #gem 'selenium-webdriver', "~> 2.37.0"
 end
@@ -77,3 +78,4 @@ gem 'moj_frontend_toolkit_gem', git: 'https://github.com/ministryofjustice/moj_f
 
 # Heroku dependencies
 gem 'rails_12factor'
+

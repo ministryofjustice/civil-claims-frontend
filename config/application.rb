@@ -53,8 +53,11 @@ module CivilClaimsFrontend
       components/claims-intro
       components/claims-usernav
       components/claims-progressnav
-      
+
       gov-static/gov-ie.js
     )
+
+    # Api Configuration
+    config.api_uri = "#{ENV['API_HOST']}/repossession_claims_api"
   end
 end
