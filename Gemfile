@@ -66,6 +66,7 @@ group :development, :test do
   gem 'dotenv-rails'
   #gem 'rubyzip2'
   #gem 'selenium-webdriver', "~> 2.37.0"
+  gem 'foreman'
 end
 
 # Enable HAML (required for MOJ toolkit)
