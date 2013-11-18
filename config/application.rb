@@ -1,6 +1,13 @@
 require File.expand_path('../boot', __FILE__)
 
-require 'rails/all'
+#require 'rails/all'
+# Pick the frameworks you want:
+# require "active_model"
+require "action_controller/railtie"
+require "action_mailer/railtie"
+require "sprockets/railtie"
+require 'active_resource'
+# require "rails/test_unit/railtie"
 
 # Require the gems listed in Gemfile, including any gems
 # you've limited to :test, :development, or :production.
@@ -53,8 +60,11 @@ module CivilClaimsFrontend
       components/claims-intro
       components/claims-usernav
       components/claims-progressnav
-      
+
       gov-static/gov-ie.js
     )
+
+    # Api Configuration
+    config.api_uri = "#{ENV['API_HOST']}/repossession_claims_api"
   end
 end

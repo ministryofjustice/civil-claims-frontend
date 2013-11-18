@@ -5,9 +5,10 @@ ruby '2.0.0'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.0.0'
+gem "activeresource", '4.0.0'
 
 # Use sqlite3 as the database for Active Record
-gem 'pg'
+# gem 'pg'
 
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 4.0.0'
@@ -62,6 +63,7 @@ group :development, :test do
   gem 'jazz_hands'
   gem 'capybara'
   gem 'launchy'
+  gem 'dotenv-rails'
   #gem 'rubyzip2'
   #gem 'selenium-webdriver', "~> 2.37.0"
 end

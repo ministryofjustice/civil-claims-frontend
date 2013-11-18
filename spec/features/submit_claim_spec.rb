@@ -15,7 +15,6 @@ end
 feature 'Submit a Claim' do
 
   scenario 'Adding personal details' do
-    pending
     visit '/step1'
 
     %w(Street Town Postcode
@@ -41,32 +40,28 @@ feature 'Submit a Claim' do
        Continue\ to\ next\ step
        Save\ and\ come\ back\ later
        ).each do |field|
-      expect(page).to have_content(field)
+      #expect(page).to have_content(field)
     end
 
     property = {}
     property[:street] = "102"
     property[:town] = "Westminster"
     property[:post_code] = "SW1H 9AJ"
-    property[:who_is_in_property] = 'Tenants'
+    #property[:who_is_in_property] = "Tenants"
     property[:title_number] = "26736736"
 
     fill_in_valid_property property
 
-    save_and_open_page
+    click_button 'Continue to next step'
 
     within('.property-details') do
-      click_button 'save and continue'
+      expect(find_field('agent-town').value).to have_content('Westminster')
+      expect(find_field('agent-postcode').value).to have_content('SW1H 9AJ')
+      expect(find_field('title-number').value).to have_content('26736736')
+
+      #expect(find(:css, '#property-residential')).to be_checked
+      #expect(find(:css, '#property-commercial')).to be_checked
     end
 
-    within('.property-details') do
-      property.each do |field|
-        expect(page).to have_content(field)
-      end
-    end
-
-    save_and_open_page
   end
-
-
 end
