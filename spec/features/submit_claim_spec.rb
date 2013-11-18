@@ -47,7 +47,7 @@ feature 'Submit a Claim' do
     property[:street] = "102"
     property[:town] = "Westminster"
     property[:post_code] = "SW1H 9AJ"
-    #property[:who_is_in_property] = "Tenants"
+    property[:who_is_in_property] = "Tenants"
     property[:title_number] = "26736736"
 
     fill_in_valid_property property
@@ -59,9 +59,10 @@ feature 'Submit a Claim' do
       expect(find_field('agent-postcode').value).to have_content('SW1H 9AJ')
       expect(find_field('title-number').value).to have_content('26736736')
 
-      #expect(find(:css, '#property-residential')).to be_checked
-      #expect(find(:css, '#property-commercial')).to be_checked
+      expect(find(:css, '#property-residential')).to be_checked
+      expect(find(:css, '#property-commercial')).to be_checked
+      expect(find(:css, '#property_resident_type_tenants')).to be_checked
+      expect(find(:css, '#property_resident_type_squatters')).not_to be_checked
     end
-
   end
 end

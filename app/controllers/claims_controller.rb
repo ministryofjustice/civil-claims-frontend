@@ -10,7 +10,7 @@ class ClaimsController < ApplicationController
    @property.postcode = 'SW1H 9AJ'
    @property.residential = true
    @property.commercial = true
-   @property.resident_type =  'Tenants'
+   @property.resident_type =  'Tenants' #'Tenants' #'Squatters'
    @property.land_registry_title_number = '26736736'
 
    render 'step1', :layout => 'application-claims'

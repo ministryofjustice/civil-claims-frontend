@@ -33,20 +33,20 @@
         %legend Type of property
         .options
           .row
-            %input#property-residential(type='checkbox')
+            = f.check_box :residential, id: 'property-residential'
             %label(for='property-residential') Residential
           .row
-            %input#property-commercial(type='checkbox')
+            = f.check_box :commercial, id: 'property-commercial'
             %label(for='property-commercial') Commercial
       %fieldset.striped-choice
         %legend Who is in the property?
         .options
           .row
-            %input#property-who-tenants(type='radio' name='property-who')
-            %label(for='property-who-tenants') Tenants
+            = f.radio_button :resident_type, 'Tenants'
+            %label(for='property_resident_type_tenants') Tenants
           .row
-            %input#property-who-squatters(type='radio' name='property-who')
-            %label(for='property-who-squatters') Squatters
+            = f.radio_button :resident_type, 'Squatters'
+            %label(for='property_resident_type_squatters') Squatters
       .row
         %label(for='title-number') Title number
         = f.text_field :land_registry_title_number, id: 'title-number', class: 'smalltext'
