@@ -6,7 +6,6 @@ class Property < ActiveResource::Base
 
     string 'street'
     string 'town'
-    string 'county'
     string 'postcode'
 
     boolean 'residential'

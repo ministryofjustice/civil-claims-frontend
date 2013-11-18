@@ -6,7 +6,6 @@ class ClaimsController < ApplicationController
    @property = Property.new
    @property.street = "102"
    @property.town = 'Westminster'
-   #@property.county = 'Great London'
    @property.postcode = 'SW1H 9AJ'
    @property.residential = true
    @property.commercial = true
