@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-if ENV["INTEGRATION"]
+if ENV['INTEGRATION']
 
   def fill_in_valid_property(overides={})
     within('.property-details') do
