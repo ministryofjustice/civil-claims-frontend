@@ -1,0 +1,48 @@
+---
+http_interactions:
+- request:
+    method: post
+    uri: http://localhost:4000/repossession_claims_api/v1/properties.json
+    body:
+      encoding: UTF-8
+      string: '{"street":"102","town":"Westminster","postcode":"SW1H 9AJ","residential":"1","commercial":"1","resident_type":"Tenants","land_registry_title_number":"26736736"}'
+    headers:
+      Content-Type:
+      - application/json
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - '*/*'
+      User-Agent:
+      - Ruby
+  response:
+    status:
+      code: 201
+      message: 'Created '
+    headers:
+      Content-Type:
+      - application/json
+      Content-Length:
+      - '199'
+      X-Meta-Request-Version:
+      - 0.2.8
+      Etag:
+      - '"49167b86ce8996eed1bbae5c40978cee"'
+      Cache-Control:
+      - max-age=0, private, must-revalidate
+      X-Request-Id:
+      - 6b64c69b-1826-4c27-8db6-dda74415f3ea
+      X-Runtime:
+      - '0.373524'
+      Server:
+      - WEBrick/1.3.1 (Ruby/2.0.0/2013-06-27)
+      Date:
+      - Tue, 19 Nov 2013 16:33:12 GMT
+      Connection:
+      - Keep-Alive
+    body:
+      encoding: UTF-8
+      string: '{"street":"102","town":"Westminster","postcode":"SW1H 9AJ","id":87,"residential":true,"commercial":true,"resident_type":"Tenants","land_registry_title_number":"26736736","repossession_claim_id":null}'
+    http_version: 
+  recorded_at: Tue, 19 Nov 2013 16:33:12 GMT
+recorded_with: VCR 2.5.0

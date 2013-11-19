@@ -54,7 +54,9 @@ unless ENV['SKIP_INTEGRATION_TEST']
 
       fill_in_valid_property property
 
-      click_button 'Continue to next step'
+      VCR.use_cassette('property-westminster') do
+        click_button 'Continue to next step'
+      end
 
       within('.property-details') do
         expect(find_field('agent-town').value).to have_content('Westminster')

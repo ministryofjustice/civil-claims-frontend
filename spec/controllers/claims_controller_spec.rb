@@ -8,7 +8,9 @@ unless ENV['SKIP_INTEGRATION_TEST']
 
     describe "GET new" do
       it "assigns a new property as @property" do
-        get :new, {}, valid_session
+        VCR.use_cassette('property') do
+          get :new, {}, valid_session
+        end
         assigns(:property).should be_a_new(Property)
       end
     end
@@ -16,12 +18,16 @@ unless ENV['SKIP_INTEGRATION_TEST']
     describe "POST create" do
       describe "with valid params" do
         it "creates a Property" do
-          post :create, {:property => valid_attributes}, valid_session
+          VCR.use_cassette('property') do
+            post :create, {:property => valid_attributes}, valid_session
+          end
           assigns(:property).should be_a(Property)
         end
 
         it "assigns a newly created property as @property" do
-          post :create, {:property => valid_attributes}, valid_session
+          VCR.use_cassette('property') do
+            post :create, {:property => valid_attributes}, valid_session
+          end
           assigns(:property).should be_persisted
         end
       end
