@@ -3,6 +3,7 @@ require File.expand_path('../boot', __FILE__)
 #require 'rails/all'
 # Pick the frameworks you want:
 # require "active_model"
+# require "active_record"
 require "action_controller/railtie"
 require "action_mailer/railtie"
 require "sprockets/railtie"
@@ -12,6 +13,7 @@ require 'active_resource'
 # Require the gems listed in Gemfile, including any gems
 # you've limited to :test, :development, or :production.
 Bundler.require(:default, Rails.env)
+
 
 module CivilClaimsFrontend
   class Application < Rails::Application
@@ -65,6 +67,7 @@ module CivilClaimsFrontend
     )
 
     # Api Configuration
-    config.api_uri = "#{ENV['API_HOST']}/repossession_claims_api"
+    config.api_uri = "#{ENV['API_HOST']}/repossession_claims_api/v1"
+    puts "API endpoint is #{config.api_uri}"
   end
 end

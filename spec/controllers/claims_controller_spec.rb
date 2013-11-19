@@ -13,18 +13,13 @@ describe ClaimsController do
 
   describe "POST create" do
     describe "with valid params" do
-      it "creates a new Property" do
-        #expect {
-        #  post :create, {:property => valid_attributes}, valid_session
-        #}.to change(Property, :count).by(1)
+      it "creates a Property" do
         post :create, {:property => valid_attributes}, valid_session
-        assigns(:property).should be_a_new(Property)
+        assigns(:property).should be_a(Property)
       end
 
       it "assigns a newly created property as @property" do
-        pending
         post :create, {:property => valid_attributes}, valid_session
-        assigns(:property).should be_a(Property)
         assigns(:property).should be_persisted
       end
     end
