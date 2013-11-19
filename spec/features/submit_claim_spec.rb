@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-if ENV['INTEGRATION']
+unless ENV['SKIP_INTEGRATION_TEST']
 
   def fill_in_valid_property(overides={})
     within('.property-details') do

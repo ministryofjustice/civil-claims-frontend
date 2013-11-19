@@ -1,9 +1,11 @@
 unless ENV['HOME'].to_s[/\/Users/]
+  ENV['SKIP_INTEGRATION_TEST']='TRUE'
   # Coveralls for code coverage on Travis builds
   puts 'Running Coveralls...'
   require 'coveralls'
   Coveralls.wear!
 end
+
 
 # This file is copied to spec/ when you run 'rails generate rspec:install'
 ENV["RAILS_ENV"] ||= 'test'
@@ -54,4 +56,4 @@ RSpec.configure do |config|
   config.order = "random"
 end
 
-puts "Are integration tests enabled? #{!ENV['INTEGRATION'].nil?}"
+puts "Are integration tests enabled? #{ENV['SKIP_INTEGRATION_TEST'].nil?}"

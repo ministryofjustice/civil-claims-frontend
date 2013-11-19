@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-if ENV['INTEGRATION']
+unless ENV['SKIP_INTEGRATION_TEST']
 
   describe ClaimsController do
     let(:valid_attributes) { {street: "102"} }
