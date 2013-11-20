@@ -64,3 +64,5 @@ VCR.configure do |c|
   #c.allow_http_connections_when_no_cassette = true #Use when running with webkit
   #c.ignore_localhost = true
 end
+
+WebMock.enable!

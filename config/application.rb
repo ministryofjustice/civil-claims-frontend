@@ -15,6 +15,8 @@ require 'active_resource'
 Bundler.require(:default, Rails.env)
 
 
+WebMock.disable!
+
 module CivilClaimsFrontend
   class Application < Rails::Application
     # Settings in config/environments/* take precedence over those specified here.

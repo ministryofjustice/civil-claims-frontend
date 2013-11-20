@@ -23,4 +23,6 @@ describe Claim do
 
   it { should respond_to :id }
   it { should respond_to :property }
+  # It does not seem to work when initalized with json
+  # it { should have_one :property }
 end

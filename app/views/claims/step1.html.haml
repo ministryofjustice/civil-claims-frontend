@@ -16,42 +16,43 @@
   %h2 Step 1 - Personal details
   %p Fill in the address of the property you want to repossess and contact details for the landlords and tenants.
 
-= form_for @property, :url => '/step1', :method => :post do |f|
+= form_for @claim, :url => '/step1', :method => :post do |claim_form|
   %section.property-details
     %h3.section-header Property details
     .moj-panel.sub-panel
-      .row.rel.street
-        %label(for='agent-address')> Street
-        = f.text_area :street, id: 'agent-address'
-      .row.rel.town
-        %label(for='agent-town')> Town
-        = f.text_field :town, id: 'agent-town'
-      .row.rel.postcode
-        %label(for='agent-postcode')> Postcode
-        = f.text_field :postcode, id: 'agent-postcode', class: 'smalltext'
-      %fieldset.striped-choice
-        %legend Type of property
-        .options
-          .row
-            = f.check_box :residential, id: 'property-residential'
-            %label(for='property-residential') Residential
-          .row
-            = f.check_box :commercial, id: 'property-commercial'
-            %label(for='property-commercial') Commercial
-      %fieldset.striped-choice
-        %legend Who is in the property?
-        .options
-          .row
-            = f.radio_button :resident_type, 'Tenants'
-            %label(for='property_resident_type_tenants') Tenants
-          .row
-            = f.radio_button :resident_type, 'Squatters'
-            %label(for='property_resident_type_squatters') Squatters
-      .row
-        %label(for='title-number') Title number
-        = f.text_field :land_registry_title_number, id: 'title-number', class: 'smalltext'
-      .row.rel.help-link
-        %a(href='#') About title numbers
+      = claim_form.fields_for @claim.property do |f|
+        .row.rel.street
+          %label(for='agent-address')> Street
+          = f.text_area :street, id: 'agent-address'
+        .row.rel.town
+          %label(for='agent-town')> Town
+          = f.text_field :town, id: 'agent-town'
+        .row.rel.postcode
+          %label(for='agent-postcode')> Postcode
+          = f.text_field :postcode, id: 'agent-postcode', class: 'smalltext'
+        %fieldset.striped-choice
+          %legend Type of property
+          .options
+            .row
+              = f.check_box :residential, id: 'property-residential'
+              %label(for='property-residential') Residential
+            .row
+              = f.check_box :commercial, id: 'property-commercial'
+              %label(for='property-commercial') Commercial
+        %fieldset.striped-choice
+          %legend Who is in the property?
+          .options
+            .row
+              = f.radio_button :resident_type, 'Tenants'
+              %label(for='claim_property_resident_type_tenants') Tenants
+            .row
+              = f.radio_button :resident_type, 'Squatters'
+              %label(for='claim_property_resident_type_squatters') Squatters
+        .row
+          %label(for='title-number') Title number
+          = f.text_field :land_registry_title_number, id: 'title-number', class: 'smalltext'
+        .row.rel.help-link
+          %a(href='#') About title numbers
 
   %section
     .action-buttons.cf

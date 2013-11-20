@@ -2,6 +2,7 @@ class Claim < ActiveResource::Base
   self.site = Rails.configuration.api_uri
 
   has_one  :property
+  #accepts_nested_attributes_for :property
 
   schema do
     integer 'id'

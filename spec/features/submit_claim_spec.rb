@@ -65,8 +65,8 @@ unless ENV['SKIP_INTEGRATION_TEST']
 
         expect(find(:css, '#property-residential')).to be_checked
         expect(find(:css, '#property-commercial')).to be_checked
-        expect(find(:css, '#property_resident_type_tenants')).to be_checked
-        expect(find(:css, '#property_resident_type_squatters')).not_to be_checked
+        expect(find(:css, '#claim_property_resident_type_tenants')).to be_checked
+        expect(find(:css, '#claim_property_resident_type_squatters')).not_to be_checked
       end
     end
   end
