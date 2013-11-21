@@ -54,47 +54,48 @@
         .row.rel.help-link
           %a(href='#') About title numbers
 
+  %section.landlord-details
+    %h3.section-header Landlord details
+    .moj-panel
+      = claim_form.fields_for @claim.landlord do |f|
+        .row
+          %label(for='landlord-companyname')> Company name
+          = f.text_field :company_name, id: 'landlord-companyname'
+        .row.rel.street
+          %label(for='landlord-address')> Street
+          = f.text_area :street, id: 'landlord-address'
+        .row.rel.town
+          %label(for='landlord-town')> Town
+          = f.text_field :town, id: 'landlord-town'
+        .row.rel.postcode
+          %label(for='landlord-postcode')> Postcode
+          = f.text_field :postcode, id:'landlord-postcode'
+        .row
+          %label(for='landlord-title')> Title
+          = f.text_field :title, id: 'landlord-title'
+        .row.rel
+          %label(for='landlord-name')> Full name
+          = f.text_field :full_name, id: 'landlord-name'
+        .row.rel
+          %label(for='landlord-phone')> Phone
+          = f.text_field :phone,  id: 'landlord-phone'
+        .row.rel
+          %label(for='landlord-mobile')> Mobile
+          = f.text_field :mobile, id: 'landlord-mobile'
+        .row.rel
+          %label(for='landlord-email')> Email
+          = f.text_field :email, id: 'landlord-email'
+        .row
+          %label(for='landlord-dxnumber')> DX number
+          = f.text_field :dx_number, id: 'landlord-dxnumber'
+        .row.rel
+          %label(for='landlord-dxexchange')> DX exchange
+          = f.text_field :dx_exchange, id: 'landlord-dxexchange'
+
   %section
     .action-buttons.cf
       %button.button.primary.large.chevron.left(href='/step1') Continue to next step
       %a.button.secondary.large.right(href='/step1') Save and come back later
-
-  %section.landlord-details
-    %h3.section-header Landlord details
-    .moj-panel
-      .row
-        %label(for='landlord-companyname')> Company name
-        %input(type='text' name='landlord-companyname' id='landlord-companyname')
-      .row.rel.street
-        %label(for='landlord-address')> Street
-        %textarea(name='landlord-address' id='landlord-address')
-      .row.rel.town
-        %label(for='landlord-town')> Town
-        %input(type='text' name='landlord-town' id='landlord-town')
-      .row.rel.postcode
-        %label(for='landlord-postcode')> Postcode
-        %input.smalltext(type='text' name='landlord-postcode' id='landlord-postcode')>
-      .row
-        %label(for='landlord-title')> Title
-        %input.smalltext(type='text' name='landlord-title' id='landlord-title')
-      .row.rel
-        %label(for='landlord-name')> Full name
-        %input(type='text' name='landlord-name' id='landlord-name')
-      .row.rel
-        %label(for='landlord-phone')> Phone
-        %input(type='text' name='landlord-phone' id='landlord-phone')
-      .row.rel
-        %label(for='landlord-mobile')> Mobile
-        %input(type='text' name='landlord-mobile' id='landlord-mobile')
-      .row.rel
-        %label(for='landlord-email')> Email
-        %input(type='text' name='landlord-email' id='landlord-email')
-      .row
-        %label(for='landlord-dxnumber')> DX number
-        %input(type='text' name='landlord-dxnumber' id='landlord-dxnumber')
-      .row.rel
-        %label(for='landlord-dxexchange')> DX exchange
-        %input(type='text' name='landlord-dxexchange' id='landlord-dxexchange')
 
   %section.agent-details
     %h3.section-header Managing agent

@@ -14,6 +14,22 @@ unless ENV['SKIP_INTEGRATION_TEST']
     end
   end
 
+  def fill_in_valid_landlord(overides={})
+    within('.landlord-details') do
+      fill_in 'Company name', with: overides[:company] || "Bristol County Council"
+      fill_in 'Street', with: overides[:street] || "18 My Street"
+      fill_in 'Town', with: overides[:town ] || "Bristol"
+      fill_in 'Postcode', with: overides[:post_code] || "N3 3LLC"
+      fill_in 'Title', with: overides[:title] || "Mr."
+      fill_in 'Full name', with: overides[:full_name] || "Thomas Brown"
+      fill_in 'Phone', with: overides[:phone] || "01 23727 3 262"
+      fill_in 'Mobile', with: overides[:mobile] || "07 523 262 262"
+      fill_in 'Email', with: overides[:email] || "housing@bristol.gov.uk"
+      fill_in 'DX number', with: overides[:dx_number] || "3636"
+      fill_in 'DX exchange', with: overides[:dx_exchange] || "Ex 3737"
+    end
+  end
+
   feature 'Submit a Claim' do
 
     scenario 'Adding personal details' do
@@ -54,6 +70,8 @@ unless ENV['SKIP_INTEGRATION_TEST']
 
       fill_in_valid_property property
 
+      fill_in_valid_landlord
+
       VCR.use_cassette('property-westminster') do
         click_button 'Continue to next step'
       end
@@ -67,6 +85,20 @@ unless ENV['SKIP_INTEGRATION_TEST']
         expect(find(:css, '#property-commercial')).to be_checked
         expect(find(:css, '#claim_property_resident_type_tenants')).to be_checked
         expect(find(:css, '#claim_property_resident_type_squatters')).not_to be_checked
+      end
+
+      within('.landlord-details') do
+        expect(find_field('landlord-companyname').value).to have_content('Bristol County Council')
+        expect(find_field('landlord-address').value).to have_content('18 My Street')
+        expect(find_field('landlord-town').value).to have_content('Bristol')
+        expect(find_field('landlord-postcode').value).to have_content('N3 3LLC')
+        expect(find_field('landlord-title').value).to have_content('Mr.')
+        expect(find_field('landlord-name').value).to have_content('Thomas Brown')
+        expect(find_field('landlord-phone').value).to have_content('01 23727 3 262')
+        expect(find_field('landlord-mobile').value).to have_content('07 523 262 262')
+        expect(find_field('landlord-email').value).to have_content('housing@bristol.gov.uk')
+        expect(find_field('landlord-dxnumber').value).to have_content('3636')
+        expect(find_field('landlord-dxexchange').value).to have_content('Ex 3737')
       end
     end
   end

@@ -2,7 +2,7 @@ class Claim < ActiveResource::Base
   self.site = Rails.configuration.api_uri
 
   has_one  :property
-  #accepts_nested_attributes_for :property
+  has_one  :landlord
 
   schema do
     integer 'id'
@@ -13,6 +13,7 @@ class Claim < ActiveResource::Base
     args[0] ||= {}
     args[0] = {
       :property => nil,
+      :landlord => nil
     }.merge(args[0])
     super(*args)
   end

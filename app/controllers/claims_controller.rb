@@ -4,6 +4,7 @@ class ClaimsController < ApplicationController
     @page_title = 'Step 1 - Personal details'
     @claim = Claim.new
     @claim.property = Property.new
+    @claim.landlord = Landlord.new
     render 'step1', :layout => 'application-claims'
   end
 
@@ -11,8 +12,9 @@ class ClaimsController < ApplicationController
     Rails.logger.debug "Parameters are: #{params}"
     #@claim = nil
     #begin
-      Rails.logger.debug 'Calling backend-api'
-      @claim = Claim.create(claim_params)
+    Rails.logger.debug 'Calling backend-api'
+    @claim = Claim.create(claim_params)
+
     #rescue StandardError => e
     #  Rails.logger.error "Error " + e.to_s
     #end
