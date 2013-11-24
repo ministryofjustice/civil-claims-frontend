@@ -3,18 +3,14 @@ class Claim < ActiveResource::Base
 
   has_one  :property
   has_one  :landlord
+  has_many :tenants
 
   schema do
     integer 'id'
   end
 
-  def initialize(*args)
-    # Make sure we always have associations assigned, so that activeresource doesn't request them
-    args[0] ||= {}
-    args[0] = {
-      :property => nil,
-      :landlord => nil
-    }.merge(args[0])
-    super(*args)
+  # This is important because it triggers the collection functionality for fields_for
+  # ActiveResource does not implement 'accept_nested_attributes_for :tenants'
+  def tenants_attributes=(attributes)
   end
 end

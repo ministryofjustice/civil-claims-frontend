@@ -54,8 +54,6 @@ RSpec.configure do |config|
   config.order = "random"
 end
 
-puts "Are integration tests enabled? #{ENV['SKIP_INTEGRATION_TEST'].nil?}"
-
 require 'vcr'
 
 VCR.configure do |c|

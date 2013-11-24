@@ -1,6 +1,8 @@
 class Tenant  < ActiveResource::Base
   self.site = Rails.configuration.api_uri
 
+  belongs_to :claim
+
   schema do
     integer 'id'
 

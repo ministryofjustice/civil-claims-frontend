@@ -69,10 +69,10 @@
           = f.text_field :town, id: 'landlord-town'
         .row.rel.postcode
           %label(for='landlord-postcode')> Postcode
-          = f.text_field :postcode, id:'landlord-postcode'
+          = f.text_field :postcode, id:'landlord-postcode', class: 'smalltext'
         .row
           %label(for='landlord-title')> Title
-          = f.text_field :title, id: 'landlord-title'
+          = f.text_field :title, id: 'landlord-title', class: 'smalltext'
         .row.rel
           %label(for='landlord-name')> Full name
           = f.text_field :full_name, id: 'landlord-name'
@@ -92,131 +92,41 @@
           %label(for='landlord-dxexchange')> DX exchange
           = f.text_field :dx_exchange, id: 'landlord-dxexchange'
 
+  %section.tenant-details
+    - i = 0
+    = claim_form.fields_for :tenants do |f|
+      %h3.section-header
+        = "Tenant details - Tenant #{i = i + 1}"
+      .moj-panel
+        .tenant(id="tenant-#{i}")
+          .row
+            %label(for='tenant-title')> Title
+            = f.text_field :title, id: 'tenant-title', class: 'smalltext', name: '[claim]tenants[][title]'
+          .row.rel
+            %label(for='tenant-name')> Full name
+            = f.text_field :full_name, id: 'tenant-name', name: '[claim]tenants[][full_name]'
+          .row.rel
+            %label(for='tenant-phone')> Phone
+            = f.text_field :phone, id: 'tenant-phone', name: '[claim]tenants[][phone]'
+          .row.rel
+            %label(for='tenant-mobile')> Mobile
+            = f.text_field :mobile, id: 'tenant-mobile', name: '[claim]tenants[][mobile]'
+          .row.rel
+            %label(for='tenant-email')> Email
+            = f.text_field :email, id: 'tenant-email', name: '[claim]tenants[][email]'
+          .row.full
+            If the tenant's current address is different from the property you want to repossess, please provide their address below.
+          .row.rel.street
+            %label(for='tenant-address')> Street
+            = f.text_area :street, id: 'tenant-address', name: '[claim]tenants[][street]'
+          .row.rel.town
+            %label(for='tenant-town')> Town
+            = f.text_field :town, id: 'tenant-town', name: '[claim]tenants[][town]'
+          .row.rel.postcode
+            %label(for='tenant-postcode')> Postcode
+            = f.text_field :postcode, id: 'tenant-postcode', class: 'smalltext', name: '[claim]tenants[][postcode]'
+
   %section
     .action-buttons.cf
       %button.button.primary.large.chevron.left(href='/step1') Continue to next step
       %a.button.secondary.large.right(href='/step1') Save and come back later
-
-  %section.tenant-details
-    %h3.section-header Tenant details - Tenant 1
-    .moj-panel
-      .tenant#tenant1
-        .row
-          %label(for='tenant1-title')> Title
-          %input.smalltext(type='text' name='tenant1-title' id='tenant1-title')
-        .row.rel
-          %label(for='tenant1-name')> Full name
-          %input(type='text' name='tenant1-name' id='tenant1-name')
-        .row.rel
-          %label(for='tenant1-phone')> Phone
-          %input(type='text' name='tenant1-phone' id='tenant1-phone')
-        .row.rel
-          %label(for='tenant1-mobile')> Mobile
-          %input(type='text' name='tenant1-mobile' id='tenant1-mobile')
-        .row.rel
-          %label(for='tenant1-email')> Email
-          %input(type='text' name='tenant1-email' id='tenant1-email')
-        .row.full
-          If the tenant's current address is different from the property you want to repossess, please provide their address below.
-        .row.rel.street
-          %label(for='tenant1-address')> Street
-          %textarea(name='tenant1-address' id='tenant1-address')
-        .row.rel.town
-          %label(for='tenant1-town')> Town
-          %input(type='text' name='tenant1-town' id='tenant1-town')
-        .row.rel.postcode
-          %label(for='tenant1-postcode')> Postcode
-          %input.smalltext(type='text' name='tenant1-postcode' id='tenant1-postcode')>
-
-  %section.tenant-details
-    %h3.section-header Tenant details - Tenant 2
-    .moj-panel
-      .tenant#tenant2
-        .row
-          %label(for='tenant2-title')> Title
-          %input.smalltext(type='text' name='tenant2-title' id='tenant2-title')
-        .row.rel
-          %label(for='tenant2-name')> Full name
-          %input(type='text' name='tenant2-name' id='tenant2-name')
-        .row.rel
-          %label(for='tenant2-phone')> Phone
-          %input(type='text' name='tenant2-phone' id='tenant2-phone')
-        .row.rel
-          %label(for='tenant2-mobile')> Mobile
-          %input(type='text' name='tenant2-mobile' id='tenant2-mobile')
-        .row.rel
-          %label(for='tenant2-email')> Email
-          %input(type='text' name='tenant2-email' id='tenant2-email')
-        .row.full
-          If the tenant's current address is different from the property you want to repossess, please provide their address below.
-        .row.rel.street
-          %label(for='tenant2-address')> Street
-          %textarea(name='tenant2-address' id='tenant2-address')
-        .row.rel.town
-          %label(for='tenant2-town')> Town
-          %input(type='text' name='tenant2-town' id='tenant2-town')
-        .row.rel.postcode
-          %label(for='tenant2-postcode')> Postcode
-          %input.smalltext(type='text' name='tenant2-postcode' id='tenant2-postcode')>
-
-  %section.tenant-details
-    %h3.section-header Tenant details - Tenant 3
-    .moj-panel
-      .tenant#tenant3
-        .row
-          %label(for='tenant3-title')> Title
-          %input.smalltext(type='text' name='tenant3-title' id='tenant3-title')
-        .row.rel
-          %label(for='tenant3-name')> Full name
-          %input(type='text' name='tenant3-name' id='tenant3-name')
-        .row.rel
-          %label(for='tenant3-phone')> Phone
-          %input(type='text' name='tenant3-phone' id='tenant3-phone')
-        .row.rel
-          %label(for='tenant3-mobile')> Mobile
-          %input(type='text' name='tenant3-mobile' id='tenant3-mobile')
-        .row.rel
-          %label(for='tenant3-email')> Email
-          %input(type='text' name='tenant3-email' id='tenant3-email')
-        .row.full
-          If the tenant's current address is different from the property you want to repossess, please provide their address below.
-        .row.rel.street
-          %label(for='tenant3-address')> Street
-          %textarea(name='tenant3-address' id='tenant3-address')
-        .row.rel.town
-          %label(for='tenant3-town')> Town
-          %input(type='text' name='tenant3-town' id='tenant3-town')
-        .row.rel.postcode
-          %label(for='tenant3-postcode')> Postcode
-          %input.smalltext(type='text' name='tenant3-postcode' id='tenant3-postcode')>
-
-  %section.tenant-details
-    %h3.section-header Tenant details - Tenant 4
-    .moj-panel
-      .tenant#tenant4
-        .row
-          %label(for='tenant4-title')> Title
-          %input.smalltext(type='text' name='tenant4-title' id='tenant4-title')
-        .row.rel
-          %label(for='tenant4-name')> Full name
-          %input(type='text' name='tenant4-name' id='tenant4-name')
-        .row.rel
-          %label(for='tenant4-phone')> Phone
-          %input(type='text' name='tenant4-phone' id='tenant4-phone')
-        .row.rel
-          %label(for='tenant4-mobile')> Mobile
-          %input(type='text' name='tenant4-mobile' id='tenant4-mobile')
-        .row.rel
-          %label(for='tenant4-email')> Email
-          %input(type='text' name='tenant4-email' id='tenant4-email')
-        .row.full
-          If the tenant's current address is different from the property you want to repossess, please provide their address below.
-        .row.rel.street
-          %label(for='tenant4-address')> Street
-          %textarea(name='tenant4-address' id='tenant4-address')
-        .row.rel.town
-          %label(for='tenant4-town')> Town
-          %input(type='text' name='tenant4-town' id='tenant4-town')
-        .row.rel.postcode
-          %label(for='tenant4-postcode')> Postcode
-          %input.smalltext(type='text' name='tenant4-postcode' id='tenant4-postcode')>
