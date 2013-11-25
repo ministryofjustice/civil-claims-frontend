@@ -23,6 +23,6 @@ class ClaimsController < ApplicationController
   private
 
   def claim_params
-    params.require(:claim).permit!
+    params.require(:claim).permit!.except(:tenants_attributes)
   end
 end
