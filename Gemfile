@@ -6,6 +6,7 @@ ruby '2.0.0'
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.0.0'
 gem "activeresource", '4.0.0'
+gem 'wicked'
 
 # Use sqlite3 as the database for Active Record
 # gem 'pg'
@@ -15,12 +16,6 @@ gem 'sass-rails', '~> 4.0.0'
 
 # Use Uglifier as compressor for JavaScript assets
 gem 'uglifier', '>= 1.3.0'
-
-# Use CoffeeScript for .js.coffee assets and views
-gem 'coffee-rails', '~> 4.0.0'
-
-# See https://github.com/sstephenson/execjs#readme for more supported runtimes
-gem 'therubyracer', platforms: :ruby # fixes jenkins build issue
 
 # Use jquery as the JavaScript library
 gem 'jquery-rails'
@@ -36,17 +31,15 @@ group :doc do
   gem 'sdoc', require: false
 end
 
-# Use ActiveModel has_secure_password
-# gem 'bcrypt-ruby', '~> 3.0.0'
-
-# Use unicorn as the app server
-# gem 'unicorn'
-
-# Use Capistrano for deployment
-# gem 'capistrano', group: :development
-
-# Use debugger
-# gem 'debugger', group: [:development, :test]
+group :development do
+  gem 'guard'
+  gem 'guard-rails'
+  gem 'guard-rspec'
+  gem 'guard-cucumber'
+  gem 'spork', '1.0.0rc3'
+  gem 'spork-rails', :github => 'sporkrb/spork-rails'
+  gem 'guard-spork'
+end
 
 group :development, :test do
   gem 'coveralls', require: false
@@ -69,6 +62,7 @@ group :development, :test do
   gem 'foreman'
   gem 'webmock', "1.12"
   gem 'vcr'
+  gem 'cucumber-rails', :require => false
 end
 
 # Enable HAML (required for MOJ toolkit)
