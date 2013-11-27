@@ -31,11 +31,16 @@ module CivilClaimsFrontend
     # config.i18n.load_path += Dir[Rails.root.join('my', 'locales', '*.{rb,yml}').to_s]
     # config.i18n.default_locale = :de
 
+    Dir.glob("#{Rails.root}/lib/*.rb").each { |f| require f }
+    Dir.glob("#{Rails.root}/app/presenters/*.rb").each { |f| require f }
+    config.paths.add "app/presenters", :glob => "**/*.rb"
+    config.autoload_paths += Dir["#{Rails.root}/app/presenters/*"]
+
      # app title appears in the header bar
     config.app_title = 'Civil Claims'
     # phase governs text indicators and highlight colours
     # presumed values: alpha, beta, live
-    config.phase = 'alpha'
+    config.phase = 'beta'
     # product type may also govern highlight colours
     # known values: information, service
     config.product_type = 'service'
