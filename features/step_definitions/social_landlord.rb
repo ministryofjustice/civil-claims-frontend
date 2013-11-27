@@ -35,7 +35,7 @@ end
 
 def fill_in_valid_property(overides={})
   within('.property-details') do
-    fill_in 'Street', with: overides[:street] || "102"
+    fill_in 'Street', with: overides[:street] || "102 Petty France"
     fill_in 'Town', with: overides[:town] || "Westminster"
     fill_in 'Postcode', with: overides[:post_code] || "SW1H 9AJ"
     check 'Residential'

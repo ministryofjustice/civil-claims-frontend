@@ -1,5 +1,6 @@
+@happypath
 Feature: Social Landlord, Submit Claim, Step 1
-  Scenario: Create a new claim
+  Scenario: Create a new claim, with personal details
     Given I am logged in as a Social Landlord
     When I visit '/claim/new'
     And fill in the form with my personal details

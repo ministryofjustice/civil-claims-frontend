@@ -1,3 +1,4 @@
+@rbac
 Feature: Role Based Access Matrix
   Scenario: New claim, personal details
     Given a new claim with a Property, Landlord and Tenant
