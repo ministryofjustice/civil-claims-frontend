@@ -23,6 +23,8 @@ class ClaimsController < ApplicationController
   private
 
   def claim_params
+    # 'tenants_attributes' would appear as a parameter when using fields_for
+    # on the front-end without a flag 'include_id: false'
     params.require(:claim).permit!.except(:tenants_attributes)
   end
 end

@@ -94,7 +94,7 @@
 
   %section.tenant-details
     - i = 0
-    = claim_form.fields_for :tenants do |f|
+    = claim_form.fields_for :tenants, include_id: false do |f|
       %h3.section-header
         = "Tenant details - Tenant #{i = i + 1}"
       .moj-panel
