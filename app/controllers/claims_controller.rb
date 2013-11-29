@@ -5,18 +5,32 @@ class ClaimsController < ApplicationController
     render 'step1', :layout => 'application-claims'
   end
 
-  def show_step1
+  def show
     @page_title = 'Step 1 - Personal details'
     @claim = Claim.find(params[:id])
-    pp @claim
-    headers['Last-Modified'] = Time.now.httpdate
     render 'step1', :layout => 'application-claims'
+  end
+
+  def edit
+    @page_title = 'Step 1 - Personal details'
+    @claim = Claim.find(params[:id])
+    render 'step1', :layout => 'application-claims'
+  end
+
+  def update
+    @claim = Claim.find(params[:id])
+    @claim.update_attributes(claim_params)
+    redirect_to @claim
+  end
+
+  def delete
+    Claim.delete(params[:id])
   end
 
   def create
     @claim = Claim.new(claim_params)
     @claim.save
-    redirect_to "/claim/#{@claim.id}"
+    redirect_to @claim
   end
 
   private

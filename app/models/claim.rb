@@ -13,9 +13,9 @@ class Claim < ActiveResource::Base
     # ActiveResource hack
     args[0] ||= {}
     args[0] = {
-      :property => nil,
-      :landlords => [],
-      :tenants => []
+      :property => Property.new,
+      :landlords => [Landlord.new],
+      :tenants => [Tenant.new,Tenant.new,Tenant.new,Tenant.new]
     }.merge(args[0])
     super(*args)
   end
