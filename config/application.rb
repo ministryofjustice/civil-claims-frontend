@@ -32,7 +32,7 @@ module CivilClaimsFrontend
     # config.i18n.default_locale = :de
 
     Dir.glob("#{Rails.root}/lib/*.rb").each { |f| require f }
-    Dir.glob("#{Rails.root}/app/presenters/*.rb").each { |f| require f }
+    Dir.glob("#{Rails.root}/app/forms/*.rb").each { |f| require f }
     config.paths.add "app/presenters", :glob => "**/*.rb"
     config.autoload_paths += Dir["#{Rails.root}/app/presenters/*"]
 
