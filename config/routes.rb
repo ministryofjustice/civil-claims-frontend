@@ -1,4 +1,5 @@
 CivilClaimsFrontend::Application.routes.draw do
+  get '/claim/new' => 'claims#new'
   get '/templates' => 'templates#templates'
   get '/step1' => 'claims#new'
   post '/step1' => 'claims#create'

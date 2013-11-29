@@ -1,22 +1,12 @@
 class ClaimsController < ApplicationController
   def new
-    Rails.logger.debug "Parameters are: #{params}"
     @page_title = 'Step 1 - Personal details'
-    empty_claim = {
-      "property" => {},
-      "tenants" => [
-        {}, {}, {}, {}
-      ],
-      "landlord" => {}
-    }
-    @claim = Claim.new empty_claim
+    @claim = Presenters::Claim::SocialLandlord.new
     render 'step1', :layout => 'application-claims'
   end
 
   def create
-    Rails.logger.debug "Parameters are: #{params}"
-    Rails.logger.debug 'Calling Backend-Api ...'
-    @claim = Claim.create(claim_params)
+    @claim = Presenters::Claim::SocialLandlord.create(claim_params)
     render 'step1', :layout => 'application-claims'
   end
 

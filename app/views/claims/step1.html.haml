@@ -16,11 +16,11 @@
   %h2 Step 1 - Personal details
   %p Fill in the address of the property you want to repossess and contact details for the landlords and tenants.
 
-= form_for @claim, :url => '/step1', :method => :post do |claim_form|
+= form_for :claim, :url => '/step1', :method => :post do |claim_form|
   %section.property-details
     %h3.section-header Property details
     .moj-panel.sub-panel
-      = claim_form.fields_for @claim.property do |f|
+      = claim_form.fields_for :property do |f|
         .row.rel.street
           %label(for='agent-address')> Street
           = f.text_area :street, id: 'agent-address'
@@ -57,7 +57,7 @@
   %section.landlord-details
     %h3.section-header Landlord details
     .moj-panel
-      = claim_form.fields_for @claim.landlord do |f|
+      = claim_form.fields_for(:landlords, include_id: false) do |f|
         .row
           %label(for='landlord-companyname')> Company name
           = f.text_field :company_name, id: 'landlord-companyname'
@@ -94,7 +94,7 @@
 
   %section.tenant-details
     - i = 0
-    = claim_form.fields_for :tenants, include_id: false do |f|
+    = claim_form.fields_for(:tenants, include_id: false) do |f|
       %h3.section-header
         = "Tenant details - Tenant #{i = i + 1}"
       .moj-panel
