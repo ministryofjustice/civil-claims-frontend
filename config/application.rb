@@ -60,7 +60,9 @@ module CivilClaimsFrontend
       gov-static/gov-fonts-ie8.css
       gov-static/gov-print.css
       moj-base.css
-
+      claims-global.css
+      claims-layout.css
+      claims-components.css
       claims-mixins
       claims-global
       claims-layout
@@ -69,7 +71,7 @@ module CivilClaimsFrontend
       components/claims-intro
       components/claims-usernav
       components/claims-progressnav
-
+      
       gov-static/gov-ie.js
     )
 
