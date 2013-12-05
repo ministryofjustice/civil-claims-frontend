@@ -1,3 +1,5 @@
+= render partial: 'shared/header_message', :locals => {:title => "Start a property repossession case"}
+
 .container
   %nav.progress
     %ol
@@ -6,7 +8,7 @@
       %li
         %span Case details
       %li
-        %span Confirm details
+        %span Check details
       %li
         %span Pay court fee
       %li
@@ -14,11 +16,11 @@
 
 %header.content-header
   %h2= @page_title
-  %p Fill in the address of the property you want to repossess and contact details for the landlords and tenants.
+  %p Fill in contact details for the tenant or tenants and confirm your details.
 
 = form_for @claim do |claim_form|
   %section.property-details
-    %h3.section-header Property details
+    %h3.section-header Property
     .moj-panel.sub-panel
       = claim_form.fields_for @claim.property do |f|
         .row.rel.street
@@ -30,32 +32,9 @@
         .row.rel.postcode
           %label(for='agent-postcode')> Postcode
           = f.text_field :postcode, id: 'agent-postcode', class: 'smalltext'
-        %fieldset.striped-choice
-          %legend Type of property
-          .options
-            .row
-              = f.check_box :residential, id: 'property-residential'
-              %label(for='property-residential') Residential
-            .row
-              = f.check_box :commercial, id: 'property-commercial'
-              %label(for='property-commercial') Commercial
-        %fieldset.striped-choice
-          %legend Who is in the property?
-          .options
-            .row
-              = f.radio_button :resident_type, 'Tenants'
-              %label(for='claim_property_resident_type_tenants') Tenants
-            .row
-              = f.radio_button :resident_type, 'Squatters'
-              %label(for='claim_property_resident_type_squatters') Squatters
-        .row
-          %label(for='title-number') Title number
-          = f.text_field :land_registry_title_number, id: 'title-number', class: 'smalltext'
-        .row.rel.help-link
-          %a(href='#') About title numbers
 
   %section.landlord-details
-    %h3.section-header Landlord details
+    %h3.section-header Landlord (claimant)
     .moj-panel
       = claim_form.fields_for @claim.landlords do |f|
         .row
@@ -93,12 +72,14 @@
           = f.text_field :dx_exchange, id: 'landlord-dxexchange'
 
   %section.tenant-details
-    - i = 0
-    = claim_form.fields_for(@claim.tenants, include_id: false) do |f|
-      %h3.section-header
-        = "Tenant details - Tenant #{i = i + 1}"
-      .moj-panel
-        .tenant(id="tenant-#{i}")
+    %h3.section-header
+      Tenant (defendant)
+    .moj-panel
+      - i = 0
+      = claim_form.fields_for(@claim.tenants, include_id: false) do |f|
+        .sub-panel.tenant-form.tenant(id="tenant-#{i}")
+          %h4
+            = "Tenant #{i = i + 1}"
           .row
             %label(for='tenant-title')> Title
             = f.text_field :title, id: 'tenant-title', class: 'smalltext', name: '[claim]tenants[][title]'
