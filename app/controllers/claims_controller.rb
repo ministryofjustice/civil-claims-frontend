@@ -2,19 +2,19 @@ class ClaimsController < ApplicationController
   def new
     @page_title = 'Step 1 - Personal details'
     @claim = Claim.new
-    render 'step1', :layout => 'application-claims'
+    render 'personal_details', :layout => 'application-claims'
   end
 
   def show
     @page_title = 'Step 1 - Personal details'
     @claim = Claim.find(params[:id])
-    render 'step1', :layout => 'application-claims'
+    render 'personal_details', :layout => 'application-claims'
   end
 
   def edit
     @page_title = 'Step 1 - Personal details'
     @claim = Claim.find(params[:id])
-    render 'step1', :layout => 'application-claims'
+    render 'personal_details', :layout => 'application-claims'
   end
 
   def update
@@ -23,8 +23,10 @@ class ClaimsController < ApplicationController
     redirect_to @claim
   end
 
-  def delete
+  def destroy
     Claim.delete(params[:id])
+    # nowhere to go
+    render 'personal_details', :layout => 'application-claims'
   end
 
   def create

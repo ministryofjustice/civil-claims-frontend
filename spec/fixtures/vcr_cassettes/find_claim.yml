@@ -1,48 +1,41 @@
 ---
 http_interactions:
 - request:
-    method: post
-    uri: http://localhost:3111/repossession_claims_api/v1/claims.json
+    method: get
+    uri: http://localhost:3111/repossession_claims_api/v1/claims/371.json
     body:
-      encoding: UTF-8
-      string: '{"property":{"residential":true,"commercial":false,"resident_type":"squatter","land_registry_title_number":null,"street":"1
-        Astreet","town":"town","postcode":"a1 1aa"},"landlords":[{},{"title":"mr","full_name":"joe
-        bloggs","phone":"+44 (0)207 12345678","mobile":null,"email":"email.address@example.com","street":"1
-        Astreet","town":"town","postcode":"a1 1aa","company_name":"Company Name Ltd"}],"tenants":[{},{},{},{},{"title":"mr","full_name":"joe
-        bloggs","phone":"+44 (0)207 12345678","mobile":null,"email":"email.address@example.com","unknown_address":false,"street":"1
-        Astreet","town":"town","postcode":"a1 1aa"}]}'
+      encoding: US-ASCII
+      string: ''
     headers:
-      Content-Type:
+      Accept:
       - application/json
       Accept-Encoding:
       - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
-      Accept:
-      - '*/*'
       User-Agent:
       - Ruby
   response:
     status:
-      code: 201
-      message: 'Created '
+      code: 200
+      message: 'OK '
     headers:
       Content-Type:
       - application/json
       Content-Length:
-      - '1442'
+      - '1444'
       X-Meta-Request-Version:
       - 0.2.8
       Etag:
-      - '"b33ea1df2382ce53afe5e93b1bdbe4e3"'
+      - '"a548c698f97640a06075d367ce6b502d"'
       Cache-Control:
       - max-age=0, private, must-revalidate
       X-Request-Id:
-      - 7d1f14cd-345c-49d6-a0f7-1a40398da24c
+      - cbc4b191-1312-426f-8577-8c19099c4e8a
       X-Runtime:
-      - '0.037151'
+      - '0.037688'
       Server:
       - WEBrick/1.3.1 (Ruby/2.0.0/2013-06-27)
       Date:
-      - Mon, 02 Dec 2013 11:39:26 GMT
+      - Mon, 02 Dec 2013 12:00:23 GMT
       Connection:
       - Keep-Alive
     body:
@@ -52,8 +45,8 @@ http_interactions:
         (0)207 12345678","mobile":null,"email":"email.address@example.com","dx_number":null,"dx_exchange":null,"id":785,"company_name":"Company
         Name Ltd"}],"tenants":[{"title":null,"full_name":null,"phone":null,"mobile":null,"email":null,"street":null,"town":null,"postcode":null,"id":1016,"unknown_address":null},{"title":null,"full_name":null,"phone":null,"mobile":null,"email":null,"street":null,"town":null,"postcode":null,"id":1017,"unknown_address":null},{"title":null,"full_name":null,"phone":null,"mobile":null,"email":null,"street":null,"town":null,"postcode":null,"id":1018,"unknown_address":null},{"title":null,"full_name":null,"phone":null,"mobile":null,"email":null,"street":null,"town":null,"postcode":null,"id":1019,"unknown_address":null},{"title":"mr","full_name":"joe
         bloggs","phone":"+44 (0)207 12345678","mobile":null,"email":"email.address@example.com","street":"1
-        Astreet","town":"town","postcode":"a1 1aa","id":1020,"unknown_address":false}],"property":{"street":"1
-        Astreet","town":"town","postcode":"a1 1aa","id":376,"residential":true,"commercial":false,"resident_type":"squatter","land_registry_title_number":null}}'
+        Astreet","town":"town","postcode":"a1 1aa","id":1020,"unknown_address":false}],"property":{"street":"123
+        test st","town":"town","postcode":"a1 1aa","id":376,"residential":true,"commercial":false,"resident_type":"squatter","land_registry_title_number":null}}'
     http_version: 
-  recorded_at: Mon, 02 Dec 2013 11:39:26 GMT
+  recorded_at: Mon, 02 Dec 2013 12:00:23 GMT
 recorded_with: VCR 2.5.0
