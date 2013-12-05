@@ -60,16 +60,18 @@ module CivilClaimsFrontend
       gov-static/gov-fonts-ie8.css
       gov-static/gov-print.css
       moj-base.css
-
-      claims-mixins
-      claims-global
-      claims-layout
-      claims-components
-      components/claims-forms
-      components/claims-intro
-      components/claims-usernav
-      components/claims-progressnav
-
+      claims-global.css
+      claims-layout.css
+      claims-components.css
+      rebuild-claims-mixins
+      rebuild-claims-global
+      rebuild-claims-layout
+      rebuild-claims-components
+      rebuild-components/rebuild-claims-forms
+      rebuild-components/rebuild-claims-intro
+      rebuild-components/rebuild-claims-usernav
+      rebuild-components/rebuild-claims-progressnav
+      
       gov-static/gov-ie.js
     )
 
