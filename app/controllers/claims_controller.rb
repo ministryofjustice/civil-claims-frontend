@@ -6,18 +6,17 @@ class ClaimsController < ApplicationController
     render 'personal_details', :layout => 'application-claims'
   end
 
-  def show
+  def edit
     @claim = Claim.find(params[:id])
-    return redirect_to action: 'show', id: @claim.id, page_id: 'personal_details' unless params.has_key? :page_id
-    template, @page_title = claim_wizard_steps params[:page_id]
+    return redirect_to action: 'edit', id: @claim.id, page_id: 'personal_details' unless params.has_key? :page_id
+    template, @page_title = page_details params[:page_id]
     render template, :layout => 'application-claims'
   end
 
   def update
     @claim = Claim.find(params[:id])
     @claim.update_attributes(claim_params)
-
-    redirect_to @claim
+    redirect_to action: 'edit', id: @claim.id, page_id: params[:next_page]
   end
 
   def destroy
@@ -28,12 +27,12 @@ class ClaimsController < ApplicationController
   def create
     @claim = Claim.new(claim_params)
     @claim.save
-    redirect_to @claim
+    redirect_to action: 'edit', id: @claim.id, page_id: params[:next_page]
   end
 
   private
 
-  def claim_wizard_steps(page_id)
+  def page_details(page_id)
     case page_id
     when 'personal_details'
       title = 'Step 1 - Personal details'

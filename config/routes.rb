@@ -2,8 +2,9 @@ CivilClaimsFrontend::Application.routes.draw do
   get '/templates' => 'templates#templates'
   get '/step2' => 'templates#step2'
 
-  resources :claims, only: [:create, :new, :destroy, :update, :show]
-  get '/claims/:id/:page_id'  => 'claims#show'
+  resources :claims, only: [:create, :new, :destroy, :update]
+  get '/claims/:id'           => 'claims#edit'
+  get '/claims/:id/:page_id'  => 'claims#edit'
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

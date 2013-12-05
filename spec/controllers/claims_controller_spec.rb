@@ -15,7 +15,7 @@ describe ClaimsController do
   end
 
   def find_claim(claim_id)
-    VCR.use_cassette('find_claim') { get :show, {:id => claim_id} }
+    VCR.use_cassette('find_claim') { get :edit, {:id => claim_id} }
     assigns(:claim)
   end
 
@@ -102,7 +102,7 @@ describe ClaimsController do
     end
   end  
 
-  describe 'GET show' do
+  describe 'GET edit' do
     before :each do 
       claim = create_claim
       @claim = find_claim(claim.id)
@@ -128,7 +128,7 @@ describe ClaimsController do
       VCR.use_cassette('delete_claim') do
         delete :destroy, {:id => @claim.id} 
       end
-      expect { VCR.use_cassette('find_missing_claim') { get :show, {:id => @claim.id} } }.to raise_error ActiveResource::ResourceNotFound
+      expect { VCR.use_cassette('find_missing_claim') { get :edit, {:id => @claim.id} } }.to raise_error ActiveResource::ResourceNotFound
     end
   end
 end
