@@ -12,6 +12,7 @@
  *= require_self
  *= require validator
  *= require moj-base
+ *= require claims-mixins
  *= require claims-global
  *= require claims-layout
  *= require claims-components
