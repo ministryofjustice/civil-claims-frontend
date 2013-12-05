@@ -10,10 +10,8 @@
     = render 'shared/phase_indicator'
     = render 'layouts/header'
     #wrapper
-      %main{:role => "main"}
+      .main{:role => "main"}
         = render 'layouts/messages'
-
-        = render partial: 'shared/header_message_rebuild'
 
         = yield
 

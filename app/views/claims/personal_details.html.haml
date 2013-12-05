@@ -1,3 +1,5 @@
+= render partial: 'shared/header_message', :locals => {:title => "Start a property repossession case"}
+
 .container
   %nav.progress
     %ol
@@ -6,7 +8,7 @@
       %li
         %span Case details
       %li
-        %span Confirm details
+        %span Check details
       %li
         %span Pay court fee
       %li
@@ -14,117 +16,93 @@
 
 %header.content-header
   %h2= @page_title
-  %p Fill in the address of the property you want to repossess and contact details for the landlords and tenants.
+  %p Fill in contact details for the tenant or tenants and confirm your details.
 
 = form_for @claim do |claim_form|
   %section.property-details
-    %h3.section-header Property details
+    %h3.section-header Property
     .moj-panel.sub-panel
       = claim_form.fields_for @claim.property do |f|
         .row.rel.street
-          %label(for='agent-address')> Street
-          = f.text_area :street, id: 'agent-address'
+          = f.label :street
+          = f.text_area :street
         .row.rel.town
-          %label(for='agent-town')> Town
-          = f.text_field :town, id: 'agent-town'
+          = f.label :town
+          = f.text_field :town
         .row.rel.postcode
-          %label(for='agent-postcode')> Postcode
-          = f.text_field :postcode, id: 'agent-postcode', class: 'smalltext'
-        %fieldset.striped-choice
-          %legend Type of property
-          .options
-            .row
-              = f.check_box :residential, id: 'property-residential'
-              %label(for='property-residential') Residential
-            .row
-              = f.check_box :commercial, id: 'property-commercial'
-              %label(for='property-commercial') Commercial
-        %fieldset.striped-choice
-          %legend Who is in the property?
-          .options
-            .row
-              = f.radio_button :resident_type, 'Tenants'
-              %label(for='claim_property_resident_type_tenants') Tenants
-            .row
-              = f.radio_button :resident_type, 'Squatters'
-              %label(for='claim_property_resident_type_squatters') Squatters
-        .row
-          %label(for='title-number') Title number
-          = f.text_field :land_registry_title_number, id: 'title-number', class: 'smalltext'
-        .row.rel.help-link
-          %a(href='#') About title numbers
+          = f.label :postcode
+          = f.text_field :postcode, class: 'smalltext'
 
   %section.landlord-details
-    %h3.section-header Landlord details
+    %h3.section-header Landlord (claimant)
     .moj-panel
       = claim_form.fields_for @claim.landlords do |f|
         .row
-          %label(for='landlord-companyname')> Company name
-          = f.text_field :company_name, id: 'landlord-companyname'
+          = f.label :company_name, 'Council'
+          = f.text_field :company_name
         .row.rel.street
-          %label(for='landlord-address')> Street
-          = f.text_area :street, id: 'landlord-address'
+          = f.label :street
+          = f.text_area :street
         .row.rel.town
-          %label(for='landlord-town')> Town
-          = f.text_field :town, id: 'landlord-town'
+          = f.label :town
+          = f.text_field :town
         .row.rel.postcode
-          %label(for='landlord-postcode')> Postcode
-          = f.text_field :postcode, id:'landlord-postcode', class: 'smalltext'
+          = f.label :postcode
+          = f.text_field :postcode, class: 'smalltext'
         .row
-          %label(for='landlord-title')> Title
-          = f.text_field :title, id: 'landlord-title', class: 'smalltext'
+          = f.label :title
+          = f.text_field :title, class: 'smalltext'
         .row.rel
-          %label(for='landlord-name')> Full name
-          = f.text_field :full_name, id: 'landlord-name'
+          = f.label :full_name
+          = f.text_field :full_name
         .row.rel
-          %label(for='landlord-phone')> Phone
-          = f.text_field :phone,  id: 'landlord-phone'
+          = f.label :phone
+          = f.text_field :phone
         .row.rel
-          %label(for='landlord-mobile')> Mobile
-          = f.text_field :mobile, id: 'landlord-mobile'
+          = f.label :mobile
+          = f.text_field :mobile
         .row.rel
-          %label(for='landlord-email')> Email
-          = f.text_field :email, id: 'landlord-email'
+          = f.label :email
+          = f.text_field :email
         .row
-          %label(for='landlord-dxnumber')> DX number
-          = f.text_field :dx_number, id: 'landlord-dxnumber'
+          = f.label :dx_number, 'DX number'
+          = f.text_field :dx_number
         .row.rel
-          %label(for='landlord-dxexchange')> DX exchange
-          = f.text_field :dx_exchange, id: 'landlord-dxexchange'
+          = f.label :dx_exchange, 'DX exchange'
+          = f.text_field :dx_exchange
 
   %section.tenant-details
-    - i = 0
-    = claim_form.fields_for(@claim.tenants, include_id: false) do |f|
-      %h3.section-header
-        = "Tenant details - Tenant #{i = i + 1}"
-      .moj-panel
-        .tenant(id="tenant-#{i}")
+    %h3.section-header
+      Tenant (defendant)
+    .moj-panel
+      - i = 0
+      = claim_form.fields_for(@claim.tenants, include_id: false) do |f|
+        .sub-panel.tenant-form.tenant(id="tenant-#{i}")
+          %h4
+            = "Tenant #{i = i + 1}"
           .row
-            %label(for='tenant-title')> Title
-            = f.text_field :title, id: 'tenant-title', class: 'smalltext', name: '[claim]tenants[][title]'
+            = f.label :title
+            = f.text_field :title, class: 'smalltext', name: '[claim]tenants[][title]'
           .row.rel
-            %label(for='tenant-name')> Full name
-            = f.text_field :full_name, id: 'tenant-name', name: '[claim]tenants[][full_name]'
+            = f.label :full_name
+            = f.text_field :full_name, name: '[claim]tenants[][full_name]'
           .row.rel
-            %label(for='tenant-phone')> Phone
-            = f.text_field :phone, id: 'tenant-phone', name: '[claim]tenants[][phone]'
+            = f.label :mobile
+            = f.text_field :mobile, name: '[claim]tenants[][mobile]'
           .row.rel
-            %label(for='tenant-mobile')> Mobile
-            = f.text_field :mobile, id: 'tenant-mobile', name: '[claim]tenants[][mobile]'
-          .row.rel
-            %label(for='tenant-email')> Email
-            = f.text_field :email, id: 'tenant-email', name: '[claim]tenants[][email]'
+            = f.label :email
+            = f.text_field :email, name: '[claim]tenants[][email]'
           .row.full
-            If the tenant's current address is different from the property you want to repossess, please provide their address below.
-          .row.rel.street
-            %label(for='tenant-address')> Street
-            = f.text_area :street, id: 'tenant-address', name: '[claim]tenants[][street]'
+            If the tenants are living somewhere else, please give the address below.
+          .row.street
+            = f.label :street
+            = f.text_area :street, name: '[claim]tenants[][street]'
           .row.rel.town
-            %label(for='tenant-town')> Town
-            = f.text_field :town, id: 'tenant-town', name: '[claim]tenants[][town]'
+            = f.label :town
+            = f.text_field :town, name: '[claim]tenants[][town]'
           .row.rel.postcode
-            %label(for='tenant-postcode')> Postcode
-            = f.text_field :postcode, id: 'tenant-postcode', class: 'smalltext', name: '[claim]tenants[][postcode]'
+            = f.label :postcode
+            = f.text_field :postcode, class: 'smalltext', name: '[claim]tenants[][postcode]'
 
   %section
     .action-buttons.cf
