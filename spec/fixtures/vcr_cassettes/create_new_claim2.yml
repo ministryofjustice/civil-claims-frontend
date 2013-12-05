@@ -1,22 +1,30 @@
 ---
 http_interactions:
 - request:
-    method: get
-    uri: http://localhost:3111/repossession_claims_api/v1/claims/25.json
+    method: post
+    uri: http://localhost:3111/repossession_claims_api/v1/claims.json
     body:
-      encoding: US-ASCII
-      string: ''
+      encoding: UTF-8
+      string: '{"property":{"residential":true,"commercial":false,"resident_type":"squatter","land_registry_title_number":null,"street":"1
+        Astreet","town":"town","postcode":"a1 1aa"},"landlords":[{},{"title":"mr","full_name":"joe
+        bloggs","phone":"+44 (0)207 12345678","mobile":null,"email":"email.address@example.com","street":"1
+        Astreet","town":"town","postcode":"a1 1aa","organisation_name":"Company Name
+        Ltd"}],"tenants":[{},{},{},{},{"title":"mr","full_name":"joe bloggs","phone":"+44
+        (0)207 12345678","mobile":null,"email":"email.address@example.com","unknown_address":false,"street":"1
+        Astreet","town":"town","postcode":"a1 1aa"}]}'
     headers:
-      Accept:
+      Content-Type:
       - application/json
       Accept-Encoding:
       - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - '*/*'
       User-Agent:
       - Ruby
   response:
     status:
-      code: 200
-      message: 'OK '
+      code: 201
+      message: 'Created '
     headers:
       Content-Type:
       - application/json
@@ -29,13 +37,13 @@ http_interactions:
       Cache-Control:
       - max-age=0, private, must-revalidate
       X-Request-Id:
-      - 8a4efd75-3a99-4721-b5c4-dd2ec6e24d9e
+      - 9587ec3a-4de8-4624-a2b0-23383c525692
       X-Runtime:
-      - '0.045606'
+      - '0.059746'
       Server:
       - WEBrick/1.3.1 (Ruby/2.0.0/2013-06-27)
       Date:
-      - Thu, 05 Dec 2013 15:57:17 GMT
+      - Thu, 05 Dec 2013 15:56:54 GMT
       Connection:
       - Keep-Alive
     body:
@@ -48,5 +56,5 @@ http_interactions:
         Astreet","town":"town","postcode":"a1 1aa","id":155,"unknown_address":false}],"property":{"street":"1
         Astreet","town":"town","postcode":"a1 1aa","id":25,"residential":true,"commercial":false,"resident_type":"squatter","land_registry_title_number":null},"case_details":null}'
     http_version: 
-  recorded_at: Thu, 05 Dec 2013 15:57:17 GMT
+  recorded_at: Thu, 05 Dec 2013 15:56:54 GMT
 recorded_with: VCR 2.5.0

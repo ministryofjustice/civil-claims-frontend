@@ -14,11 +14,6 @@ describe ClaimsController do
     assigns(:claim)
   end
 
-  def find_claim(claim_id)
-    VCR.use_cassette('find_claim') { get :edit, {:id => claim_id} }
-    assigns(:claim)
-  end
-
   let(:valid_attributes) do 
     claim_to_attribute_hash(FactoryGirl.build(:claim))
   end
@@ -104,8 +99,9 @@ describe ClaimsController do
 
   describe 'GET edit' do
     before :each do 
-      claim = create_claim
-      @claim = find_claim(claim.id)
+      VCR.use_cassette('create_new_claim2') { post :create, {:claim => valid_attributes} }
+      VCR.use_cassette('find_claim') { get :edit, {:id => assigns(:claim).id} }
+      @claim = assigns(:claim)
     end
 
     it 'finds the specified claim' do

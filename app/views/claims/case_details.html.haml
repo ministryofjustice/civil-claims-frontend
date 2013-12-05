@@ -2,7 +2,7 @@
   %nav.progress
     %ol
       %li.completed
-        = link_to 'Personal details', '/step1'
+        = link_to 'Personal details', action: 'edit', id: @claim.id, page_id: 'personal_details'
       %li.active
         %span Case details
       %li

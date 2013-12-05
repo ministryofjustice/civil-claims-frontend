@@ -6,7 +6,7 @@ class Landlord < ActiveResource::Base
   schema do
     integer 'id'
 
-    string 'company_name'
+    string 'organisation_name'
     string 'street'
     string 'town'
     string 'postcode'

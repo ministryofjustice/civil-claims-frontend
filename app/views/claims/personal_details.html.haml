@@ -91,6 +91,7 @@
         .row.rel
           %label(for='landlord-dxexchange')> DX exchange
           = f.text_field :dx_exchange, id: 'landlord-dxexchange'
+        = f.hidden_field :id
 
   %section.tenant-details
     - i = 0
@@ -125,6 +126,7 @@
           .row.rel.postcode
             %label(for='tenant-postcode')> Postcode
             = f.text_field :postcode, id: 'tenant-postcode', class: 'smalltext', name: '[claim]tenants[][postcode]'
+           = f.hidden_field :id
 
   %section
     .action-buttons.cf

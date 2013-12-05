@@ -13,6 +13,6 @@ FactoryGirl.define do
     town      "town"
     postcode  "a1 1aa"
 
-    company_name    'Company Name Ltd'
+    organisation_name    'Company Name Ltd'
   end
 end

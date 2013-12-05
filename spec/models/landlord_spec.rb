@@ -8,7 +8,7 @@ describe Landlord do
 
   subject{ @landlord }
 
-  it { should respond_to :company_name }
+  it { should respond_to :organisation_name }
   it { should respond_to :street }
   it { should respond_to :town }
   it { should respond_to :postcode }

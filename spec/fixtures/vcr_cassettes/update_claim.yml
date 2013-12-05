@@ -2,7 +2,7 @@
 http_interactions:
 - request:
     method: get
-    uri: http://localhost:3111/repossession_claims_api/v1/claims/371.json
+    uri: http://localhost:3111/repossession_claims_api/v1/claims/24.json
     body:
       encoding: US-ASCII
       string: ''
@@ -21,45 +21,45 @@ http_interactions:
       Content-Type:
       - application/json
       Content-Length:
-      - '1442'
+      - '1463'
       X-Meta-Request-Version:
       - 0.2.8
       Etag:
-      - '"b33ea1df2382ce53afe5e93b1bdbe4e3"'
+      - '"faecea20967cedacc99555cc89dbd442"'
       Cache-Control:
       - max-age=0, private, must-revalidate
       X-Request-Id:
-      - ef0270cb-6eab-41b9-a492-3a5ca0d52e14
+      - fc751a18-0468-4636-afd9-c493169c579e
       X-Runtime:
-      - '0.011799'
+      - '0.011795'
       Server:
       - WEBrick/1.3.1 (Ruby/2.0.0/2013-06-27)
       Date:
-      - Mon, 02 Dec 2013 11:39:26 GMT
+      - Thu, 05 Dec 2013 15:56:54 GMT
       Connection:
       - Keep-Alive
     body:
       encoding: UTF-8
-      string: '{"id":371,"landlords":[{"street":null,"town":null,"postcode":null,"title":null,"full_name":null,"phone":null,"mobile":null,"email":null,"dx_number":null,"dx_exchange":null,"id":784,"company_name":null},{"street":"1
+      string: '{"id":24,"landlords":[{"street":null,"town":null,"postcode":null,"title":null,"full_name":null,"phone":null,"mobile":null,"email":null,"dx_number":null,"dx_exchange":null,"id":69,"organisation_name":null},{"street":"1
         Astreet","town":"town","postcode":"a1 1aa","title":"mr","full_name":"joe bloggs","phone":"+44
-        (0)207 12345678","mobile":null,"email":"email.address@example.com","dx_number":null,"dx_exchange":null,"id":785,"company_name":"Company
-        Name Ltd"}],"tenants":[{"title":null,"full_name":null,"phone":null,"mobile":null,"email":null,"street":null,"town":null,"postcode":null,"id":1016,"unknown_address":null},{"title":null,"full_name":null,"phone":null,"mobile":null,"email":null,"street":null,"town":null,"postcode":null,"id":1017,"unknown_address":null},{"title":null,"full_name":null,"phone":null,"mobile":null,"email":null,"street":null,"town":null,"postcode":null,"id":1018,"unknown_address":null},{"title":null,"full_name":null,"phone":null,"mobile":null,"email":null,"street":null,"town":null,"postcode":null,"id":1019,"unknown_address":null},{"title":"mr","full_name":"joe
+        (0)207 12345678","mobile":null,"email":"email.address@example.com","dx_number":null,"dx_exchange":null,"id":70,"organisation_name":"Company
+        Name Ltd"}],"tenants":[{"title":null,"full_name":null,"phone":null,"mobile":null,"email":null,"street":null,"town":null,"postcode":null,"id":141,"unknown_address":null},{"title":null,"full_name":null,"phone":null,"mobile":null,"email":null,"street":null,"town":null,"postcode":null,"id":142,"unknown_address":null},{"title":null,"full_name":null,"phone":null,"mobile":null,"email":null,"street":null,"town":null,"postcode":null,"id":143,"unknown_address":null},{"title":null,"full_name":null,"phone":null,"mobile":null,"email":null,"street":null,"town":null,"postcode":null,"id":144,"unknown_address":null},{"title":"mr","full_name":"joe
         bloggs","phone":"+44 (0)207 12345678","mobile":null,"email":"email.address@example.com","street":"1
-        Astreet","town":"town","postcode":"a1 1aa","id":1020,"unknown_address":false}],"property":{"street":"1
-        Astreet","town":"town","postcode":"a1 1aa","id":376,"residential":true,"commercial":false,"resident_type":"squatter","land_registry_title_number":null}}'
+        Astreet","town":"town","postcode":"a1 1aa","id":145,"unknown_address":false}],"property":{"street":"1
+        Astreet","town":"town","postcode":"a1 1aa","id":24,"residential":true,"commercial":false,"resident_type":"squatter","land_registry_title_number":null},"case_details":null}'
     http_version: 
-  recorded_at: Mon, 02 Dec 2013 11:39:26 GMT
+  recorded_at: Thu, 05 Dec 2013 15:56:54 GMT
 - request:
     method: put
-    uri: http://localhost:3111/repossession_claims_api/v1/claims/371.json
+    uri: http://localhost:3111/repossession_claims_api/v1/claims/24.json
     body:
       encoding: UTF-8
-      string: '{"property":{"street":"123 test st","town":"town","postcode":"a1 1aa","id":"376","residential":true,"commercial":false,"resident_type":"squatter","land_registry_title_number":null},"landlords":[{"street":null,"town":null,"postcode":null,"title":null,"full_name":null,"phone":null,"mobile":null,"email":null,"dx_number":null,"dx_exchange":null,"id":"784","company_name":null},{"street":"1
+      string: '{"property":{"street":"123 test st","town":"town","postcode":"a1 1aa","id":"24","residential":true,"commercial":false,"resident_type":"squatter","land_registry_title_number":null},"landlords":[{"street":null,"town":null,"postcode":null,"title":null,"full_name":null,"phone":null,"mobile":null,"email":null,"dx_number":null,"dx_exchange":null,"id":"69","organisation_name":null},{"street":"1
         Astreet","town":"town","postcode":"a1 1aa","title":"mr","full_name":"joe bloggs","phone":"+44
-        (0)207 12345678","mobile":null,"email":"email.address@example.com","dx_number":null,"dx_exchange":null,"id":"785","company_name":"Company
-        Name Ltd"}],"tenants":[{"title":null,"full_name":null,"phone":null,"mobile":null,"email":null,"street":null,"town":null,"postcode":null,"id":"1016","unknown_address":null},{"title":null,"full_name":null,"phone":null,"mobile":null,"email":null,"street":null,"town":null,"postcode":null,"id":"1017","unknown_address":null},{"title":null,"full_name":null,"phone":null,"mobile":null,"email":null,"street":null,"town":null,"postcode":null,"id":"1018","unknown_address":null},{"title":null,"full_name":null,"phone":null,"mobile":null,"email":null,"street":null,"town":null,"postcode":null,"id":"1019","unknown_address":null},{"title":"mr","full_name":"joe
+        (0)207 12345678","mobile":null,"email":"email.address@example.com","dx_number":null,"dx_exchange":null,"id":"70","organisation_name":"Company
+        Name Ltd"}],"tenants":[{"title":null,"full_name":null,"phone":null,"mobile":null,"email":null,"street":null,"town":null,"postcode":null,"id":"141","unknown_address":null},{"title":null,"full_name":null,"phone":null,"mobile":null,"email":null,"street":null,"town":null,"postcode":null,"id":"142","unknown_address":null},{"title":null,"full_name":null,"phone":null,"mobile":null,"email":null,"street":null,"town":null,"postcode":null,"id":"143","unknown_address":null},{"title":null,"full_name":null,"phone":null,"mobile":null,"email":null,"street":null,"town":null,"postcode":null,"id":"144","unknown_address":null},{"title":"mr","full_name":"joe
         bloggs","phone":"+44 (0)207 12345678","mobile":null,"email":"email.address@example.com","street":"1
-        Astreet","town":"town","postcode":"a1 1aa","id":"1020","unknown_address":false}],"id":"371"}'
+        Astreet","town":"town","postcode":"a1 1aa","id":"145","unknown_address":false}],"id":"24","case_details":null}'
     headers:
       Content-Type:
       - application/json
@@ -77,32 +77,37 @@ http_interactions:
       Content-Type:
       - application/json
       Content-Length:
-      - '1444'
+      - '2698'
       X-Meta-Request-Version:
       - 0.2.8
       Etag:
-      - '"a548c698f97640a06075d367ce6b502d"'
+      - '"3ced096f61368c7169b4487315a0d4ab"'
       Cache-Control:
       - max-age=0, private, must-revalidate
       X-Request-Id:
-      - 849645a7-fe91-4d0c-9633-82476bd850fd
+      - 7a89aded-08dd-4b41-b721-59f4c96a905b
       X-Runtime:
-      - '0.060312'
+      - '0.082998'
       Server:
       - WEBrick/1.3.1 (Ruby/2.0.0/2013-06-27)
       Date:
-      - Mon, 02 Dec 2013 11:39:26 GMT
+      - Thu, 05 Dec 2013 15:56:54 GMT
       Connection:
       - Keep-Alive
     body:
       encoding: UTF-8
-      string: '{"id":371,"landlords":[{"street":null,"town":null,"postcode":null,"title":null,"full_name":null,"phone":null,"mobile":null,"email":null,"dx_number":null,"dx_exchange":null,"id":784,"company_name":null},{"street":"1
+      string: '{"id":24,"landlords":[{"street":null,"town":null,"postcode":null,"title":null,"full_name":null,"phone":null,"mobile":null,"email":null,"dx_number":null,"dx_exchange":null,"id":69,"organisation_name":null},{"street":"1
         Astreet","town":"town","postcode":"a1 1aa","title":"mr","full_name":"joe bloggs","phone":"+44
-        (0)207 12345678","mobile":null,"email":"email.address@example.com","dx_number":null,"dx_exchange":null,"id":785,"company_name":"Company
-        Name Ltd"}],"tenants":[{"title":null,"full_name":null,"phone":null,"mobile":null,"email":null,"street":null,"town":null,"postcode":null,"id":1016,"unknown_address":null},{"title":null,"full_name":null,"phone":null,"mobile":null,"email":null,"street":null,"town":null,"postcode":null,"id":1017,"unknown_address":null},{"title":null,"full_name":null,"phone":null,"mobile":null,"email":null,"street":null,"town":null,"postcode":null,"id":1018,"unknown_address":null},{"title":null,"full_name":null,"phone":null,"mobile":null,"email":null,"street":null,"town":null,"postcode":null,"id":1019,"unknown_address":null},{"title":"mr","full_name":"joe
+        (0)207 12345678","mobile":null,"email":"email.address@example.com","dx_number":null,"dx_exchange":null,"id":70,"organisation_name":"Company
+        Name Ltd"},{"street":null,"town":null,"postcode":null,"title":null,"full_name":null,"phone":null,"mobile":null,"email":null,"dx_number":null,"dx_exchange":null,"id":71,"organisation_name":null},{"street":"1
+        Astreet","town":"town","postcode":"a1 1aa","title":"mr","full_name":"joe bloggs","phone":"+44
+        (0)207 12345678","mobile":null,"email":"email.address@example.com","dx_number":null,"dx_exchange":null,"id":72,"organisation_name":"Company
+        Name Ltd"}],"tenants":[{"title":null,"full_name":null,"phone":null,"mobile":null,"email":null,"street":null,"town":null,"postcode":null,"id":141,"unknown_address":null},{"title":null,"full_name":null,"phone":null,"mobile":null,"email":null,"street":null,"town":null,"postcode":null,"id":142,"unknown_address":null},{"title":null,"full_name":null,"phone":null,"mobile":null,"email":null,"street":null,"town":null,"postcode":null,"id":143,"unknown_address":null},{"title":null,"full_name":null,"phone":null,"mobile":null,"email":null,"street":null,"town":null,"postcode":null,"id":144,"unknown_address":null},{"title":"mr","full_name":"joe
         bloggs","phone":"+44 (0)207 12345678","mobile":null,"email":"email.address@example.com","street":"1
-        Astreet","town":"town","postcode":"a1 1aa","id":1020,"unknown_address":false}],"property":{"street":"123
-        test st","town":"town","postcode":"a1 1aa","id":376,"residential":true,"commercial":false,"resident_type":"squatter","land_registry_title_number":null}}'
+        Astreet","town":"town","postcode":"a1 1aa","id":145,"unknown_address":false},{"title":null,"full_name":null,"phone":null,"mobile":null,"email":null,"street":null,"town":null,"postcode":null,"id":146,"unknown_address":null},{"title":null,"full_name":null,"phone":null,"mobile":null,"email":null,"street":null,"town":null,"postcode":null,"id":147,"unknown_address":null},{"title":null,"full_name":null,"phone":null,"mobile":null,"email":null,"street":null,"town":null,"postcode":null,"id":148,"unknown_address":null},{"title":null,"full_name":null,"phone":null,"mobile":null,"email":null,"street":null,"town":null,"postcode":null,"id":149,"unknown_address":null},{"title":"mr","full_name":"joe
+        bloggs","phone":"+44 (0)207 12345678","mobile":null,"email":"email.address@example.com","street":"1
+        Astreet","town":"town","postcode":"a1 1aa","id":150,"unknown_address":false}],"property":{"street":"123
+        test st","town":"town","postcode":"a1 1aa","id":24,"residential":true,"commercial":false,"resident_type":"squatter","land_registry_title_number":null},"case_details":null}'
     http_version: 
-  recorded_at: Mon, 02 Dec 2013 11:39:26 GMT
+  recorded_at: Thu, 05 Dec 2013 15:56:54 GMT
 recorded_with: VCR 2.5.0
