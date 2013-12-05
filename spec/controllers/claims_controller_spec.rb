@@ -104,12 +104,18 @@ describe ClaimsController do
 
   describe 'GET show' do
     before :each do 
-      @claim = create_claim
+      claim = create_claim
+      @claim = find_claim(claim.id)
     end
 
     it 'finds the specified claim' do
       expect(@claim).to be_a Claim
       expect(@claim.id).to_not be_nil
+    end
+
+    it 'redirects /claims/:id to /claims:id/personal_details' do
+      expect(response.status).to eql 302
+      expect(response.location).to include "/claims/#{@claim.id}/personal_details"
     end
   end
 
