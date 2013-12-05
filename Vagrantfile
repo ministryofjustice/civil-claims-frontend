@@ -21,7 +21,7 @@ Vagrant.configure("2") do |config|
         fabric.tasks = [
             "provider:vagrant",
             "vagrant_bootstrap",
-            "pushrole:civilclaims:civil-claims-front:civil-claims-api:civil-claims-auth:civil-claims-spec:mongodb",
+            "pushrole:civilclaims:civil-claims-front:civil-claims-api:civil-claims-auth:civil-claims-spec:mongodb:postgresql",
         ]
     end
 
