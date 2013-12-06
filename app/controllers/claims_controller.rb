@@ -8,12 +8,14 @@ class ClaimsController < ApplicationController
 
   def edit
     @claim = Claim.find(params[:id])
+    (4 - @claim.tenants.size).times { |i| @claim.tenants << Tenant.new }
     return redirect_to action: 'edit', id: @claim.id, page_id: 'personal_details' unless params.has_key? :page_id
     template, @page_title = page_details params[:page_id]
     render template, :layout => 'application-claims'
   end
 
   def update
+    pp params
     @claim = Claim.find(params[:id])
     @claim.update_attributes(claim_params)
     return redirect_to action: 'edit', id: @claim.id, page_id: params[:next_page] if params.has_key? :next_page

@@ -38,71 +38,56 @@
       Council (claimant)
       %a.right(href='#') Make changes
     .moj-panel
+      - landlord = @claim.landlords.first
       .row
-        .key
-          Council
-        .value
-          Bristol City Council
+        .key Council
+        .value= landlord.organisation_name
       .row
-        .key
-          Address
-        .value
-          City Hall
-          %br/
-          College Green
-          %br/
-          Bristol
-          %br/
-          BS1 5TR
+        .key Address
+        .value= landlord.address
       .row
-        .key
-          Full name
-        .value
-          Ms Julia Richards
+        .key Full name
+        .value= landlord.full_name
       .row
-        .key
-          Phone
-        .value
-          0115 915 5555
+        .key Phone
+        .value= landlord.phone
       .row
-        .key
-          Email
-        .value
-          julia.richards@bristol.gov.uk
+        .key Email
+        .value= landlord.email
 
   %section.tenant-details
-    %h3.section-header
-      Tenant (defendant)
+    %h3.section-header Tenant (defendant)
     .moj-panel
-      - i = 0
-      = claim_form.fields_for(@claim.tenants, include_id: false) do |f|
-        .sub-panel.tenant-form.tenant(id="tenant-#{i}")
-          %h4
-            = "Tenant #{i = i + 1}"
-          .row
-            = f.label :title
-            = f.text_field :title, class: 'smalltext', name: '[claim]tenants[][title]'
-          .row.rel
-            = f.label :full_name
-            = f.text_field :full_name, name: '[claim]tenants[][full_name]'
-          .row.rel
-            = f.label :mobile
-            = f.text_field :mobile, name: '[claim]tenants[][mobile]'
-          .row.rel
-            = f.label :email
-            = f.text_field :email, name: '[claim]tenants[][email]'
-          .row.full
-            If the tenants are living somewhere else, please give the address below.
-          .row.street
-            = f.label :street
-            = f.text_area :street, name: '[claim]tenants[][street]'
-          .row.rel.town
-            = f.label :town
-            = f.text_field :town, name: '[claim]tenants[][town]'
-          .row.rel.postcode
-            = f.label :postcode
-            = f.text_field :postcode, class: 'smalltext', name: '[claim]tenants[][postcode]'
-          = f.hidden_field :id
+      - 4.times do |i|
+        = claim_form.fields_for(@claim.tenants[i], include_id: false) do |f|
+          .sub-panel.tenant-form.tenant(id="tenant-#{i}")
+            - id = @claim.tenants[i].id || ''
+            - prefix = "[claim]tenants[]"
+            %h4= "Tenant #{i = i + 1}"
+            .row
+              = f.label :title
+              = f.text_field :title, class: 'smalltext', name: "#{prefix}[title]"
+            .row.rel
+              = f.label :full_name
+              = f.text_field :full_name, name: "#{prefix}[full_name]"
+            .row.rel
+              = f.label :mobile
+              = f.text_field :mobile, name: "#{prefix}[mobile]"
+            .row.rel
+              = f.label :email
+              = f.text_field :email, name: "#{prefix}[email]"
+            .row.full
+              If the tenants are living somewhere else, please give the address below.
+            .row.street
+              = f.label :street
+              = f.text_area :street, name: "#{prefix}[street]"
+            .row.rel.town
+              = f.label :town
+              = f.text_field :town, name: "#{prefix}[town]"
+            .row.rel.postcode
+              = f.label :postcode
+              = f.text_field :postcode, class: 'smalltext', name: "#{prefix}[postcode]"
+            = f.hidden_field :id, name: "#{prefix}[id]"
   %section
     .action-buttons.cf
       %button.button.primary.large.chevron.left{name: 'next_page', value: 'case_details'} Continue to next step

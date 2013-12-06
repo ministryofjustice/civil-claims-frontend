@@ -3,6 +3,10 @@ class Landlord < ActiveResource::Base
 
   belongs_to :claim
 
+  def address
+    "#{self.street}\n#{self.town}\n#{self.postcode}"
+  end
+
   schema do
     integer 'id'
 
