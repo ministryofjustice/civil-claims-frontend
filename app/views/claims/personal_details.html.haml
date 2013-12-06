@@ -33,44 +33,42 @@
           = f.label :postcode
           = f.text_field :postcode, class: 'smalltext'
 
-  %section.landlord-details
-    %h3.section-header Landlord (claimant)
+  %section.review
+    %h3.section-header
+      Council (claimant)
+      %a.right(href='#') Make changes
     .moj-panel
-      = claim_form.fields_for @claim.landlords do |f|
-        .row
-          = f.label :organisation_name, 'Council'
-          = f.text_field :organisation_name
-        .row.rel.street
-          = f.label :street
-          = f.text_area :street
-        .row.rel.town
-          = f.label :town
-          = f.text_field :town
-        .row.rel.postcode
-          = f.label :postcode
-          = f.text_field :postcode, class: 'smalltext'
-        .row
-          = f.label :title
-          = f.text_field :title, class: 'smalltext'
-        .row.rel
-          = f.label :full_name
-          = f.text_field :full_name
-        .row.rel
-          = f.label :phone
-          = f.text_field :phone
-        .row.rel
-          = f.label :mobile
-          = f.text_field :mobile
-        .row.rel
-          = f.label :email
-          = f.text_field :email
-        .row
-          = f.label :dx_number, 'DX number'
-          = f.text_field :dx_number
-        .row.rel
-          = f.label :dx_exchange, 'DX exchange'
-          = f.text_field :dx_exchange
-        = f.hidden_field :id
+      .row
+        .key
+          Council
+        .value
+          Bristol City Council
+      .row
+        .key
+          Address
+        .value
+          City Hall
+          %br/
+          College Green
+          %br/
+          Bristol
+          %br/
+          BS1 5TR
+      .row
+        .key
+          Full name
+        .value
+          Ms Julia Richards
+      .row
+        .key
+          Phone
+        .value
+          0115 915 5555
+      .row
+        .key
+          Email
+        .value
+          julia.richards@bristol.gov.uk
 
   %section.tenant-details
     %h3.section-header
