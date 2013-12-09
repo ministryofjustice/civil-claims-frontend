@@ -27,25 +27,18 @@ group :development do
   gem 'spork', '1.0.0rc3'
   gem 'spork-rails', :github => 'sporkrb/spork-rails'
   gem 'guard-spork'
+
+  gem 'better_errors'
+  gem 'meta_request'
+  gem 'jazz_hands'
 end
 
 group :development, :test do
   gem 'coveralls', require: false
   gem 'rspec-rails', '~> 2.0'
-  gem 'better_errors'
-  gem 'binding_of_caller'
-  gem 'meta_request'
-  gem 'awesome_print'
   gem 'factory_girl_rails'
-  gem 'faker'
-  gem 'hirb'
-  gem 'wirble'
-  gem 'wirb'
-  gem 'jazz_hands'
   gem 'capybara'
-  gem 'launchy'
   gem 'dotenv-rails'
-  gem 'foreman'
   gem 'webmock', "1.12"
   gem 'vcr'
   gem 'shoulda-matchers'
@@ -60,5 +53,3 @@ gem 'govuk_frontend_toolkit'
 # MOJ styles
 gem 'moj_frontend_toolkit_gem', git: 'https://github.com/ministryofjustice/moj_frontend_toolkit_gem.git', tag: 'v0.0.40'
 
-# Heroku dependencies
-gem 'rails_12factor'
