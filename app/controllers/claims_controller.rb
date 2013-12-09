@@ -41,7 +41,7 @@ class ClaimsController < ApplicationController
       title = 'Step 1 - Personal details'
       template = 'personal_details'
     when 'case_details'
-      title = 'Step 2 - Case Details'
+      title = 'Step 2 - Case details'
       template = 'case_details'
     else
       raise ActionController::RoutingError.new('Not Found')
