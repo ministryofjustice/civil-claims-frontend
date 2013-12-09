@@ -61,6 +61,8 @@
     .moj-panel
       - 4.times do |i|
         = claim_form.fields_for(@claim.tenants[i], include_id: false) do |f|
+          - if i >= 1
+            .row.divider
           .sub-panel.tenant-form.tenant(id="tenant-#{i}")
             - id = @claim.tenants[i].id || ''
             - prefix = "[claim]tenants[]"
