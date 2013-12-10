@@ -3,6 +3,9 @@ class ClaimsController < ApplicationController
   def new
     @page_title = 'Step 1 - Personal details'
     @claim = Claim.new
+    @claim.property = Property.new
+    @claim.landlords << current_user
+    4.times do; @claim.tenants << Tenant.new; end
     render 'personal_details', :layout => 'application-claims'
   end
 
@@ -15,7 +18,6 @@ class ClaimsController < ApplicationController
   end
 
   def update
-    pp params
     @claim = Claim.find(params[:id])
     @claim.update_attributes(claim_params)
     return redirect_to action: 'edit', id: @claim.id, page_id: params[:next_page] if params.has_key? :next_page

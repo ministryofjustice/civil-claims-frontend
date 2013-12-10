@@ -6,12 +6,12 @@ http_interactions:
     body:
       encoding: UTF-8
       string: '{"property":{"residential":true,"commercial":false,"resident_type":"squatter","land_registry_title_number":null,"street":"1
-        Astreet","town":"town","postcode":"a1 1aa"},"landlords":[{},{"title":"mr","full_name":"joe
+        Astreet","town":"town","postcode":"a1 1aa"},"landlords":[{"title":"mr","full_name":"joe
         bloggs","phone":"+44 (0)207 12345678","mobile":null,"email":"email.address@example.com","street":"1
         Astreet","town":"town","postcode":"a1 1aa","organisation_name":"Company Name
-        Ltd"}],"tenants":[{},{},{},{},{"title":"mr","full_name":"joe bloggs","phone":"+44
-        (0)207 12345678","mobile":null,"email":"email.address@example.com","unknown_address":false,"street":"1
-        Astreet","town":"town","postcode":"a1 1aa"}]}'
+        Ltd"}],"tenants":[{"title":"mr","full_name":"joe bloggs","phone":"+44 (0)207
+        12345678","mobile":null,"email":"email.address@example.com","unknown_address":false,"street":"1
+        Astreet","town":"town","postcode":"a1 1aa"}],"case_details":null}'
     headers:
       Content-Type:
       - application/json
@@ -23,38 +23,30 @@ http_interactions:
       - Ruby
   response:
     status:
-      code: 201
-      message: 'Created '
+      code: 500
+      message: 'Internal Server Error '
     headers:
       Content-Type:
       - application/json
       Content-Length:
-      - '1463'
+      - '54'
       X-Meta-Request-Version:
       - 0.2.8
-      Etag:
-      - '"4ce5c53a17fc26cfedb9bcf597d504e0"'
       Cache-Control:
-      - max-age=0, private, must-revalidate
+      - no-cache
       X-Request-Id:
-      - 9587ec3a-4de8-4624-a2b0-23383c525692
+      - 7cfc3e94-7339-4a65-86d7-8f7148de8209
       X-Runtime:
-      - '0.059746'
+      - '0.007812'
       Server:
       - WEBrick/1.3.1 (Ruby/2.0.0/2013-06-27)
       Date:
-      - Thu, 05 Dec 2013 15:56:54 GMT
+      - Tue, 10 Dec 2013 16:42:04 GMT
       Connection:
       - Keep-Alive
     body:
       encoding: UTF-8
-      string: '{"id":25,"landlords":[{"street":null,"town":null,"postcode":null,"title":null,"full_name":null,"phone":null,"mobile":null,"email":null,"dx_number":null,"dx_exchange":null,"id":73,"organisation_name":null},{"street":"1
-        Astreet","town":"town","postcode":"a1 1aa","title":"mr","full_name":"joe bloggs","phone":"+44
-        (0)207 12345678","mobile":null,"email":"email.address@example.com","dx_number":null,"dx_exchange":null,"id":74,"organisation_name":"Company
-        Name Ltd"}],"tenants":[{"title":null,"full_name":null,"phone":null,"mobile":null,"email":null,"street":null,"town":null,"postcode":null,"id":151,"unknown_address":null},{"title":null,"full_name":null,"phone":null,"mobile":null,"email":null,"street":null,"town":null,"postcode":null,"id":152,"unknown_address":null},{"title":null,"full_name":null,"phone":null,"mobile":null,"email":null,"street":null,"town":null,"postcode":null,"id":153,"unknown_address":null},{"title":null,"full_name":null,"phone":null,"mobile":null,"email":null,"street":null,"town":null,"postcode":null,"id":154,"unknown_address":null},{"title":"mr","full_name":"joe
-        bloggs","phone":"+44 (0)207 12345678","mobile":null,"email":"email.address@example.com","street":"1
-        Astreet","town":"town","postcode":"a1 1aa","id":155,"unknown_address":false}],"property":{"street":"1
-        Astreet","town":"town","postcode":"a1 1aa","id":25,"residential":true,"commercial":false,"resident_type":"squatter","land_registry_title_number":null},"case_details":null}'
+      string: '{"error":"can''t write unknown attribute `profile_id''"}'
     http_version: 
-  recorded_at: Thu, 05 Dec 2013 15:56:54 GMT
+  recorded_at: Tue, 10 Dec 2013 16:42:04 GMT
 recorded_with: VCR 2.5.0

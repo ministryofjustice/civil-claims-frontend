@@ -17,10 +17,8 @@ describe Claim do
   it { should respond_to :tenants }
 
   it 'can be saved and retrieved' do
-    expect( Claim.find(@claim.id).to_json ).to eql @claim.to_json
+    VCR.use_cassette('find_claim') { @result = Claim.find(@claim.id) }
+    expect( @result.to_json ).to eql @claim.to_json
   end
 
-  it 'has 4 tenants by default' do
-    expect( Claim.new.tenants.size ).to eql 4
-  end
 end
