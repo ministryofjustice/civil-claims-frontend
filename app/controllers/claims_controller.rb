@@ -4,7 +4,8 @@ class ClaimsController < ApplicationController
     @page_title = 'Step 1 - Personal details'
     @claim = Claim.new
     @claim.property = Property.new
-    @claim.landlords << current_user
+    @claim.landlords << Landlord.new(current_user.profile.attributes)
+    pp @claim
     4.times do; @claim.tenants << Tenant.new; end
     render 'personal_details', :layout => 'application-claims'
   end
