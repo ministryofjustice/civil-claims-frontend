@@ -24,8 +24,6 @@ group :development do
   gem 'guard'
   gem 'guard-rails'
   gem 'guard-rspec'
-  gem 'spork', '1.0.0rc3'
-  gem 'spork-rails', :github => 'sporkrb/spork-rails'
   gem 'guard-spork'
 
   gem 'better_errors'
@@ -34,6 +32,9 @@ group :development do
 end
 
 group :development, :test do
+  gem 'spork', '1.0.0rc3'
+  gem 'spork-rails', :github => 'sporkrb/spork-rails'
+  
   gem 'coveralls', require: false
   gem 'rspec-rails', '~> 2.0'
   gem 'factory_girl_rails'
