@@ -4,6 +4,6 @@ class ApplicationController < ActionController::Base
   protect_from_forgery with: :exception
 
   def current_user
-    @_current_user ||= User.find(:one, from: "#{User.site}/user")
+    @_current_user ||= User.profile
   end
 end

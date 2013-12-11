@@ -2,7 +2,7 @@ require 'spec_helper'
 
 describe Claim do
   before(:each) do
-    VCR.use_cassette('new_claim') do
+    VCR.use_cassette('create_new_claim') do
       @claim = FactoryGirl.build(:claim)
       @claim.landlords << FactoryGirl.build(:landlord)
       @claim.tenants << FactoryGirl.build(:tenant)

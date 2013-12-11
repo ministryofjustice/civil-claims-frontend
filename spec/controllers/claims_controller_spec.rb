@@ -100,7 +100,7 @@ describe ClaimsController do
   describe 'GET edit' do
     before :each do 
       VCR.use_cassette('create_new_claim2') { post :create, {:claim => valid_attributes} }
-      VCR.use_cassette('find_claim') { get :edit, {:id => assigns(:claim).id} }
+      VCR.use_cassette('find_claim2') { get :edit, {:id => assigns(:claim).id} }
       @claim = assigns(:claim)
     end
 
@@ -121,7 +121,7 @@ describe ClaimsController do
     end
 
     it 'deletes the specified resource' do
-      VCR.use_cassette('delete_claim') do
+      VCR.use_cassette('delete_claim_2') do
         delete :destroy, {:id => @claim.id} 
       end
       expect { VCR.use_cassette('find_missing_claim') { get :edit, {:id => @claim.id} } }.to raise_error ActiveResource::ResourceNotFound

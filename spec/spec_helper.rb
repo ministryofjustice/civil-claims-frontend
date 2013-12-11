@@ -79,7 +79,7 @@ Spork.prefork do
 
 
 
-#  WebMock.enable!
+  WebMock.enable!
 
 
 end
