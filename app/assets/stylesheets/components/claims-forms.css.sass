@@ -73,6 +73,12 @@ button, .button
     .js-enabled &
       padding-top: 40px
 
+  &.js-benefits-detail
+    padding-top: 0
+
+    .row:first-child
+      margin-top: 40px
+
   > h4
     margin: 0 0 40px 30px
     font-size: 24px
@@ -242,6 +248,8 @@ button, .button
         width: 670px
         float: none
         margin: 0
+        &.rel
+          margin-top: 15px
       textarea
         width: 660px
         height: 100px
@@ -295,11 +303,14 @@ button, .button
     .key
       .review &
         color: $grey-1
+      &.total
+        color: $black
+        font-weight: bold
 
     .value
       &.total
+        font-weight: bold
         span
-          font-weight: bold
           display: inline-block
           &.pound
             width: 30px
@@ -310,6 +321,8 @@ button, .button
     .highlight
       background-color: $white
       padding: 15px
+      max-height: 180px
+      overflow-y: auto
 
     input[type="text"]
       width: 300px
@@ -323,16 +336,14 @@ button, .button
 
     select
       width: 300px
-      &.small
-        width: 100px
-      &.date-date, &.date-year
+      &.date-date, &.date-year, &.day, &.year
         width: 80px
-      &.date-month, &.small
+      &.date-month, &.month, &.small
         width: 130px
 
     textarea
       width: 300px
-      height: 60px
+      height: 70px
 
     input.has-button
       margin: 0
@@ -572,7 +583,6 @@ summary
     text-align: center
     padding-top: 70px
     background: image-url('confirmation-tick.png') center top no-repeat
-    margin-bottom: 40px
   h2
     text-align: center
     margin: 40px 0
