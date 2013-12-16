@@ -1,0 +1,176 @@
+= render partial: 'shared/header_message', :locals => {:title => "Start a property repossession case"}
+
+.container
+  %nav.progress
+    %ol
+      %li.completed
+        = link_to 'Personal details', action: 'edit', id: @claim.id, page_id: 'personal_details'
+      %li.completed
+        = link_to 'Case details', action: 'edit', id: @claim.id, page_id: 'case_details'
+      %li.active
+        %span Confirm details
+      %li
+        %span Pay court fee
+      %li
+        %span Confirmation
+
+%header.content-header
+  %h2= @page_title
+  %p Check through the information you have given to ensure it’s all correct.
+
+
+
+/ Note to Tom: the below is just pasted in from the other repo.
+/ I'm assuming you'll move the form tag etc around to wherever it needs to be etc etc.
+
+%section.review
+  %h3.section-header
+    Property
+    %a.right(href='/claims/demo/social_step1#property') Make changes
+  .moj-panel
+    .row
+      .key
+        Address
+      .value
+        Flat 3
+        %br/
+        12 Park Road
+        %br/
+        Kingswood
+        %br/
+        Bristol
+        %br/
+        BS15 1QU
+
+%section.review
+  %h3.section-header
+    Council (claimant)
+    %a.right(href='/claims/demo/social_step1#council') Make changes
+  .moj-panel
+    .row
+      .key
+        Council
+      .value
+        Bristol City Council
+    .row
+      .key
+        Address
+      .value
+        City Hall
+        %br/
+        College Green
+        %br/
+        Bristol
+        %br/
+        BS1 5TR
+    .row
+      .key
+        Full name
+      .value
+        Ms Julia Richards
+    .row
+      .key
+        Phone
+      .value
+        0115 915 5555
+    .row
+      .key
+        Email
+      .value
+        julia.richards@bristol.gov.uk
+
+%section.review
+  %h3.section-header
+    Tenant (defendant)
+    %a.right(href='/claims/demo/social_step1#tenant') Make changes
+  .moj-panel
+    .row
+      .key
+        Name
+      .value
+        Mr Louis Robert Stevenson
+    .row
+      .key
+        Address
+      .value
+        Living in the property
+    .row
+      .key
+        Email
+      .value
+        lrstevenson@hotmail.co.uk
+
+%section.review
+  %h3.section-header
+    About the tenancy
+    %a.right(href='/claims/demo/social_step2#about-the-tenancy') Make changes
+  .moj-panel
+    .row
+      .key
+        Tenancy type
+      .value
+        Secure tenancy
+    .row
+      .key
+        Tenancy start date
+      .value
+        18 September 2012
+    .row
+      .key
+        Rent amount
+      .value
+        &pound;<span class="number">80</span> per week
+    .row
+      .key
+        Daily rent amount
+      .value
+        &pound;<span class="number">11.30</span> per day
+
+%section.review
+  %h3.section-header
+    About the case
+    %a.right(href='/claims/demo/social_step2#about-the-case') Make changes
+  .moj-panel
+    .row
+      .key
+        Notice served
+      .value
+        Notice seeking possession
+    .row
+      .key
+        Date notice served
+      .value
+        10 July 2013
+    .row
+      .key
+        Total unpaid rent
+      .value
+        &pound;<span class="number">1150</span>
+
+%section.review
+  %h3.section-header
+    Further information
+    %a.right(href='/claims/demo/social_step2#further-information') Make changes
+  .moj-panel
+    .row.full
+      .value.highlight
+        Lobortis augue sed tincidunt. Quisque posuere, est eget luctus interdum, nulla augue iaculis metus.
+
+%section
+  %h3.section-header
+    Statement of truth
+  .moj-panel
+    %form
+      .row.full
+        %input#confirm-details(type='checkbox' name='confirm-details')
+        %label(for='confirm-details')
+          I <strong>Julia Richards</strong>, <strong>Arrears Officer</strong> at <strong>Bristol City Council</strong>, believe the facts stated on this form are true.
+      .row.rel.full.warning
+        Proceedings for contempt of court may be brought against a person if he makes, or causes to be made, a false statement in a document verified by a statement of truth without an honest belief in its truth.
+
+
+
+%section
+  .action-buttons.cf
+    %a.button.primary.large.chevron.left(href='/claims/demo/social_step4') Continue to next step
+
