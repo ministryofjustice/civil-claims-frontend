@@ -1,9 +1,9 @@
 class Claim < ActiveResource::Base
   self.site = Rails.configuration.api_uri
 
-  #has_many :landlords
-  #has_one :property
-  #has_many :tenants
+  has_many :landlords
+  has_one :property
+  has_many :tenants
 
   schema do
     integer 'id'

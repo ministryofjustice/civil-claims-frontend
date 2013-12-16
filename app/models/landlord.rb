@@ -4,7 +4,7 @@ class Landlord < ActiveResource::Base
   belongs_to :claim
 
   def address
-    "#{self.street}\n#{self.town}\n#{self.postcode}"
+    "#{self.street}<br>#{self.town}<br>#{self.postcode}".gsub('\n', "<br>")
   end
 
   schema do
