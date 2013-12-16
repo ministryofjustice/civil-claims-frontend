@@ -5,7 +5,7 @@ class ClaimsController < ApplicationController
     @claim = Claim.new
     @claim.property = Property.new
     @claim.landlords << Landlord.new(current_user.profile.attributes)
-    4.times do; @claim.tenants << Tenant.new; end
+    4.times { @claim.tenants << Tenant.new }
     render 'personal_details', :layout => 'application-claims'
   end
 

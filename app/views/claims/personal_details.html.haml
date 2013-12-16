@@ -44,7 +44,7 @@
         .value= landlord.organisation_name
       .row
         .key Address
-        .value= landlord.address
+        .value= landlord.address.html_safe
       .row
         .key Full name
         .value= landlord.full_name
@@ -54,7 +54,6 @@
       .row
         .key Email
         .value= landlord.email
-
 
   %section.tenant-details
     %h3.section-header#tenant Tenant (defendant)

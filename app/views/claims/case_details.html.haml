@@ -27,11 +27,11 @@
           %legend Tenancy type
           .options
             .row
-              %input#tenancytype-secure(type='radio' name='tenancytype' checked='checked')
-              %label(for='tenancytype-secure') Secure tenancy
+              = radio_button_tag :tenancy_type, "secure tenancy"
+              = label_tag :tenancy_type_secure_tenancy, "Secure tenancy"
             .row
-              %input#tenancytype-introductory(type='radio' name='tenancytype')
-              %label(for='tenancytype-introductory') Introductory tenancy
+              = radio_button_tag :tenancy_type, "introductory tenancy"
+              = label_tag :tenancy_type_introductory_tenancy, "Introductory tenancy"
         %fieldset.date-picker
           %legend Tenancy start date
           .row
