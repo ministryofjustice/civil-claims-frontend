@@ -20,7 +20,7 @@
 
 = form_for @claim do |claim_form|
   %section.property-details
-    %h3.section-header Property
+    %h3.section-header#property Property
     .moj-panel.sub-panel
       = claim_form.fields_for @claim.property do |f|
         .row.rel.street
@@ -34,7 +34,7 @@
           = f.text_field :postcode, class: 'smalltext'
 
   %section.review
-    %h3.section-header
+    %h3.section-header#council
       Council (claimant)
       %a.right(href='#') Make changes
     .moj-panel
@@ -57,7 +57,7 @@
 
 
   %section.tenant-details
-    %h3.section-header Tenant (defendant)
+    %h3.section-header#tenant Tenant (defendant)
     .moj-panel
       - 4.times do |i|
         = claim_form.fields_for(@claim.tenants[i], include_id: false) do |f|
