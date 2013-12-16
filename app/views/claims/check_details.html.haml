@@ -6,7 +6,7 @@
       %li.completed
         = link_to 'Personal details', action: 'edit', id: @claim.id, page_id: 'personal_details'
       %li.completed
-        %span Case details
+        = link_to 'Case details', action: 'edit', id: @claim.id, page_id: 'case_details'
       %li.active
         %span Confirm details
       %li
