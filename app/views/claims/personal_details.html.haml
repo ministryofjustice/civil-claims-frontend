@@ -19,8 +19,8 @@
   %p Fill in contact details for the tenant or tenants and confirm your details.
 
 = form_for @claim do |claim_form|
-  %section.property-details
-    %h3.section-header#property Property
+  %section.property-details#property
+    %h3.section-header Property
     .moj-panel.sub-panel
       = claim_form.fields_for @claim.property do |f|
         .row.rel.street
@@ -33,8 +33,8 @@
           = f.label :postcode
           = f.text_field :postcode, class: 'smalltext'
 
-  %section.review
-    %h3.section-header#council
+  %section.review#council
+    %h3.section-header
       Council (claimant)
       %a.right(href='#') Make changes
     .moj-panel
@@ -55,8 +55,8 @@
         .key Email
         .value= landlord.email
 
-  %section.tenant-details
-    %h3.section-header#tenant Tenant (defendant)
+  %section.tenant-details#tenant
+    %h3.section-header Tenant (defendant)
     .moj-panel
       - 4.times do |i|
         = claim_form.fields_for(@claim.tenants[i], include_id: false) do |f|

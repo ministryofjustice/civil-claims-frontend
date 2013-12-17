@@ -2,20 +2,19 @@ class ClaimsController < ApplicationController
 
   def new
     @page_title = 'Step 1 - Personal details'
-    @claim = Claim.new
-    @claim.property = Property.new
-    @claim.landlords << Landlord.new(current_user.profile.attributes)
-    4.times { @claim.tenants << Tenant.new }
+    build_claim
     render 'personal_details', :layout => 'application-claims'
   end
 
   def edit
-    @claim = Claim.find(params[:id])
-    (4 - @claim.tenants.size).times { |i| @claim.tenants << Tenant.new }
-    @claim.case_details ||= CaseDetails.new
-    return redirect_to action: 'edit', id: @claim.id, page_id: 'personal_details' unless params.has_key? :page_id
-    template, @page_title = page_details params[:page_id]
-    render template, :layout => 'application-claims'
+    if params.has_key? :page_id
+      build_claim(params[:id])
+      template, @page_title = page_details params[:page_id]
+      render template, :layout => 'application-claims'
+    else
+      claim = Claim.find(params[:id])
+      redirect_to action: 'edit', id: claim.id, page_id: 'personal_details'
+    end
   end
 
   def update
@@ -37,6 +36,19 @@ class ClaimsController < ApplicationController
   end
 
   private
+
+  def build_claim(id='')
+    if(id.blank?)
+      @claim = Claim.new
+    else
+      @claim = Claim.find(id)
+    end
+
+    @claim.property ||= Property.new
+    (4 - @claim.tenants.size).times { |i| @claim.tenants << Tenant.new }
+    @claim.case_details ||= CaseDetails.new
+    @claim.landlords << Landlord.new(current_user.profile.attributes)
+  end
 
   def page_details(page_id)
     case page_id
