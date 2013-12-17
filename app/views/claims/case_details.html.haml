@@ -32,10 +32,10 @@
             .row
               = radio_button_tag :tenancy_type, "introductory tenancy"
               = label_tag :tenancy_type_introductory_tenancy, "Introductory tenancy"
-        %fieldset.date-picker
+        %fieldset#tenancy-start-date.date-picker
           %legend Tenancy start date
           .row
-            = f.date_select :notice_served_date, prompt: { day: 'day', month: 'month', year: 'year' }, order: [:day, :month, :year], with_css_classes: true, start_year: Time.now.year, end_year: Time.now.year - 87
+            = f.date_select :tenancy_start_date, prompt: { day: 'day', month: 'month', year: 'year' }, order: [:day, :month, :year], with_css_classes: true, start_year: Time.now.year, end_year: Time.now.year - 87
         .row
           %label(for='rent-amount') Rent amount
           %input#rent-amount.pound(type='text' name='rent-amount')
@@ -58,7 +58,7 @@
             .row
               %input#noticeserved-proceedings(type='radio' name='noticeserved')
               %label(for='noticeserved-proceedings') Notice of possession proceedings
-        %fieldset.date-picker
+        %fieldset#notice-served-date.date-picker
           %legend Date notice served
           .row
             = f.date_select :notice_served_date, prompt: { day: 'day', month: 'month', year: 'year' }, order: [:day, :month, :year], with_css_classes: true, start_year: Time.now.year, end_year: Time.now.year - 22
