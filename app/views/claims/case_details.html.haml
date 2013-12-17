@@ -20,8 +20,8 @@
 
 = form_for @claim do |claim_form|
   = claim_form.fields_for @claim.case_details do |f|
-    %section.about-tenancy
-      %h3.section-header#about-the-tenancy About the tenancy
+    %section.about-tenancy#about-the-tenancy
+      %h3.section-header About the tenancy
       .moj-panel.sub-panel
         %fieldset.striped-choice
           %legend Tenancy type
@@ -46,8 +46,8 @@
           %label(for='daily-rent-amount') Daily rent amount
           %input#daily-rent-amount.pound(type='text' name='daily-rent-amount')
 
-    %section.about-case
-      %h3.section-header#about-the-case About the case
+    %section.about-case#about-the-case
+      %h3.section-header About the case
       .moj-panel
         %fieldset.striped-choice
           %legend Notice served
@@ -66,8 +66,8 @@
           %label(for='total-unpaid-rent') Total unpaid rent
           %input#total-unpaid-rent.pound(type='text' name='total-unpaid-rent')
 
-    %section.further-information
-      %h3.section-header#further-information Further information
+    %section.further-information#further-information
+      %h3.section-header Further information
       .moj-panel.sub-panel
         .row.full
           %label(for='further-info') Please give any other information that may be useful for the court.
