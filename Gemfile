@@ -25,10 +25,11 @@ group :development do
   gem 'guard-rails'
   gem 'guard-rspec'
   gem 'guard-spork'
-
-  gem 'better_errors'
-  gem 'meta_request'
-  gem 'jazz_hands'
+  gem 'awesome_print'
+ # gem 'better_errors'
+ # gem 'meta_request'
+ # gem 'jazz_hands'
+  gem 'byebug'
 end
 
 group :development, :test do
