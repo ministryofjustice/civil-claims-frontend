@@ -19,7 +19,7 @@
   %p Give details of the tenancy and why you’re taking court action.
 
 = form_for @claim do |claim_form|
-  = claim_form.fields_for @claim.case_details do |f|
+  = claim_form.fields_for @claim.case_detail do |f|
     %section.about-tenancy#about-the-tenancy
       %h3.section-header About the tenancy
       .moj-panel.sub-panel
@@ -27,25 +27,26 @@
           %legend Tenancy type
           .options
             .row
-              = radio_button_tag :tenancy_type, "secure tenancy"
-              = label_tag :tenancy_type_secure_tenancy, "Secure tenancy"
+              = f.radio_button :tenancy_type, "secure tenancy"
+              = f.label :tenancy_type_secure_tenancy, "Secure tenancy"
             .row
-              = radio_button_tag :tenancy_type, "introductory tenancy"
-              = label_tag :tenancy_type_introductory_tenancy, "Introductory tenancy"
-        %fieldset#tenancy-start-date.date-picker
+              = f.radio_button :tenancy_type, "introductory tenancy"
+              = f.label :tenancy_type_introductory_tenancy, "Introductory tenancy"
+        %fieldset.date-picker
           %legend Tenancy start date
           .row
-            = f.date_select :tenancy_start_date, prompt: { day: 'day', month: 'month', year: 'year' }, order: [:day, :month, :year], with_css_classes: true, start_year: Time.now.year, end_year: Time.now.year - 87
+            - options = { prompt: { day: 'day', month: 'month', year: 'year' }, order: [:day, :month, :year], with_css_classes: true, start_year: Time.now.year, end_year: Time.now.year - 87 }
+            - options[:selected] = Date.parse(@claim.case_detail.tenancy_start_date) if @claim.case_detail.tenancy_start_date
+            = f.date_select :tenancy_start_date, options
         .row
-          %label(for='rent-amount') Rent amount
-          %input#rent-amount.pound(type='text' name='rent-amount')
-          %label.hide(for='rent-amount-frequency') Rent amount frequency
-          %select#rent-amount-frequency.small
-            %option(value='weekly') per week
-            %option(value='monthly') per month
+          = f.label :rental_amount, "Rent amount"
+          = f.text_field :rental_amount, {class: 'pound'}
+
+          - options = options_for_select([['per week', 'weekly'], ['per month', 'monthly']], selected: @claim.case_detail.payment_frequency)
+          = f.select :payment_frequency, options, {}, {id: 'rent-amount-frequency', class: 'small'}
         .row
-          %label(for='daily-rent-amount') Daily rent amount
-          %input#daily-rent-amount.pound(type='text' name='daily-rent-amount')
+          = f.label :daily_rent_amount, "Daily rent amount"
+          = f.text_field :daily_rent_amount, {id: 'daily-rent-amount', class: 'pound'}
 
     %section.about-case#about-the-case
       %h3.section-header About the case
@@ -54,28 +55,30 @@
           %legend Notice served
           .options
             .row
-              %input#noticeserved-possession(type='radio' name='noticeserved')
-              %label(for='noticeserved-possession') Notice seeking possession
+              = f.radio_button :type_of_notice_served, "notice seeking possession"
+              = f.label :type_of_notice_served_notice_seeking_possession, "Notice seeking possession"
             .row
-              %input#noticeserved-proceedings(type='radio' name='noticeserved')
-              %label(for='noticeserved-proceedings') Notice of possession proceedings
-        %fieldset#notice-served-date.date-picker
+              = f.radio_button :type_of_notice_served, "notice of possession proceedings"
+              = f.label :type_of_notice_served_notice_of_possession_proceedings, "Notice of possession proceedings"
+        %fieldset.date-picker
           %legend Date notice served
           .row
-            = f.date_select :notice_served_date, prompt: { day: 'day', month: 'month', year: 'year' }, order: [:day, :month, :year], with_css_classes: true, start_year: Time.now.year, end_year: Time.now.year - 22
+            - options = { prompt: { day: 'day', month: 'month', year: 'year' }, order: [:day, :month, :year], with_css_classes: true, start_year: Time.now.year, end_year: Time.now.year - 10 }
+            - options[:selected] = Date.parse(@claim.case_detail.notice_served_date) if @claim.case_detail.notice_served_date
+            = f.date_select :notice_served_date, options
         .row
-          %label(for='total-unpaid-rent') Total unpaid rent
-          %input#total-unpaid-rent.pound(type='text' name='total-unpaid-rent')
+          = f.label :total_unpaid_rent, "Total unpaid rent"
+          = f.text_field :total_unpaid_rent
 
     %section.further-information#further-information
       %h3.section-header Further information
       .moj-panel.sub-panel
         .row.full
-          %label(for='further-info') Please give any other information that may be useful for the court.
-          %textarea#further-info(name='further-info')
+          = f.label :other_information, "Please give any other information that may be useful for the court."
+          = f.text_area :other_information, id: 'further-info'
         .row.rel.full
-          %input#human-rights(type='checkbox' name='human-rights')
-          %label(for='human-rights') The case includes issues under the Human Rights Act 1998
+          = f.check_box :includes_human_rights_issues, id: 'human-rights'
+          = f.label :includes_human_rights_issues, 'The case includes issues under the Human Rights Act 1998'
 
     %section
       .action-buttons.cf

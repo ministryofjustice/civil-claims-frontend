@@ -4,6 +4,7 @@ class Claim < ActiveResource::Base
   has_many :landlords
   has_one :property
   has_many :tenants
+  has_one :case_detail
 
   schema do
     integer 'id'
@@ -16,7 +17,7 @@ class Claim < ActiveResource::Base
       :property => {},
       :landlords => [],
       :tenants => [],
-      :case_details => {}
+      :case_detail => {}
     }.merge(args[0])
     super(*args)
   end
