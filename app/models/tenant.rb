@@ -3,6 +3,14 @@ class Tenant  < ActiveResource::Base
 
   belongs_to :claim
 
+  def address
+    "#{self.street}<br>#{self.town}<br>#{self.postcode}".gsub('\n', "<br>")
+  end
+
+  def display_name
+    "#{title} #{full_name}".strip
+  end
+
   schema do
     integer 'id'
 

@@ -18,143 +18,148 @@
   %h2= @page_title
   %p Check through the information you have given to ensure it’s all correct.
 
-
-
-/ Note to Tom: the below is just pasted in from the other repo.
-/ I'm assuming you'll move the form tag etc around to wherever it needs to be etc etc.
-
 %section.review
   %h3.section-header
     Property
-    %a.right(href='/claims/demo/social_step1#property') Make changes
+    = link_to 'Make changes', {action: 'edit', id: @claim.id, page_id: 'personal_details', anchor: "property"}, class: "right"
   .moj-panel
     .row
       .key
         Address
       .value
-        Flat 3
-        %br/
-        12 Park Road
-        %br/
-        Kingswood
-        %br/
-        Bristol
-        %br/
-        BS15 1QU
+        = @claim.property.address.html_safe
 
 %section.review
   %h3.section-header
     Council (claimant)
-    %a.right(href='/claims/demo/social_step1#council') Make changes
+    = link_to 'Make changes', {action: 'edit', id: @claim.id, page_id: 'personal_details', anchor: "council"}, class: "right"
+    - landlord = @claim.landlords.first
   .moj-panel
     .row
       .key
         Council
       .value
-        Bristol City Council
+        = landlord.organisation_name
     .row
       .key
         Address
       .value
-        City Hall
-        %br/
-        College Green
-        %br/
-        Bristol
-        %br/
-        BS1 5TR
+        = landlord.address.html_safe
     .row
       .key
         Full name
       .value
-        Ms Julia Richards
+        = landlord.display_name
     .row
       .key
         Phone
       .value
-        0115 915 5555
+        = landlord.phone
     .row
       .key
         Email
       .value
-        julia.richards@bristol.gov.uk
+        = landlord.email
 
 %section.review
   %h3.section-header
     Tenant (defendant)
-    %a.right(href='/claims/demo/social_step1#tenant') Make changes
-  .moj-panel
-    .row
-      .key
-        Name
-      .value
-        Mr Louis Robert Stevenson
-    .row
-      .key
-        Address
-      .value
-        Living in the property
-    .row
-      .key
-        Email
-      .value
-        lrstevenson@hotmail.co.uk
+    = link_to 'Make changes', {action: 'edit', id: @claim.id, page_id: 'personal_details', anchor: "tenant"}, class: "right"
+  - @claim.tenants.each.with_index do |tenant, i|
+    - unless tenant.blank?
+      .moj-panel
+        .row
+          .key
+            Name
+          .value
+            = tenant.display_name
+        .row
+          .key
+            Address
+          .value
+            - if tenant.address.blank?
+              Living in the property
+            - else
+              = tenant.address.html_safe
+        - unless tenant.phone.blank?
+          .row
+            .key
+              Phone
+            .value
+              = tenant.phone
+        - unless tenant.email.blank?
+          .row
+            .key
+              Email
+            .value
+              = tenant.email
 
 %section.review
   %h3.section-header
     About the tenancy
-    %a.right(href='/claims/demo/social_step2#about-the-tenancy') Make changes
+    = link_to 'Make changes', {action: 'edit', id: @claim.id, page_id: 'case_details', anchor: "about-the-tenancy"}, class: "right"
   .moj-panel
     .row
       .key
         Tenancy type
       .value
-        Secure tenancy
+        = @claim.case_detail.tenancy_type.humanize
     .row
       .key
         Tenancy start date
       .value
-        18 September 2012
+        = Date.parse(@claim.case_detail.tenancy_start_date).strftime("%e %B %Y")
     .row
       .key
         Rent amount
       .value
-        &pound;<span class="number">80</span> per week
+        &pound;
+        %span.number
+          = @claim.case_detail.rental_amount
+        = case @claim.case_detail.payment_frequency
+          - when "weekly" then "per week"
+          - when "monthly" then "per month"
+
     .row
       .key
         Daily rent amount
       .value
-        &pound;<span class="number">11.30</span> per day
+        &pound;
+        %span.number
+          = @claim.case_detail.daily_rent_amount
+        per day
 
 %section.review
   %h3.section-header
     About the case
-    %a.right(href='/claims/demo/social_step2#about-the-case') Make changes
+    = link_to 'Make changes', {action: 'edit', id: @claim.id, page_id: 'case_details', anchor: "about-the-case"}, class: "right"
   .moj-panel
     .row
       .key
         Notice served
       .value
-        Notice seeking possession
+        = @claim.case_detail.type_of_notice_served.humanize
     .row
       .key
         Date notice served
       .value
-        10 July 2013
+        = Date.parse(@claim.case_detail.notice_served_date).strftime("%e %B %Y")
     .row
       .key
         Total unpaid rent
       .value
-        &pound;<span class="number">1150</span>
+        &pound;
+        %span.number
+          = @claim.case_detail.total_unpaid_rent
 
 %section.review
   %h3.section-header
     Further information
-    %a.right(href='/claims/demo/social_step2#further-information') Make changes
+    = link_to 'Make changes', {action: 'edit', id: @claim.id, page_id: 'case_details', anchor: "further-information"}, class: "right"
   .moj-panel
     .row.full
       .value.highlight
-        Lobortis augue sed tincidunt. Quisque posuere, est eget luctus interdum, nulla augue iaculis metus.
+        = @claim.case_detail.other_information
 
 %section
   %h3.section-header
@@ -164,7 +169,13 @@
       .row.full
         %input#confirm-details(type='checkbox' name='confirm-details')
         %label(for='confirm-details')
-          I <strong>Julia Richards</strong>, <strong>Arrears Officer</strong> at <strong>Bristol City Council</strong>, believe the facts stated on this form are true.
+          I 
+          %strong= @claim.landlords.first.full_name
+          ,
+          %strong= "<JOB TITLE NOT A DEFINED FIELD>"
+          at 
+          %strong= @claim.landlords.first.organisation_name
+          , believe the facts stated on this form are true.
       .row.rel.full.warning
         Proceedings for contempt of court may be brought against a person if he makes, or causes to be made, a false statement in a document verified by a statement of truth without an honest belief in its truth.
 

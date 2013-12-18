@@ -7,6 +7,10 @@ class Landlord < ActiveResource::Base
     "#{self.street}<br>#{self.town}<br>#{self.postcode}".gsub('\n', "<br>")
   end
 
+  def display_name
+    "#{title} #{full_name}".strip
+  end
+
   schema do
     integer 'id'
 
