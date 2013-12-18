@@ -39,6 +39,7 @@
         .row
           %label(for='rent-amount') Rent amount
           %input#rent-amount.pound(type='text' name='rent-amount')
+          %label.hide(for='rent-amount-frequency') Rent amount frequency
           %select#rent-amount-frequency.small
             %option(value='weekly') per week
             %option(value='monthly') per month
