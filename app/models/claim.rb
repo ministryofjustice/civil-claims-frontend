@@ -8,6 +8,7 @@ class Claim < ActiveResource::Base
 
   schema do
     integer 'id'
+    boolean 'statement_of_truth'
   end
 
   def initialize(*args)

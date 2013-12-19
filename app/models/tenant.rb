@@ -11,6 +11,10 @@ class Tenant  < ActiveResource::Base
     "#{title} #{full_name}".strip
   end
 
+  def blank?
+    self.attributes.inject(true) { |state, attr| state = false unless attr[1].blank? }
+  end
+
   schema do
     integer 'id'
 

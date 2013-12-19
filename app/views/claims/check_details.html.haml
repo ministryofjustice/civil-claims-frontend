@@ -100,33 +100,25 @@
     = link_to 'Make changes', {action: 'edit', id: @claim.id, page_id: 'case_details', anchor: "about-the-tenancy"}, class: "right"
   .moj-panel
     .row
-      .key
-        Tenancy type
-      .value
-        = @claim.case_detail.tenancy_type.humanize
+      .key Tenancy type
+      .value= @claim.case_detail.tenancy_type.humanize
     .row
-      .key
-        Tenancy start date
-      .value
-        = Date.parse(@claim.case_detail.tenancy_start_date).strftime("%e %B %Y")
+      .key Tenancy start date
+      .value= Date.parse(@claim.case_detail.tenancy_start_date).strftime("%e %B %Y")
     .row
-      .key
-        Rent amount
+      .key Rent amount
       .value
-        &pound;
-        %span.number
-          = @claim.case_detail.rental_amount
+        %span> &pound;
+        %span.number= number_to_currency(@claim.case_detail.rental_amount, unit: '').gsub(/\.00$/, '')
         = case @claim.case_detail.payment_frequency
           - when "weekly" then "per week"
           - when "monthly" then "per month"
-
     .row
       .key
         Daily rent amount
       .value
-        &pound;
-        %span.number
-          = @claim.case_detail.daily_rent_amount
+        %span> &pound;
+        %span.number= number_to_currency(@claim.case_detail.daily_rent_amount, unit: '').gsub(/\.00$/, '')
         per day
 
 %section.review
@@ -148,9 +140,8 @@
       .key
         Total unpaid rent
       .value
-        &pound;
-        %span.number
-          = @claim.case_detail.total_unpaid_rent
+        %span> &pound;
+        %span.number= number_to_currency(@claim.case_detail.total_unpaid_rent, unit: '').gsub(/\.00$/, '')
 
 %section.review
   %h3.section-header
@@ -161,27 +152,21 @@
       .value.highlight
         = @claim.case_detail.other_information
 
-%section
-  %h3.section-header
-    Statement of truth
-  .moj-panel
-    %form
-      .row.full
-        %input#confirm-details(type='checkbox' name='confirm-details')
-        %label(for='confirm-details')
-          I 
-          %strong= @claim.landlords.first.full_name
-          ,
-          %strong= "<JOB TITLE NOT A DEFINED FIELD>"
-          at 
-          %strong= @claim.landlords.first.organisation_name
-          , believe the facts stated on this form are true.
-      .row.rel.full.warning
-        Proceedings for contempt of court may be brought against a person if he makes, or causes to be made, a false statement in a document verified by a statement of truth without an honest belief in its truth.
+= form_for @claim do |claim_form|
+  %section
+    %h3.section-header
+      Statement of truth
+    .moj-panel
+      %form
+        .row.full
+          = claim_form.check_box :statement_of_truth, id: "confirm-details"
+          - label = "I <strong>#{@claim.landlords.first.full_name}</strong>, <strong>-=TODO: JOB TITLE=-</strong> at <strong>#{@claim.landlords.first.organisation_name}</strong>, believe the facts stated on this form are true."
+          = claim_form.label :statement_of_truth, label.html_safe
+            
+        .row.rel.full.warning
+          Proceedings for contempt of court may be brought against a person if he makes, or causes to be made, a false statement in a document verified by a statement of truth without an honest belief in its truth.
 
-
-
-%section
-  .action-buttons.cf
-    %a.button.primary.large.chevron.left(href='/claims/demo/social_step4') Continue to next step
+    %section
+      .action-buttons.cf
+        %button.button.primary.large.chevron.left{name: 'next_page', value: 'check_details'} Continue to next step
 
