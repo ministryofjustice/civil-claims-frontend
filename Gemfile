@@ -36,11 +36,14 @@ group :development, :test do
   gem 'spork', '1.0.0rc3'
   gem 'spork-rails', :github => 'sporkrb/spork-rails'
   
+  gem 'factory_girl_rails'
+  gem 'dotenv-rails'
+end
+
+group :test do
   gem 'coveralls', require: false
   gem 'rspec-rails', '~> 2.0'
-  gem 'factory_girl_rails'
   gem 'capybara'
-  gem 'dotenv-rails'
   gem 'webmock', "1.12"
   gem 'vcr'
   gem 'shoulda-matchers'
