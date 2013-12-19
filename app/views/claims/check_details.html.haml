@@ -143,14 +143,15 @@
         %span> &pound;
         %span.number= number_to_currency(@claim.case_detail.total_unpaid_rent, unit: '').gsub(/\.00$/, '')
 
-%section.review
-  %h3.section-header
-    Further information
-    = link_to 'Make changes', {action: 'edit', id: @claim.id, page_id: 'case_details', anchor: "further-information"}, class: "right"
-  .moj-panel
-    .row.full
-      .value.highlight
-        = @claim.case_detail.other_information
+- unless @claim.case_detail.other_information.blank?
+  %section.review
+    %h3.section-header
+      Further information
+      = link_to 'Make changes', {action: 'edit', id: @claim.id, page_id: 'case_details', anchor: "further-information"}, class: "right"
+    .moj-panel
+      .row.full
+        .value.highlight
+          = @claim.case_detail.other_information
 
 = form_for @claim do |claim_form|
   %section
