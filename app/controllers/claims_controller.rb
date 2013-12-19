@@ -18,7 +18,6 @@ class ClaimsController < ApplicationController
   end
 
   def update
-    ap params
     @claim = Claim.find(params[:id])
     @claim.update_attributes(claim_params)
     return redirect_to action: 'edit', id: @claim.id, page_id: params[:next_page] if params.has_key? :next_page
