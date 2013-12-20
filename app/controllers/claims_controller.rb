@@ -48,7 +48,10 @@ class ClaimsController < ApplicationController
     (4 - @claim.tenants.size).times { |i| @claim.tenants << Tenant.new }
 
     @claim.case_detail ||= CaseDetail.new
+    @claim.case_detail.tenancy_type ||= 'secure tenancy'
+    @claim.case_detail.payment_frequency ||= 'weekly'
 
+    # wtf is this?
     @claim.landlords << Landlord.new(current_user.profile.attributes)
   end
 

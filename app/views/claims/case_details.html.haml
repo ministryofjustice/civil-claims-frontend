@@ -34,7 +34,7 @@
               = f.label :tenancy_type_introductory_tenancy, "Introductory tenancy"
         %fieldset.date-picker
           %legend Tenancy start date
-          .row
+          #tenancy-start-date.row
             - options = { prompt: { day: 'day', month: 'month', year: 'year' }, order: [:day, :month, :year], with_css_classes: true, start_year: Time.now.year, end_year: Time.now.year - 87 }
             - options[:selected] = Date.parse(@claim.case_detail.tenancy_start_date) if @claim.case_detail.tenancy_start_date
             = f.date_select :tenancy_start_date, options
@@ -46,7 +46,7 @@
           = f.select :payment_frequency, options, {}, {id: 'rent-amount-frequency', class: 'small'}
         .row
           = f.label :daily_rent_amount, "Daily rent amount"
-          = f.text_field :daily_rent_amount, {id: 'daily-rent-amount', class: 'pound'}
+          = f.text_field :daily_rent_amount, {class: 'pound'}
 
     %section.about-case#about-the-case
       %h3.section-header About the case
@@ -62,7 +62,7 @@
               = f.label :type_of_notice_served_notice_of_possession_proceedings, "Notice of possession proceedings"
         %fieldset.date-picker
           %legend Date notice served
-          .row
+          #notice-served-date.row
             - options = { prompt: { day: 'day', month: 'month', year: 'year' }, order: [:day, :month, :year], with_css_classes: true, start_year: Time.now.year, end_year: Time.now.year - 10 }
             - options[:selected] = Date.parse(@claim.case_detail.notice_served_date) if @claim.case_detail.notice_served_date
             = f.date_select :notice_served_date, options
