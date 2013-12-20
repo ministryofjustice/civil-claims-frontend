@@ -7,18 +7,14 @@ ruby '2.0.0'
 gem 'rails', '4.0.0'
 gem "activeresource", '4.0.0'
 
-# Use sqlite3 as the database for Active Record
-# gem 'pg'
-
-# Use SCSS for stylesheets
-gem 'sass-rails', '~> 4.0.0'
-
-# Use Uglifier as compressor for JavaScript assets
-gem 'uglifier', '>= 1.3.0'
-
 # Use jquery as the JavaScript library
 gem 'jquery-rails'
 
+# set environment variables via the filesystem
+gem 'dotenv-rails'
+
+# production webserver
+gem 'unicorn'
 
 group :development do
   gem 'guard'
@@ -35,9 +31,7 @@ end
 group :development, :test do
   gem 'spork', '1.0.0rc3'
   gem 'spork-rails', :github => 'sporkrb/spork-rails'
-  
   gem 'factory_girl_rails'
-  gem 'dotenv-rails'
 end
 
 group :test do
@@ -49,6 +43,12 @@ group :test do
   gem 'shoulda-matchers'
 end
 
+
+# Use SCSS for stylesheets
+gem 'sass-rails', '~> 4.0.0'
+
+# Use Uglifier as compressor for JavaScript assets
+gem 'uglifier', '>= 1.3.0'
 # Enable HAML (required for MOJ toolkit)
 gem 'haml-rails'
 
