@@ -23,7 +23,7 @@
     %section.about-tenancy#about-the-tenancy
       %h3.section-header About the tenancy
       .moj-panel.sub-panel
-        %fieldset.striped-choice
+        %fieldset.striped-choice.tenancy_type
           %legend Tenancy type
           .options
             .row
@@ -38,13 +38,13 @@
             - options = { prompt: { day: 'day', month: 'month', year: 'year' }, order: [:day, :month, :year], with_css_classes: true, start_year: Time.now.year, end_year: Time.now.year - 87 }
             - options[:selected] = Date.parse(@claim.case_detail.tenancy_start_date) if @claim.case_detail.tenancy_start_date
             = f.date_select :tenancy_start_date, options
-        .row
+        .row.rent_amount
           = f.label :rental_amount, "Rent amount"
           = f.text_field :rental_amount, {class: 'pound'}
 
           - options = options_for_select([['per week', 'weekly'], ['per month', 'monthly']], selected: @claim.case_detail.payment_frequency)
-          = f.select :payment_frequency, options, {}, {id: 'rent-amount-frequency', class: 'small'}
-        .row
+          = f.select :payment_frequency, options, {}, {id: 'rent-amount-frequency', class: 'small rent_payment_frequency'}
+        .row.daily_rent_amount
           = f.label :daily_rent_amount, "Daily rent amount"
           = f.text_field :daily_rent_amount, {class: 'pound'}
 
