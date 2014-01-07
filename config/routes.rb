@@ -3,6 +3,7 @@ CivilClaimsFrontend::Application.routes.draw do
   get '/step2' => 'templates#step2'
 
   resources :claims, only: [:create, :new, :destroy, :update]
+  get '/claims/landing'       => 'claims#landing'
   get '/claims/:id'           => 'claims#edit'
   get '/claims/:id/:page_id'  => 'claims#edit'
 
