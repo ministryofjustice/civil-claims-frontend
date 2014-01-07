@@ -39,19 +39,19 @@
       %a.right(href='#') Make changes
     .moj-panel
       - landlord = @claim.landlords.first
-      .row
+      .row.organisation_name
         .key Council
         .value= landlord.organisation_name
-      .row
+      .row.address
         .key Address
         .value= landlord.address.html_safe
-      .row
+      .row.full_name
         .key Full name
         .value= landlord.full_name
-      .row
+      .row.phone
         .key Phone
         .value= landlord.phone
-      .row
+      .row.email
         .key Email
         .value= landlord.email
 
@@ -66,30 +66,29 @@
             - id = @claim.tenants[i].id || ''
             - prefix = "[claim]tenants[]"
             %h4= "Tenant #{i = i + 1}"
-            .row
-              = f.label :title
-              = f.text_field :title, class: 'smalltext', name: "#{prefix}[title]"
-            .row.rel
-              = f.label :full_name
-              = f.text_field :full_name, name: "#{prefix}[full_name]"
-            .row.rel
-              = f.label :mobile
-              = f.text_field :mobile, name: "#{prefix}[mobile]"
-            .row.rel
-              = f.label :email
-              = f.text_field :email, name: "#{prefix}[email]"
-            .row.full
-              If the tenants are living somewhere else, please give the address below.
+            .row.title
+              = f.label :title, for: "tenant-#{i}-title"
+              = f.text_field :title, class: 'smalltext', name: "#{prefix}[title]", id: "tenant-#{i}-title"
+            .row.rel.full_name
+              = f.label :full_name, for: "tenant-#{i}-full_name"
+              = f.text_field :full_name, name: "#{prefix}[full_name]", id: "tenant-#{i}-full_name"
+            .row.rel.mobile
+              = f.label :mobile, for: "tenant-#{i}-mobile"
+              = f.text_field :mobile, name: "#{prefix}[mobile]", id: "tenant-#{i}-mobile"
+            .row.rel.email
+              = f.label :email, for: "tenant-#{i}-email"
+              = f.text_field :email, name: "#{prefix}[email]", id: "tenant-#{i}-email"
+            .row.full If the tenants are living somewhere else, please give the address below.
             .row.street
-              = f.label :street
-              = f.text_area :street, name: "#{prefix}[street]"
+              = f.label :street, for: "tenant-#{i}-street"
+              = f.text_area :street, name: "#{prefix}[street]", id: "tenant-#{i}-street"
             .row.rel.town
-              = f.label :town
-              = f.text_field :town, name: "#{prefix}[town]"
+              = f.label :town, for: "tenant-#{i}-town"
+              = f.text_field :town, name: "#{prefix}[town]", id: "tenant-#{i}-town"
             .row.rel.postcode
-              = f.label :postcode
-              = f.text_field :postcode, class: 'smalltext', name: "#{prefix}[postcode]"
-            = f.hidden_field :id, name: "#{prefix}[id]"
+              = f.label :postcode, for: "tenant-#{i}-postcode"
+              = f.text_field :postcode, class: 'smalltext', name: "#{prefix}[postcode]", id: "tenant-#{i}-postcode"
+            = f.hidden_field :id, name: "#{prefix}[id]", id: ''
   %section
     .action-buttons.cf
       %button.button.primary.large.chevron.left{name: 'next_page', value: 'case_details'} Continue to next step
