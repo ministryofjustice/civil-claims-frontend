@@ -18,86 +18,82 @@
   %h2= @page_title
   %p Check through the information you have given to ensure it’s all correct.
 
-%section.review
+%section.review#property
   %h3.section-header
     Property
-    = link_to 'Make changes', {action: 'edit', id: @claim.id, page_id: 'personal_details', anchor: "property"}, class: "right"
+    = link_to 'Make changes', {action: 'edit', id: @claim.id, page_id: 'personal_details', anchor: "property"}, class: "right edit"
   .moj-panel
-    .row
+    .row.address
       .key
         Address
       .value
         = @claim.property.address.html_safe
 
-%section.review
+%section.review#claimant
   %h3.section-header
     Council (claimant)
-    = link_to 'Make changes', {action: 'edit', id: @claim.id, page_id: 'personal_details', anchor: "council"}, class: "right"
+    = link_to 'Make changes', {action: 'edit', id: @claim.id, page_id: 'personal_details', anchor: "council"}, class: "right edit"
     - landlord = @claim.landlords.first
   .moj-panel
-    .row
+    .row.organisation_name
       .key
         Council
       .value
         = landlord.organisation_name
-    .row
+    .row.address
       .key
         Address
       .value
         = landlord.address.html_safe
-    .row
+    .row.full_name
       .key
         Full name
       .value
         = landlord.display_name
-    .row
+    .row.phone
       .key
         Phone
       .value
         = landlord.phone
-    .row
+    .row.email
       .key
         Email
       .value
         = landlord.email
 
-%section.review
+%section.review#tenants
   %h3.section-header
     Tenant (defendant)
-    = link_to 'Make changes', {action: 'edit', id: @claim.id, page_id: 'personal_details', anchor: "tenant"}, class: "right"
-  - @claim.tenants.each.with_index do |tenant, i|
-    - unless tenant.blank?
-      .moj-panel
-        .row
-          .key
-            Name
-          .value
-            = tenant.display_name
-        .row
-          .key
-            Address
-          .value
-            - if tenant.address.blank?
-              Living in the property
-            - else
-              = tenant.address.html_safe
-        - unless tenant.phone.blank?
-          .row
-            .key
-              Phone
+    = link_to 'Make changes', {action: 'edit', id: @claim.id, page_id: 'personal_details', anchor: "tenant"}, class: "right edit"
+  .moj-panel
+    - @claim.tenants.each.with_index do |tenant, i|
+      - unless tenant.blank?
+        - if i >= 1
+          .row.divider
+        .sub-panel.tenant(id="tenant-#{i}")
+          .row.full_name
+            .key Name
+            .value= tenant.display_name
+          .row.address
+            .key Address
             .value
-              = tenant.phone
-        - unless tenant.email.blank?
-          .row
-            .key
-              Email
-            .value
-              = tenant.email
+              - if tenant.address.blank?
+                Living in the property
+              - else
+                = tenant.address.html_safe
+          - unless tenant.phone.blank?
+            .row.phone
+              .key Phone
+              .value= tenant.phone
+          - unless tenant.email.blank?
+            .row.email
+              .key Email
+              .value= tenant.email
 
 %section.review
   %h3.section-header
     About the tenancy
-    = link_to 'Make changes', {action: 'edit', id: @claim.id, page_id: 'case_details', anchor: "about-the-tenancy"}, class: "right"
+    = link_to 'Make changes', {action: 'edit', id: @claim.id, page_id: 'case_details', anchor: "about-the-tenancy"}, class: "right edit"
   .moj-panel
     .row
       .key Tenancy type
@@ -118,24 +114,23 @@
         Daily rent amount
       .value
         %span> &pound;
-        %span.number= number_to_currency(@claim.case_detail.daily_rent_amount, unit: '').gsub(/\.00$/, '')
+        - rent_amount = number_with_precision(@claim.case_detail.daily_rent_amount, precision: 2) || ''
+        %span.number= rent_amount.gsub(/\.00$/, '')
         per day
 
 %section.review
   %h3.section-header
     About the case
-    = link_to 'Make changes', {action: 'edit', id: @claim.id, page_id: 'case_details', anchor: "about-the-case"}, class: "right"
+    = link_to 'Make changes', {action: 'edit', id: @claim.id, page_id: 'case_details', anchor: "about-the-case"}, class: "right edit"
   .moj-panel
     .row
       .key
         Notice served
-      .value
-        = @claim.case_detail.type_of_notice_served.humanize
+      .value= @claim.case_detail.type_of_notice_served.humanize
     .row
       .key
         Date notice served
-      .value
-        = Date.parse(@claim.case_detail.notice_served_date).strftime("%e %B %Y")
+      .value= Date.parse(@claim.case_detail.notice_served_date).strftime("%e %B %Y")
     .row
       .key
         Total unpaid rent
@@ -147,7 +142,7 @@
   %section.review
     %h3.section-header
       Further information
-      = link_to 'Make changes', {action: 'edit', id: @claim.id, page_id: 'case_details', anchor: "further-information"}, class: "right"
+      = link_to 'Make changes', {action: 'edit', id: @claim.id, page_id: 'case_details', anchor: "further-information"}, class: "right edit"
     .moj-panel
       .row.full
         .value.highlight

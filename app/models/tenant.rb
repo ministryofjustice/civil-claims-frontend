@@ -21,7 +21,6 @@ class Tenant  < ActiveResource::Base
     string 'title'
     string 'full_name'
     string 'phone'
-    string 'mobile'
     string 'email'
 
     string 'street'

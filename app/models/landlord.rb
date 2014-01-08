@@ -22,7 +22,6 @@ class Landlord < ActiveResource::Base
     string 'title'
     string 'full_name'
     string 'phone'
-    string 'mobile'
     string 'email'
 
     string 'dx_number'

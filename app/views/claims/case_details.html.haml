@@ -51,7 +51,7 @@
     %section.about-case#about-the-case
       %h3.section-header About the case
       .moj-panel
-        %fieldset.striped-choice
+        %fieldset.striped-choice.notice_served
           %legend Notice served
           .options
             .row
@@ -66,7 +66,7 @@
             - options = { prompt: { day: 'day', month: 'month', year: 'year' }, order: [:day, :month, :year], with_css_classes: true, start_year: Time.now.year, end_year: Time.now.year - 10 }
             - options[:selected] = Date.parse(@claim.case_detail.notice_served_date) if @claim.case_detail.notice_served_date
             = f.date_select :notice_served_date, options
-        .row
+        .row.total_unpaid_rent
           = f.label :total_unpaid_rent, "Total unpaid rent"
           = f.text_field :total_unpaid_rent
 
@@ -76,8 +76,8 @@
         .row.full
           = f.label :other_information, "Please give any other information that may be useful for the court."
           = f.text_area :other_information, id: 'further-info'
-        .row.rel.full
-          = f.check_box :includes_human_rights_issues, id: 'human-rights'
+        .row.rel.full.human_rights_issues
+          = f.check_box :includes_human_rights_issues
           = f.label :includes_human_rights_issues, 'The case includes issues under the Human Rights Act 1998'
 
     %section

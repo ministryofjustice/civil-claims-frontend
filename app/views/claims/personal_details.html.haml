@@ -55,7 +55,7 @@
         .key Email
         .value= landlord.email
 
-  %section.tenant-details#tenant-details
+  %section.tenant-details#tenant_details
     %h3.section-header Tenant (defendant)
     .moj-panel
       - 4.times do |i|
@@ -72,9 +72,9 @@
             .row.rel.full_name
               = f.label :full_name, for: "tenant-#{i}-full_name"
               = f.text_field :full_name, name: "#{prefix}[full_name]", id: "tenant-#{i}-full_name"
-            .row.rel.mobile
-              = f.label :mobile, for: "tenant-#{i}-mobile"
-              = f.text_field :mobile, name: "#{prefix}[mobile]", id: "tenant-#{i}-mobile"
+            .row.rel.phone
+              = f.label :phone, for: "tenant-#{i}-phone"
+              = f.text_field :phone, name: "#{prefix}[phone]", id: "tenant-#{i}-phone"
             .row.rel.email
               = f.label :email, for: "tenant-#{i}-email"
               = f.text_field :email, name: "#{prefix}[email]", id: "tenant-#{i}-email"
