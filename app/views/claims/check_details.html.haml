@@ -90,18 +90,18 @@
               .key Email
               .value= tenant.email
 
-%section.review
+%section.review#about-tenancy
   %h3.section-header
     About the tenancy
     = link_to 'Make changes', {action: 'edit', id: @claim.id, page_id: 'case_details', anchor: "about-the-tenancy"}, class: "right edit"
   .moj-panel
-    .row
+    .row.tenancy_type
       .key Tenancy type
       .value= @claim.case_detail.tenancy_type.humanize
-    .row
+    .row.tenancy_start_date
       .key Tenancy start date
       .value= Date.parse(@claim.case_detail.tenancy_start_date).strftime("%e %B %Y")
-    .row
+    .row.rent_amount
       .key Rent amount
       .value
         %span> &pound;
@@ -109,7 +109,7 @@
         = case @claim.case_detail.payment_frequency
           - when "weekly" then "per week"
           - when "monthly" then "per month"
-    .row
+    .row.daily_rent_amount
       .key
         Daily rent amount
       .value
@@ -118,28 +118,25 @@
         %span.number= rent_amount.gsub(/\.00$/, '')
         per day
 
-%section.review
+%section.review#about-case
   %h3.section-header
     About the case
     = link_to 'Make changes', {action: 'edit', id: @claim.id, page_id: 'case_details', anchor: "about-the-case"}, class: "right edit"
   .moj-panel
-    .row
-      .key
-        Notice served
+    .row.notice_served
+      .key Notice served
       .value= @claim.case_detail.type_of_notice_served.humanize
-    .row
-      .key
-        Date notice served
+    .row.date_notice_served
+      .key Date notice served
       .value= Date.parse(@claim.case_detail.notice_served_date).strftime("%e %B %Y")
-    .row
-      .key
-        Total unpaid rent
+    .row.total_unpaid_rent
+      .key Total unpaid rent
       .value
         %span> &pound;
         %span.number= number_to_currency(@claim.case_detail.total_unpaid_rent, unit: '').gsub(/\.00$/, '')
 
 - unless @claim.case_detail.other_information.blank?
-  %section.review
+  %section.review#further-information
     %h3.section-header
       Further information
       = link_to 'Make changes', {action: 'edit', id: @claim.id, page_id: 'case_details', anchor: "further-information"}, class: "right edit"
