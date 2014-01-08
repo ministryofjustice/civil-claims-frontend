@@ -12,7 +12,7 @@ input, input[type="text"], button, select, textarea
   font-family: "nta", arial, sans-serif
   font-size: 19px
 
-input[type="text"], textarea
+input[type="text"], input[type="password"], textarea
   padding: 5px 4px 2px
   border: 1px solid $grey-2
   color: $black
@@ -62,7 +62,7 @@ button, .button
     margin-top: 4px
 
 .hide
-  display: none !important
+  display: none
 
 .sub-panel
   padding-top: 40px
@@ -118,6 +118,24 @@ button, .button
           max-width: 590px
     > .row
       padding: 40px
+
+fieldset.plain
+  padding-bottom: 20px
+  label, input[type='text'], input[type='password']
+    display: block
+    font-size: 19px
+  label
+    margin-bottom: 10px
+  a.block
+    display: block
+    margin: 10px 0
+    font-size: 19px
+  input[type='text'], input[type='password']
+    width: 300px
+    margin-bottom: 20px
+  input[type='submit']
+    margin-top: 30px
+
 
 .moj-panel
   background: $grey-4
@@ -252,7 +270,9 @@ button, .button
           margin-top: 15px
       textarea
         width: 660px
-        height: 100px
+        height: 200px
+        &.small
+          height: 100px
       input[type="checkbox"]
         float: left
         margin-top: 3px

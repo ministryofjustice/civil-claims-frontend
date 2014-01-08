@@ -1,5 +1,10 @@
 class ClaimsController < ApplicationController
 
+  def login
+    @page_title = 'Property repossession'
+    render 'login', :layout => 'application-claims'
+  end
+
   def landing
     @page_title = 'Property repossession'
     render 'landing', :layout => 'application-claims'
