@@ -1,0 +1,76 @@
+= render partial: 'shared/header_message', :locals => {:title => "Start a property repossession case"}
+
+.container
+  %nav.progress
+    %ol
+      %li.completed
+        = link_to 'Personal details', action: 'edit', id: @claim.id, page_id: 'personal_details'
+      %li.completed
+        = link_to 'Case details', action: 'edit', id: @claim.id, page_id: 'case_details'
+      %li.completed
+        = link_to 'Check details', action: 'edit', id: @claim.id, page_id: 'check_details'
+      %li.active
+        %span Pay court fee
+      %li
+        %span Confirmation
+
+%header.content-header
+  %h2= @page_title
+  %p The hearing date below is available if you pay the court fee in the next 30 minutes:
+
+%section
+  %h3.section-header
+    Hearing date
+  .moj-panel.important
+    .row
+      .key
+        Hearing date
+      .value
+        Wednesday 21 November 2013 at 10:30
+    .row
+      .key
+        Court
+      .value
+        Bristol Civil Justice Centre
+
+%section
+  %h3.section-header
+    Payment details
+  .moj-panel
+    .row
+      .key
+        Court fee
+      .value
+        &pound;<span class="number">100</span>
+    .row
+      .key
+        Account name
+      .value
+        BristolCC
+    .row
+      .key
+        Sortcode
+      .value
+        50-44
+    .row
+      .key
+        Account number
+      .value
+        80044936
+
+%form
+  %section
+    %h3.section-header
+      Agree to terms
+    .moj-panel
+      .row.full
+        %input#agree-terms(type='checkbox' name='agree-terms')
+        %label(for='agree-terms')
+          I agree to the #{link_to '-=TODO: terms and conditions=-', '#', :class => 'todo'} of this service.
+      .row.rel.full.information
+        We will never share your details with anyone: see our #{link_to '-=TODO: privacy policy=-', '#', :class => 'todo'}.
+
+  %section
+    .action-buttons.cf
+      %button.button.primary.large.chevron.left{name: 'next_page', value: 'confirmation'} Pay and send case to the court
+
