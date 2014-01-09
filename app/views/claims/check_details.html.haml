@@ -180,16 +180,15 @@
     %h3.section-header
       Statement of truth
     .moj-panel
-      %form
-        .row.full
-          = claim_form.check_box :statement_of_truth, id: "confirm-details"
-          - label = "I <strong>#{@claim.landlords.first.full_name}</strong>, <strong>-=TODO: JOB TITLE=-</strong> at <strong>#{@claim.landlords.first.organisation_name}</strong>, believe the facts stated on this form are true."
-          = claim_form.label :statement_of_truth, label.html_safe
-            
-        .row.rel.full.warning
-          Proceedings for contempt of court may be brought against a person if he makes, or causes to be made, a false statement in a document verified by a statement of truth without an honest belief in its truth.
+      .row.full
+        = claim_form.check_box :statement_of_truth, id: "confirm-details"
+        - label = "I <strong>#{@claim.landlords.first.full_name}</strong>, <strong>-=TODO: JOB TITLE=-</strong> at <strong>#{@claim.landlords.first.organisation_name}</strong>, believe the facts stated on this form are true."
+        = claim_form.label :statement_of_truth, label.html_safe
+          
+      .row.rel.full.warning
+        Proceedings for contempt of court may be brought against a person if he makes, or causes to be made, a false statement in a document verified by a statement of truth without an honest belief in its truth.
 
     %section
       .action-buttons.cf
-        %button.button.primary.large.chevron.left{name: 'next_page', value: 'check_details'} Continue to next step
+        %button.button.primary.large.chevron.left{name: 'next_page', value: 'pay_court_fee'} Continue to next step
 
