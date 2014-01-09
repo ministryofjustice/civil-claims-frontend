@@ -21,5 +21,8 @@ class CaseDetail < ActiveResource::Base
     # additional information
     string  :other_information
     boolean :includes_human_rights_issues
+    string  :recovery_steps
+    string  :about_defendant
+    string  :about_claimant
   end
 end

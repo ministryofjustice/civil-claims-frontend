@@ -145,6 +145,36 @@
         .value.highlight
           = @claim.case_detail.other_information
 
+- unless @claim.case_detail.recovery_steps.blank?
+  %section.review#recovery-steps
+    %h3.section-header
+      Further information
+      = link_to 'Make changes', {action: 'edit', id: @claim.id, page_id: 'case_details', anchor: "recovery-steps-section"}, class: "right edit"
+    .moj-panel
+      .row.full
+        .value.highlight
+          = @claim.case_detail.recovery_steps
+
+- unless @claim.case_detail.about_defendant.blank?
+  %section.review#about-defendant
+    %h3.section-header
+      About the defendant
+      = link_to 'Make changes', {action: 'edit', id: @claim.id, page_id: 'case_details', anchor: "about-defendant-section"}, class: "right edit"
+    .moj-panel
+      .row.full
+        .value.highlight
+          = @claim.case_detail.about_defendant
+
+- unless @claim.case_detail.about_claimant.blank?
+  %section.review#about-claimant
+    %h3.section-header
+      About the claimant
+      = link_to 'Make changes', {action: 'edit', id: @claim.id, page_id: 'case_details', anchor: "about-claimant-section"}, class: "right edit"
+    .moj-panel
+      .row.full
+        .value.highlight
+          = @claim.case_detail.about_claimant
+
 = form_for @claim do |claim_form|
   %section
     %h3.section-header
