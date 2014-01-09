@@ -8,7 +8,7 @@
       %li.completed
         = link_to 'Case details', action: 'edit', id: @claim.id, page_id: 'case_details'
       %li.completed
-        = link_to 'Confirm details', action: 'edit', id: @claim.id, page_id: 'confirm_details'
+        = link_to 'Check details', action: 'edit', id: @claim.id, page_id: 'check_details'
       %li.active
         %span Pay court fee
       %li
@@ -66,9 +66,9 @@
       .row.full
         %input#agree-terms(type='checkbox' name='agree-terms')
         %label(for='agree-terms')
-          I agree to the #{link_to 'terms and conditions', '#'} of this service.
+          I agree to the #{link_to 'terms and conditions', '#', :class => 'nourl'} of this service.
       .row.rel.full.information
-        We will never share your details with anyone: see our #{link_to 'privacy policy', '#'}.
+        We will never share your details with anyone: see our #{link_to 'privacy policy', '#', :class => 'nourl'}.
 
   %section
     .action-buttons.cf
