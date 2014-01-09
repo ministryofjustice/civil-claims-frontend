@@ -80,6 +80,27 @@
           = f.check_box :includes_human_rights_issues
           = f.label :includes_human_rights_issues, 'The case includes issues under the Human Rights Act 1998'
 
+    %section#recovery-steps-section
+      %h3.section-header Recovery steps already taken
+      .moj-panel.sub-panel
+        .row.full
+          = f.label :recovery_steps, "Recovery steps already taken", :class => 'hidden'
+          = f.text_area :recovery_steps, id: 'recovery-steps'
+
+    %section#about-defendant-section
+      %h3.section-header About the defendant
+      .moj-panel.sub-panel
+        .row.full
+          = f.label :about_defendant, "About the defendant", :class => 'hidden'
+          = f.text_area :about_defendant, id: 'about-defendant'
+
+    %section#about-claimant-section
+      %h3.section-header About the claimant
+      .moj-panel.sub-panel
+        .row.full
+          = f.label :about_claimant, "About the claimant", :class => 'hidden'
+          = f.text_area :about_claimant, id: 'about-claimant'
+
     %section
       .action-buttons.cf
         %button.button.primary.large.chevron.left{name: 'next_page', value: 'check_details'} Continue to next step
