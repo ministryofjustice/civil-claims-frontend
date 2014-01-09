@@ -182,7 +182,7 @@
     .moj-panel
       .row.full
         = claim_form.check_box :statement_of_truth, id: "confirm-details"
-        - label = "I <strong>#{@claim.landlords.first.full_name}</strong>, <strong>-=TODO: JOB TITLE=-</strong> at <strong>#{@claim.landlords.first.organisation_name}</strong>, believe the facts stated on this form are true."
+        - label = "I <strong>#{@claim.landlords.first.full_name}</strong>, <strong class='todo'>-=TODO: JOB TITLE=-</strong> at <strong>#{@claim.landlords.first.organisation_name}</strong>, believe the facts stated on this form are true."
         = claim_form.label :statement_of_truth, label.html_safe
           
       .row.rel.full.warning
