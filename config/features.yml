@@ -1,0 +1,9 @@
+# feature flag config
+production:
+  auth_override: true
+
+development:
+  auth_override: false
+
+test:
+  auth_override: true

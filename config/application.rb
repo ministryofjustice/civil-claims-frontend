@@ -33,6 +33,16 @@ module CivilClaimsFrontend
     config.paths.add "app/presenters", :glob => "**/*.rb"
     config.autoload_paths += Dir["#{Rails.root}/app/presenters/*"]
 
+    require 'author'
+    host = URI.parse(ENV['API_HOST']).host
+    port = URI.parse(ENV['API_HOST']).port
+    config.auth_client = Author::Client.new(host, port)
+
+    
+    # initialize Feature Flags
+    require "#{Rails.root}/lib/feature/flags"
+    Feature::Flags.init("#{Rails.root}/config/features.yml")
+
      # app title appears in the header bar
     config.app_title = 'Civil Claims'
     # phase governs text indicators and highlight colours

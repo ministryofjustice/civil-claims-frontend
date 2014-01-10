@@ -23,4 +23,9 @@ class Claim < ActiveResource::Base
     super(*args)
   end
 
+  class << self
+    def headers= headers
+      @headers = headers
+    end
+  end
 end

@@ -3,10 +3,16 @@ CivilClaimsFrontend::Application.routes.draw do
   get '/step2' => 'templates#step2'
 
   resources :claims, only: [:create, :new, :destroy, :update]
-  get '/claims/login'         => 'claims#login'
   get '/claims/landing'       => 'claims#landing'
   get '/claims/:id'           => 'claims#edit'
   get '/claims/:id/:page_id'  => 'claims#edit'
+
+
+  # temporarily live in claims controller
+  get '/login'                => 'users#login_screen'
+  post '/login'               => 'users#create_session'
+  get '/logout'               => 'users#logout'
+
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

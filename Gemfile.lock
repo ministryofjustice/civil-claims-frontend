@@ -1,4 +1,12 @@
 GIT
+  remote: git://github.com/ministryofjustice/x-moj-auth.git
+  revision: 46d4cd72a2561e7162132f30524b0352e739c8de
+  specs:
+    rack_moj_auth (0.0.2)
+      httparty (>= 0.12.0)
+      rack (>= 1.5.0)
+
+GIT
   remote: git://github.com/sporkrb/spork-rails.git
   revision: 0dd45e59d3237b4c8f9efc215b46d9c07072a95e
   specs:
@@ -48,6 +56,8 @@ GEM
     addressable (2.3.5)
     arel (4.0.1)
     atomic (1.1.14)
+    author (1.0)
+      httparty (>= 0.12.0)
     awesome_print (1.2.0)
     builder (3.1.4)
     byebug (2.5.0)
@@ -113,7 +123,11 @@ GEM
       activesupport (~> 4.0.0)
       haml (>= 3.1, < 5.0)
       railties (~> 4.0.0)
+    hashie (2.0.5)
     hike (1.2.3)
+    httparty (0.12.0)
+      json (~> 1.8)
+      multi_xml (>= 0.5.2)
     i18n (0.6.9)
     jquery-rails (3.0.4)
       railties (>= 3.0, < 5.0)
@@ -133,6 +147,7 @@ GEM
     mini_portile (0.5.2)
     minitest (4.7.5)
     multi_json (1.8.2)
+    multi_xml (0.5.5)
     nokogiri (1.6.1)
       mini_portile (~> 0.5.0)
     polyglot (0.3.3)
@@ -236,6 +251,7 @@ PLATFORMS
 
 DEPENDENCIES
   activeresource (= 4.0.0)
+  author (= 1.0)
   awesome_print
   byebug
   capybara
@@ -248,8 +264,10 @@ DEPENDENCIES
   guard-rspec
   guard-spork
   haml-rails
+  hashie
   jquery-rails
   moj_frontend_toolkit_gem!
+  rack_moj_auth!
   rails (= 4.0.0)
   rspec-rails (~> 2.0)
   sass-rails (~> 4.0.0)

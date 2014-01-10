@@ -1,9 +1,6 @@
 class ClaimsController < ApplicationController
 
-  def login
-    @page_title = 'Property repossession'
-    render 'login', :layout => 'application-claims'
-  end
+  before_filter :redirect_to_login_page_if_not_signed_in
 
   def landing
     @page_title = 'Property repossession'
@@ -61,7 +58,6 @@ class ClaimsController < ApplicationController
     @claim.case_detail.tenancy_type ||= 'secure tenancy'
     @claim.case_detail.payment_frequency ||= 'weekly'
 
-    # wtf is this?
     @claim.landlords << Landlord.new(current_user.profile.attributes)
   end
 
