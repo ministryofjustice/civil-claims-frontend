@@ -14,6 +14,14 @@
       %li
         %span Confirmation
 
+%section.error-summary
+  %h2 There was a problem submitting the form
+  %h3 Because of the following problems:
+  %ul
+    %li Property must be a valid address
+    %li First tenant full name must be entered
+    
+
 %header.content-header
   %h2= @page_title
   %p Give details of the tenancy and why you’re taking court action.
@@ -23,8 +31,10 @@
     %section.about-tenancy#about-the-tenancy
       %h3.section-header About the tenancy
       .moj-panel.sub-panel
-        %fieldset.striped-choice.tenancy_type
-          %legend Tenancy type
+        %fieldset.striped-choice.tenancy_type.error
+          %legend
+            Tenancy type
+            %span.error Error text here
           .options
             .row
               = f.radio_button :tenancy_type, "secure tenancy"
@@ -32,25 +42,29 @@
             .row
               = f.radio_button :tenancy_type, "introductory tenancy"
               = f.label :tenancy_type_introductory_tenancy, "Introductory tenancy"
-        %fieldset.date-picker
-          %legend Tenancy start date
+        %fieldset.date-picker.error
+          %legend
+            Tenancy start date
+            %span.error Error text here
           #tenancy-start-date.row
             - options = { prompt: { day: 'day', month: 'month', year: 'year' }, order: [:day, :month, :year], with_css_classes: true, start_year: Time.now.year, end_year: Time.now.year - 87 }
             - options[:selected] = Date.parse(@claim.case_detail.tenancy_start_date) if @claim.case_detail.tenancy_start_date
             = f.date_select :tenancy_start_date, options
-        .row.rent_amount
-          = f.label :rental_amount, "Rent amount"
+        .row.rent_amount.error
+          = f.label :rental_amount, "Rent amount <span class='error'>Error text here</span>".html_safe
           = f.text_field :rental_amount, {class: 'pound'}
 
           - options = options_for_select([['per week', 'weekly'], ['per month', 'monthly']], selected: @claim.case_detail.payment_frequency)
           = f.select :payment_frequency, options, {}, {id: 'rent-amount-frequency', class: 'small rent_payment_frequency'}
-        .row.daily_rent_amount
-          = f.label :daily_rent_amount, "Daily rent amount"
+        .row.daily_rent_amount.error
+          = f.label :daily_rent_amount, "Daily rent amount <span class='error'>Error text here</span>".html_safe
           = f.text_field :daily_rent_amount, {class: 'pound'}
 
-    %section.about-case#about-the-case
-      %h3.section-header About the case
-      .moj-panel
+    %section.about-case#about-the-case.error
+      %h3.section-header
+        About the case
+        %span.error Error text here
+      .moj-panel.error
         %fieldset.striped-choice.notice_served
           %legend Notice served
           .options
@@ -68,36 +82,36 @@
             = f.date_select :notice_served_date, options
         .row.total_unpaid_rent
           = f.label :total_unpaid_rent, "Total unpaid rent"
-          = f.text_field :total_unpaid_rent
+          = f.text_field :total_unpaid_rent, {class: 'pound'}
 
     %section.further-information#further-information
       %h3.section-header Further information
       .moj-panel.sub-panel
-        .row.full
+        .row.full.error
           = f.label :other_information, "Please give any other information that may be useful for the court."
           = f.text_area :other_information, id: 'further-info'
-        .row.rel.full.human_rights_issues
+        .row.rel.full.human_rights_issues.error
           = f.check_box :includes_human_rights_issues
           = f.label :includes_human_rights_issues, 'The case includes issues under the Human Rights Act 1998'
 
     %section#recovery-steps-section
       %h3.section-header Recovery steps already taken
       .moj-panel.sub-panel
-        .row.full
+        .row.full.error
           = f.label :recovery_steps, "Recovery steps already taken", :class => 'hidden'
           = f.text_area :recovery_steps, id: 'recovery-steps'
 
     %section#about-defendant-section
       %h3.section-header About the defendant
       .moj-panel.sub-panel
-        .row.full
+        .row.full.error
           = f.label :about_defendant, "About the defendant", :class => 'hidden'
           = f.text_area :about_defendant, id: 'about-defendant'
 
     %section#about-claimant-section
       %h3.section-header About the claimant
       .moj-panel.sub-panel
-        .row.full
+        .row.full.error
           = f.label :about_claimant, "About the claimant", :class => 'hidden'
           = f.text_area :about_claimant, id: 'about-claimant'
 
