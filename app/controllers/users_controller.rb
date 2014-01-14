@@ -6,7 +6,6 @@ class UsersController < ApplicationController
 
   def create_session
      author = Author::Proxy.new(Rails.application.config.auth_client)
-     pp params
      begin
       author.login(params[:email], params[:password])
       session[:secret_token] = author.session

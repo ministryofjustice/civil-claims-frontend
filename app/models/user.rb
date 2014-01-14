@@ -2,8 +2,8 @@ class User < ActiveResource::Base
   self.site = Rails.configuration.api_uri 
 
   def self.profile
-    puts "#{User.site}/user"
-    find(:one, from: "#{User.site}/user")
+    user = find(:one, from: "#{User.site}/user")
+    user.profile.attributes
   end
 
   class << self

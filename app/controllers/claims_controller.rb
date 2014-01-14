@@ -1,6 +1,7 @@
 class ClaimsController < ApplicationController
 
-  before_filter :redirect_to_login_page_if_not_signed_in
+  before_action :redirect_to_login_page_if_not_signed_in
+  before_action :load_user_profile
 
   def landing
     @page_title = 'Property repossession'
@@ -44,6 +45,12 @@ class ClaimsController < ApplicationController
 
   private
 
+  def load_user_profile
+    if request.get?
+      @user_profile = session[:profile] ||= User.profile 
+    end
+  end
+
   def build_claim(id='')
     if(id.blank?)
       @claim = Claim.new
@@ -58,7 +65,7 @@ class ClaimsController < ApplicationController
     @claim.case_detail.tenancy_type ||= 'secure tenancy'
     @claim.case_detail.payment_frequency ||= 'weekly'
 
-    @claim.landlords << Landlord.new(current_user.profile.attributes)
+    @claim.landlords << Landlord.new(current_user)
   end
 
   def page_details(page_id)

@@ -1,7 +1,7 @@
 - unless @hide_user_nav
   #user-nav.user-data.clearfix.navbar
     %ul.nav.navbar-nav
-      %li Hardcoded User:
+      %li= @user_profile['full_name'] + ':'
       %li
         = link_to "Sign out", controller: 'users', action: 'logout'
         

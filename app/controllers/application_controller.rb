@@ -15,7 +15,7 @@ class ApplicationController < ActionController::Base
   end
 
   def current_user
-    @_current_user ||= User.profile
+    @user_profile = session[:profile] ||= User.profile 
   end
 
   def redirect_to_login_page_if_not_signed_in
