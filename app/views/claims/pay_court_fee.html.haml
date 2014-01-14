@@ -38,27 +38,20 @@
     Payment details
   .moj-panel
     .row
-      .key
-        Court fee
-      .value
-        &pound;<span class="number">100</span>
-    .row
-      .key
-        Account name
-      .value
-        BristolCC
-    .row
-      .key
-        Sortcode
-      .value
-        50-44
-    .row
-      .key
-        Account number
-      .value
-        80044936
+      .key Court fee
+      .value &pound;<span class="number">100</span>
+    .row.todo
+      .key Account name
+      .value BristolCC
+    .row.todo
+      .key Sortcode
+      .value 50-44
+    .row.todo
+      .key Account number
+      .value 80044936
 
-%form
+= form_for @claim do |claim_form|
+  = claim_form.hidden_field :statement_of_truth
   %section
     %h3.section-header
       Agree to terms
