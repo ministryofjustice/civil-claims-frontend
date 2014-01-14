@@ -54,6 +54,25 @@ button, .button
       background-repeat: no-repeat
       background-position: right center
 
+section.error-summary
+  border: 3px solid $errorcolour
+  background-color: $errorbgcolour
+  padding: 20px
+  margin-bottom: 40px
+  max-width: 798px
+  h2
+    margin: 0 0 10px
+    font-weight: bold
+  h3
+    margin: 0 0 10px
+  ul
+    list-style-type: none
+    padding: 0
+    margin: 0
+  li
+    list-style-type: none
+    color: $errorcolour
+
 span.error
   color: $errorcolour
   font-size: 16px
@@ -168,7 +187,7 @@ fieldset.plain
       bottom: 1px solid $light-blue-50
 
   &.error
-    background-color: #faebec
+    background-color: $errorbgcolour
     border-left: 3px solid $errorcolour
 
   input[disabled="disabled"]
@@ -276,7 +295,7 @@ fieldset.plain
     &.error
       padding-left: 277px
       border-left: 3px solid $errorcolour
-      background-color: #faebec
+      background-color: $errorbgcolour
 
     &.divider
       width: 670px
@@ -415,7 +434,7 @@ fieldset.plain
     &.error
       padding-left: 277px
       border-left: 3px solid $errorcolour
-      background-color: #faebec
+      background-color: $errorbgcolour
 
     legend
       width: 180px
