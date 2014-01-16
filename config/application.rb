@@ -33,10 +33,7 @@ module CivilClaimsFrontend
     config.paths.add "app/presenters", :glob => "**/*.rb"
     config.autoload_paths += Dir["#{Rails.root}/app/presenters/*"]
 
-    require 'author'
-    host = URI.parse(ENV['API_HOST']).host
-    port = URI.parse(ENV['API_HOST']).port
-    config.auth_client = Author::Client.new(host, port)
+    config.auth_client = Author::Client.new(ENV['API_HOST'])
 
     
     # initialize Feature Flags

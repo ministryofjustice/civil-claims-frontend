@@ -6,6 +6,7 @@ CivilClaimsFrontend::Application.routes.draw do
   get '/claims/landing'       => 'claims#landing'
   get '/claims/:id'           => 'claims#edit'
   get '/claims/:id/:page_id'  => 'claims#edit'
+  post '/claims/:id/pay_and_send_to_court' => 'claims#pay_and_send_to_court'
 
 
   # temporarily live in claims controller

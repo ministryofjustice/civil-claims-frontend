@@ -32,6 +32,17 @@ class ClaimsController < ApplicationController
     redirect_to @claim
   end
 
+  def pay_and_send_to_court
+    @claim = Claim.find(params[:id])
+    begin
+      @claim.post(:send_to_court)
+      redirect_to action: 'edit', id: @claim.id, page_id: 'confirmation'
+    rescue
+      flash[:alert] = 'Action failed, please try again later.'
+      redirect_to action: 'edit', id: @claim.id, page_id: 'pay_court_fee'
+    end
+  end
+
   def destroy
     Claim.delete(params[:id])
     redirect_to root_path
