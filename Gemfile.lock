@@ -1,4 +1,11 @@
 GIT
+  remote: git://github.com/ministryofjustice/author.git
+  revision: 92a36d228342e950ed64e048ef4ebdbe36f41a9f
+  specs:
+    author (1.0)
+      httparty (>= 0.12.0)
+
+GIT
   remote: git://github.com/ministryofjustice/x-moj-auth.git
   revision: 46d4cd72a2561e7162132f30524b0352e739c8de
   specs:
@@ -56,8 +63,6 @@ GEM
     addressable (2.3.5)
     arel (4.0.1)
     atomic (1.1.14)
-    author (1.0)
-      httparty (>= 0.12.0)
     awesome_print (1.2.0)
     builder (3.1.4)
     byebug (2.5.0)
@@ -251,7 +256,7 @@ PLATFORMS
 
 DEPENDENCIES
   activeresource (= 4.0.0)
-  author (= 1.0)
+  author!
   awesome_print
   byebug
   capybara

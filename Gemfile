@@ -62,7 +62,7 @@ gem 'govuk_frontend_toolkit'
 gem 'moj_frontend_toolkit_gem', git: 'https://github.com/ministryofjustice/moj_frontend_toolkit_gem.git', tag: 'v0.0.40'
 
 # Authentication Proxy
-gem 'author', '1.0'
+gem 'author', :github => 'ministryofjustice/author'
 
 # Authentication tools
 gem 'rack_moj_auth', :github => 'ministryofjustice/x-moj-auth'
