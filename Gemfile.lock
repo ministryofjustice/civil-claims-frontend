@@ -95,6 +95,7 @@ GEM
     dotenv-rails (0.9.0)
       dotenv (= 0.9.0)
     erubis (2.7.0)
+    execjs (2.0.2)
     factory_girl (4.3.0)
       activesupport (>= 3.0.0)
     factory_girl_rails (4.3.0)
@@ -138,6 +139,7 @@ GEM
       thor (>= 0.14, < 2.0)
     json (1.8.1)
     kgio (2.8.1)
+    libv8 (3.16.14.3)
     listen (2.4.0)
       celluloid (>= 0.15.2)
       rb-fsevent (>= 0.9.3)
@@ -182,6 +184,7 @@ GEM
     rb-fsevent (0.9.4)
     rb-inotify (0.9.3)
       ffi (>= 0.5.0)
+    ref (1.0.5)
     rest-client (1.6.7)
       mime-types (>= 1.16)
     rspec (2.14.1)
@@ -226,6 +229,9 @@ GEM
       sprockets (~> 2.8)
     term-ansicolor (1.2.2)
       tins (~> 0.8)
+    therubyracer (0.12.0)
+      libv8 (~> 3.16.14.0)
+      ref
     thor (0.18.1)
     thread_safe (0.1.3)
       atomic
@@ -236,6 +242,9 @@ GEM
       polyglot
       polyglot (>= 0.3.1)
     tzinfo (0.3.38)
+    uglifier (2.4.0)
+      execjs (>= 0.3.0)
+      json (>= 1.8.0)
     unicorn (4.7.0)
       kgio (~> 2.6)
       rack
@@ -275,6 +284,8 @@ DEPENDENCIES
   shoulda-matchers
   spork (= 1.0.0rc3)
   spork-rails!
+  therubyracer
+  uglifier
   unicorn
   vcr
   webmock (= 1.12)

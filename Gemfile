@@ -5,10 +5,35 @@ ruby '2.0.0'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.0.0'
-gem "activeresource", '4.0.0'
+
+## FRONTEND ##
 
 # Use jquery as the JavaScript library
 gem 'jquery-rails'
+
+# Use SCSS for stylesheets
+gem 'sass-rails', '~> 4.0.0'
+
+# Gov.uk styles
+gem 'govuk_frontend_toolkit'
+
+# Enable HAML (required for MOJ toolkit)
+gem 'haml-rails'
+
+# MOJ styles
+gem 'moj_frontend_toolkit_gem', git: 'https://github.com/ministryofjustice/moj_frontend_toolkit_gem.git', tag: 'v0.0.40'
+
+# required for moj_frontend_toolkit
+gem 'uglifier'
+
+# required for uglifier to work in CI
+gem 'therubyracer'
+
+
+## BACKEND ##
+
+# no DB
+gem "activeresource", '4.0.0'
 
 # set environment variables via the filesystem
 gem 'dotenv-rails'
@@ -18,6 +43,14 @@ gem 'unicorn'
 
 # used for Feature Flags
 gem 'hashie'
+
+
+
+# Authentication Proxy
+gem 'author', :github => 'ministryofjustice/author'
+
+# Authentication tools
+gem 'rack_moj_auth', :github => 'ministryofjustice/x-moj-auth'
 
 group :development do
   gem 'guard'
@@ -47,20 +80,3 @@ group :test do
 end
 
 
-# Use SCSS for stylesheets
-gem 'sass-rails', '~> 4.0.0'
-
-# Enable HAML (required for MOJ toolkit)
-gem 'haml-rails'
-
-# Gov.uk styles
-gem 'govuk_frontend_toolkit'
-
-# MOJ styles
-gem 'moj_frontend_toolkit_gem', git: 'https://github.com/ministryofjustice/moj_frontend_toolkit_gem.git', tag: 'v0.0.40'
-
-# Authentication Proxy
-gem 'author', :github => 'ministryofjustice/author'
-
-# Authentication tools
-gem 'rack_moj_auth', :github => 'ministryofjustice/x-moj-auth'
