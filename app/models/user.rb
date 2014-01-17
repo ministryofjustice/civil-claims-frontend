@@ -2,7 +2,8 @@ class User < ActiveResource::Base
   self.site = Rails.configuration.api_uri 
 
   def self.profile
-    user = find(:one, from: "#{User.site}/user")
+    # TODO: why does activeresource hate me?
+    user = find(:one, from: "/repossession_claims_api/v1/user")
     user.profile.attributes
   end
 

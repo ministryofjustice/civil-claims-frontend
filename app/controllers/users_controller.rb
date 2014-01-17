@@ -5,7 +5,7 @@ class UsersController < ApplicationController
   end
 
   def create_session
-     author = Author::Proxy.new(Rails.application.config.auth_client)
+    author = Author::Proxy.new(Rails.application.config.auth_client)
     if(author.login(params[:email], params[:password]))
       session[:secret_token] = author.session
     else
