@@ -1,7 +1,7 @@
 %section.confirmation-intro
   %h1 Your case has been sent to the court
   %p We've sent you an email with all the details of your case.
-  %h2
+  %h2.case_number
     Case number:
     %strong= @claim.case_number
 
@@ -55,7 +55,7 @@
       .value Bristol Civil Justice Centre
     .row
       .value
-        %a(href='https://courttribunalfinder.service.gov.uk/courts/bristol-civil-justice-centre' rel='external') View full court details
+        %a(href='https://courttribunalfinder.service.gov.uk/courts/bristol-civil-justice-centre' rel='external' target='_blank') View full court details
 
 %section.next
   %h2 What happens next

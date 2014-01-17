@@ -6,12 +6,9 @@ class UsersController < ApplicationController
 
   def create_session
      author = Author::Proxy.new(Rails.application.config.auth_client)
-     begin
-      author.login(params[:email], params[:password])
+    if(author.login(params[:email], params[:password]))
       session[:secret_token] = author.session
-    rescue Author::LoginFailedError => e
-      flash[:alert] = "Not logged in."
-    rescue Author::AuthorisationRequiredError => e
+    else
       flash[:alert] = "Authentication failed."
     end
     redirect_to controller: 'claims', action: 'landing' 

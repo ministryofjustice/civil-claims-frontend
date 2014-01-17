@@ -1,8 +1,8 @@
 GIT
   remote: git://github.com/ministryofjustice/author.git
-  revision: 92a36d228342e950ed64e048ef4ebdbe36f41a9f
+  revision: 37543f6d42ff8e24a944ed894cfe20aae8579f9f
   specs:
-    author (1.0)
+    author (1.1)
       httparty (>= 0.12.0)
 
 GIT
@@ -90,7 +90,7 @@ GEM
       safe_yaml (~> 0.9.0)
     debugger-linecache (1.2.0)
     diff-lcs (1.2.5)
-    docile (1.1.1)
+    docile (1.1.2)
     dotenv (0.9.0)
     dotenv-rails (0.9.0)
       dotenv (= 0.9.0)
@@ -103,7 +103,7 @@ GEM
       railties (>= 3.0.0)
     ffi (1.9.3)
     formatador (0.2.4)
-    govuk_frontend_toolkit (0.39.0)
+    govuk_frontend_toolkit (0.41.0)
       rails (>= 3.1.0)
       sass (>= 3.2.0)
     guard (2.2.5)
@@ -114,7 +114,7 @@ GEM
       thor (>= 0.18.1)
     guard-rails (0.4.7)
       guard (>= 0.2.2)
-    guard-rspec (4.2.3)
+    guard-rspec (4.2.4)
       guard (~> 2.1)
       rspec (>= 2.14, < 4.0)
     guard-spork (1.5.1)
@@ -152,7 +152,7 @@ GEM
     mime-types (1.25.1)
     mini_portile (0.5.2)
     minitest (4.7.5)
-    multi_json (1.8.2)
+    multi_json (1.8.4)
     multi_xml (0.5.5)
     nokogiri (1.6.1)
       mini_portile (~> 0.5.0)
@@ -209,7 +209,7 @@ GEM
       railties (>= 4.0.0, < 5.0)
       sass (>= 3.1.10)
       sprockets-rails (~> 2.0.0)
-    shoulda-matchers (2.4.0)
+    shoulda-matchers (2.5.0)
       activesupport (>= 3.0.0)
     simplecov (0.8.2)
       docile (~> 1.1.0)
@@ -245,7 +245,7 @@ GEM
     uglifier (2.4.0)
       execjs (>= 0.3.0)
       json (>= 1.8.0)
-    unicorn (4.7.0)
+    unicorn (4.8.0)
       kgio (~> 2.6)
       rack
       raindrops (~> 0.7)
