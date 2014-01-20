@@ -57,7 +57,7 @@
 
   %section.tenant-details#tenant_details
     %h3.section-header Tenant (defendant)
-    .moj-panel
+    .moj-panel.has-multiple#tenants-panel(data-multiple="tenant" data-caption="You're taking court action against" data-single="person" data-plural="people")
       - 4.times do |i|
         = claim_form.fields_for(@claim.tenants[i], include_id: false) do |f|
           - if i >= 1
@@ -92,3 +92,9 @@
   %section
     .action-buttons.cf
       %button.button.primary.large.chevron.left{name: 'next_page', value: 'case_details'} Continue to next step
+
+
+
+/ handlebars templates
+
+= render :partial => 'partials/multiple_selector'

@@ -3,8 +3,7 @@
   %head
     :javascript
       // document.documentElement.className += " js-enabled";
-    = render "shared/head", :title => Rails.configuration.app_title, :noapp => true
-    = stylesheet_link_tag    "application", media: "all"
+    = render "shared/head", :title => @page_title + ' - ' + Rails.configuration.app_title
   
   :erb
 
@@ -34,7 +33,7 @@
       = yield
 
   = render'shared/footer'
-  = render'shared/script', :noapp => true
+  = render'shared/script'
 
   :erb
     </body>
