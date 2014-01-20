@@ -5,29 +5,19 @@
 [![Coverage Status](https://coveralls.io/repos/ministryofjustice/civil-claims-frontend-claimant/badge.png?branch=master)](https://coveralls.io/r/ministryofjustice/civil-claims-frontend-claimant?branch=master)
 
 
-This application manages repossesion claims for local authority councils.
-It implements the claimant flow that starts with the submission of a repossesion claim.
+Local installation
+------------------
 
-Things you may want to cover:
+### Clone repo and install gems
 
-* Ruby version is 2.0
+    git clone https://github.com/ministryofjustice/civil-claims-frontend-claimant.git
 
-* System dependencies
+    cd civil-claims-backend-data-api
+    bundle install
 
-* Configuration
+### Run tests
 
-* Database creation
+    rake seed_user # creates test user in db
 
-* Database initialization
+    rspec spec
 
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
-
-
-Please feel free to use a different markup language if you do not plan to run
-<tt>rake doc:app</tt>.
