@@ -29,12 +29,8 @@ module CivilClaimsFrontend
     # config.i18n.default_locale = :de
 
     Dir.glob("#{Rails.root}/lib/*.rb").each { |f| require f }
-    Dir.glob("#{Rails.root}/app/forms/*.rb").each { |f| require f }
-    config.paths.add "app/presenters", :glob => "**/*.rb"
-    config.autoload_paths += Dir["#{Rails.root}/app/presenters/*"]
 
     config.auth_client = Author::Client.new(ENV['API_HOST'])
-
     
     # initialize Feature Flags
     require "#{Rails.root}/lib/feature/flags"
