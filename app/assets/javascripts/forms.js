@@ -34,11 +34,10 @@ moj.Modules.forms = (function() {
 
 
 
-  multiplePanels = function( show ) {
+  multiplePanels = function() {
     var x,
         y,
         $panel,
-        html = '',
         childItemClass,
         childItems,
         childItemsArray = [],
@@ -70,9 +69,9 @@ moj.Modules.forms = (function() {
     }
   };
 
-  showMultiples = function( $panel, show ) {
+  showMultiples = function( $panel, shownum ) {
     var x,
-        show = show || 1,
+        show = shownum || 1,
         childItemClass,
         childItems;
 
