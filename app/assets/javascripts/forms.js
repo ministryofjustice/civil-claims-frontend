@@ -81,7 +81,7 @@ moj.Modules.forms = (function() {
     for( x = 0; x < childItems.length; x++ ) {
       if( ( x + 1 ) > show ) {
         $( childItems[ x ] ).hide();
-        // TODO: set panel form field values to blank
+        $( childItems[ x ] ).find( 'input[type=text], textarea' ).val( '' );
 
         $( childItems[ x ] ).prev( '.divider' ).hide();
       } else {
