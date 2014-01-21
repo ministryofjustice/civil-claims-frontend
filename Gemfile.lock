@@ -1,8 +1,8 @@
 GIT
   remote: git://github.com/ministryofjustice/author.git
-  revision: 37543f6d42ff8e24a944ed894cfe20aae8579f9f
+  revision: 8620d8efa186afc63011311a7cdbf22583793bd4
   specs:
-    author (1.1)
+    author (1.2)
       httparty (>= 0.12.0)
 
 GIT
