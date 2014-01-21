@@ -17,17 +17,13 @@ Local installation
 
 ### Run tests
 
-Run devise_authentication_api
+To create test user:
 
     cd ../devise_authentication_api
     bundle exec rackup -p 9393
 
-Run backend API
-
     cd ../civil-claims-backend-data-api
     bundle exec rails s -p 3111
-
-Create test user
 
     rake seed_user # creates test user in db
 
