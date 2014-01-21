@@ -1,3 +1,4 @@
+
 class ApplicationController < ActionController::Base
   # Prevent CSRF attacks by raising an exception.
   # For APIs, you may want to use :null_session instead.
@@ -11,45 +12,19 @@ class ApplicationController < ActionController::Base
     flash[:alert] << message
   end
 
-  def set_signed_in
-    @signed_in = read_secure_token.present?
-  end
+  include Author::Controller
 
-  def read_secure_token
-    session[:secret_token]
+  def api_models
+    [Claim, User]
   end
 
   def current_user
-    @user_profile = session[:profile] ||= User.profile 
+    @user_profile = session[:profile] ||= User.profile
   end
 
   def redirect_to_login_page_if_not_signed_in
     unless @signed_in
       redirect_to controller: 'users', action: 'login_screen'
-    end
-  end
-
-  def set_secure_token
-    with_secure_token(Claim) do
-      with_secure_token(User) do
-        yield
-      end
-    end
-  end
-
-  def with_secure_token model_class
-    token_header = RackMojAuth::Resources::SECURE_TOKEN.sub('HTTP_','')
-
-    begin
-      if token = read_secure_token
-        model_class.headers = model_class.headers.merge(token_header => token)
-      end
-      yield
-    ensure
-      # ensure token always removed from headers
-      if model_class.headers[token_header]
-        model_class.headers = model_class.headers.except(token_header)
-      end
     end
   end
 
