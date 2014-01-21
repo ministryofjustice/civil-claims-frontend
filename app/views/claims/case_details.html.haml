@@ -14,13 +14,7 @@
       %li
         %span Confirmation
 
-%section.error-summary
-  %h2 There was a problem submitting the form
-  %h3 Because of the following problems:
-  %ul
-    %li Property must be a valid address
-    %li First tenant full name must be entered
-    
+= render 'partials/flash', title: 'There was a problem submitting the form', subtitle: 'Because of the following problems:'
 
 %header.content-header
   %h2= @page_title

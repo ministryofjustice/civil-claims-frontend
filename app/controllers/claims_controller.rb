@@ -15,6 +15,10 @@ class ClaimsController < ApplicationController
   end
 
   def edit
+    # demo of validation failure. Remove once validations are implemented.
+    flash_alert 'Property must be a valid address'
+    flash_alert 'First tenant full name must be entered'
+
     if params.has_key? :page_id
       build_claim(params[:id])
       template, @page_title = page_details params[:page_id]
@@ -38,7 +42,7 @@ class ClaimsController < ApplicationController
       @claim.post(:send_to_court)
       redirect_to action: 'edit', id: @claim.id, page_id: 'confirmation'
     rescue
-      flash[:alert] = 'Action failed, please try again later.'
+      flash_alert 'Action failed, please try again later.'
       redirect_to action: 'edit', id: @claim.id, page_id: 'pay_court_fee'
     end
   end
@@ -58,7 +62,15 @@ class ClaimsController < ApplicationController
 
   def load_user_profile
     if request.get?
-      @user_profile = session[:profile] ||= User.profile 
+      begin
+        @user_profile = session[:profile] ||= User.profile
+      rescue ActiveResource::ForbiddenAccess
+        flash_alert 'Authentication error when connecting to backend.'
+      rescue ActiveResource::ServerError => e
+        flash_alert "Backend returned 500. #{e.message}"
+      rescue Exception => e
+        flash_alert e.message
+      end
     end
   end
 
