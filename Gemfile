@@ -60,3 +60,4 @@ group :development do
   gem 'byebug'
 end
 
+gem 'foreman'
