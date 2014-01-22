@@ -28,7 +28,7 @@ gem 'therubyracer'
 gem 'govuk_template', '0.3.8'
 gem 'govuk_frontend_toolkit', github: 'ministryofjustice/govuk_frontend_toolkit_gem', branch: 'asset-submodule'
 # MOJ styles
-gem 'moj_boilerplate', github: 'ministryofjustice/moj_boilerplate', tag: 'v0.4.0'
+gem 'moj_boilerplate', github: 'ministryofjustice/moj_boilerplate', tag: 'v0.6.1'
 
 
 ## BACKEND ##

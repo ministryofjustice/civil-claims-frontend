@@ -40,6 +40,7 @@ module CivilClaimsFrontend
 
      # app title appears in the header bar
     config.app_title = 'Civil Claims'
+    config.proposition_title = 'Property repossession'
     # phase governs text indicators and highlight colours
     # presumed values: alpha, beta, live
     config.phase = 'beta'
@@ -56,6 +57,7 @@ module CivilClaimsFrontend
 
     # Enable the asset pipeline
     config.assets.enabled = true
+
 
     # Api Configuration
     config.api_uri = "#{ENV['API_HOST']}/repossession_claims_api/v1"
