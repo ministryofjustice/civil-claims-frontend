@@ -6,6 +6,11 @@ class ApplicationController < ActionController::Base
   before_filter :set_signed_in
   around_action :set_secure_token
 
+  def flash_alert(message)
+    flash[:alert] ||= []
+    flash[:alert] << message
+  end
+
   def set_signed_in
     @signed_in = read_secure_token.present?
   end

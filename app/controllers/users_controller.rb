@@ -6,11 +6,16 @@ class UsersController < ApplicationController
 
   def create_session
     author = Author::Proxy.new(Rails.application.config.auth_client)
-    if(author.login(params[:email], params[:password]))
-      session[:secret_token] = author.session
-    else
-      flash[:alert] = "Authentication failed."
+    begin
+      if(author.login(params[:email], params[:password]))
+        session[:secret_token] = author.session
+      else
+        flash_alert "Authentication failed."
+      end
+    rescue Errno::ECONNREFUSED => e
+      flash_alert "Auth service not responding."
     end
+    
     redirect_to controller: 'claims', action: 'landing' 
   end
 
