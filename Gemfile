@@ -45,8 +45,6 @@ gem 'unicorn'
 # used for Feature Flags
 gem 'hashie'
 
-
-
 # Authentication Proxy
 gem 'author', :github => 'ministryofjustice/author'
 
@@ -54,30 +52,11 @@ gem 'author', :github => 'ministryofjustice/author'
 gem 'rack_moj_auth', :github => 'ministryofjustice/x-moj-auth'
 
 group :development do
-  gem 'guard'
-  gem 'guard-rails'
-  gem 'guard-rspec'
-  gem 'guard-spork'
   gem 'awesome_print'
  # gem 'better_errors'
  # gem 'meta_request'
  # gem 'jazz_hands'
   gem 'byebug'
-end
-
-group :development, :test do
-  gem 'spork', '1.0.0rc3'
-  gem 'spork-rails', :github => 'sporkrb/spork-rails'
-  gem 'factory_girl_rails'
-end
-
-group :test do
-  gem 'coveralls', require: false
-  gem 'rspec-rails', '~> 2.0'
-  gem 'capybara'
-  gem 'webmock', "1.12"
-  gem 'vcr'
-  gem 'shoulda-matchers'
 end
 
 
