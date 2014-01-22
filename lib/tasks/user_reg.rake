@@ -1,6 +1,6 @@
 # register a user
 
-require 'Author'
+require 'author'
 
 desc 'Registers a test user'
 task :seed_user do |t|
