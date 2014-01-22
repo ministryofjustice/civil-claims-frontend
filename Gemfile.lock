@@ -6,6 +6,13 @@ GIT
       httparty (>= 0.12.0)
 
 GIT
+  remote: git://github.com/ministryofjustice/civil-claims-assets.git
+  revision: 17f971f70d4bab3b0f5f0f912b5f90634706990b
+  tag: v0.2.0
+  specs:
+    civil_claims_assets (0.2.0)
+
+GIT
   remote: git://github.com/ministryofjustice/govuk_frontend_toolkit_gem.git
   revision: 145acb0dbfd64ea08a5d62189deb7fb2365bd41f
   branch: asset-submodule
@@ -168,6 +175,12 @@ DEPENDENCIES
   author!
   awesome_print
   byebug
+<<<<<<< HEAD
+=======
+  capybara
+  civil_claims_assets!
+  coveralls
+>>>>>>> bump cc-assets gem version
   dotenv-rails
   govuk_frontend_toolkit!
   govuk_template (= 0.3.8)
