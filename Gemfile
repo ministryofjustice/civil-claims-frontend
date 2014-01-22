@@ -14,20 +14,21 @@ gem 'jquery-rails'
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 4.0.0'
 
-# Gov.uk styles
-gem 'govuk_frontend_toolkit'
-
 # Enable HAML (required for MOJ toolkit)
 gem 'haml-rails'
-
-# MOJ styles
-gem 'moj_frontend_toolkit_gem', git: 'https://github.com/ministryofjustice/moj_frontend_toolkit_gem.git', tag: 'v0.0.40'
 
 # required for moj_frontend_toolkit
 gem 'uglifier'
 
 # required for uglifier to work in CI
 gem 'therubyracer'
+
+
+# Gov.uk styles
+gem 'govuk_template', '0.3.8'
+gem 'govuk_frontend_toolkit', github: 'ministryofjustice/govuk_frontend_toolkit_gem', branch: 'asset-submodule'
+# MOJ styles
+gem 'moj_boilerplate', github: 'ministryofjustice/moj_boilerplate', tag: 'v0.4.0'
 
 
 ## BACKEND ##

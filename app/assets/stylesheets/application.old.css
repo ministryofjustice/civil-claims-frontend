@@ -9,5 +9,12 @@
  * compiled file, but it's generally better to create a new file per style scope.
  *
  
- *= require global
+ *= require_self
+ *= require validator
+ 
+ *= require moj-base
+ *= require claims-mixins
+ *= require claims-global
+ *= require claims-layout
+ *= require claims-components
  */

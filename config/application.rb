@@ -36,6 +36,8 @@ module CivilClaimsFrontend
     require "#{Rails.root}/lib/feature/flags"
     Feature::Flags.init("#{Rails.root}/config/features.yml")
 
+
+
      # app title appears in the header bar
     config.app_title = 'Civil Claims'
     # phase governs text indicators and highlight colours
@@ -44,36 +46,16 @@ module CivilClaimsFrontend
     # product type may also govern highlight colours
     # known values: information, service
     config.product_type = 'service'
-    # govbranding switches on or off the crown logo, full footer and NTA font
-    config.govbranding = true
-    # feedback_email is the address linked in the alpha/beta bar asking for feedback
-    config.feedback_email = 'test@example.com'
+    # Feedback URL (URL for feedback link in phase banner)
+    # Use 'auto_add_path' for it to add a path link to the new_feedback route
+    config.feedback_url = ''
+    # Google Analytics ID (Tracking ID for the service)
+    config.ga_id = ''
+
+
 
     # Enable the asset pipeline
     config.assets.enabled = true
-    config.assets.precompile += %w(
-      gov-static/gov-goodbrowsers.css
-      gov-static/gov-ie6.css
-      gov-static/gov-ie7.css
-      gov-static/gov-ie8.css
-      gov-static/gov-fonts.css
-      gov-static/gov-fonts-ie8.css
-      gov-static/gov-print.css
-      moj-base.css
-      claims-global.css
-      claims-layout.css
-      claims-components.css
-      claims-mixins
-      claims-global
-      claims-layout
-      claims-components
-      components/claims-forms
-      components/claims-intro
-      components/claims-usernav
-      components/claims-progressnav
-      
-      gov-static/gov-ie.js
-    )
 
     # Api Configuration
     config.api_uri = "#{ENV['API_HOST']}/repossession_claims_api/v1"

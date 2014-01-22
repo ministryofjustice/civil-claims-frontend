@@ -6,6 +6,24 @@ GIT
       httparty (>= 0.12.0)
 
 GIT
+  remote: git://github.com/ministryofjustice/govuk_frontend_toolkit_gem.git
+  revision: 145acb0dbfd64ea08a5d62189deb7fb2365bd41f
+  branch: asset-submodule
+  specs:
+    govuk_frontend_toolkit (0.39.0)
+      rails (>= 3.1.0)
+      sass (>= 3.2.0)
+
+GIT
+  remote: git://github.com/ministryofjustice/moj_boilerplate.git
+  revision: 52ba3405c9d56771e19c5047a636f3cd4ffe9f77
+  tag: v0.4.0
+  specs:
+    moj_boilerplate (0.4.0)
+      govuk_frontend_toolkit (= 0.39.0)
+      govuk_template (= 0.3.8)
+
+GIT
   remote: git://github.com/ministryofjustice/x-moj-auth.git
   revision: 46d4cd72a2561e7162132f30524b0352e739c8de
   specs:
@@ -20,13 +38,6 @@ GIT
     spork-rails (4.0.0)
       rails (>= 3.0.0, < 5)
       spork (>= 1.0rc0)
-
-GIT
-  remote: https://github.com/ministryofjustice/moj_frontend_toolkit_gem.git
-  revision: d61df6019230dad6dcb82d776046a8421964e600
-  tag: v0.0.40
-  specs:
-    moj_frontend_toolkit_gem (0.0.1)
 
 GEM
   remote: https://rubygems.org/
@@ -103,9 +114,8 @@ GEM
       railties (>= 3.0.0)
     ffi (1.9.3)
     formatador (0.2.4)
-    govuk_frontend_toolkit (0.41.0)
-      rails (>= 3.1.0)
-      sass (>= 3.2.0)
+    govuk_template (0.3.8)
+      rails (>= 3.1)
     guard (2.3.0)
       formatador (>= 0.2.4)
       listen (~> 2.1)
@@ -268,7 +278,8 @@ DEPENDENCIES
   coveralls
   dotenv-rails
   factory_girl_rails
-  govuk_frontend_toolkit
+  govuk_frontend_toolkit!
+  govuk_template (= 0.3.8)
   guard
   guard-rails
   guard-rspec
@@ -276,7 +287,7 @@ DEPENDENCIES
   haml-rails
   hashie
   jquery-rails
-  moj_frontend_toolkit_gem!
+  moj_boilerplate!
   rack_moj_auth!
   rails (= 4.0.2)
   rspec-rails (~> 2.0)
