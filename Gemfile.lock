@@ -1,6 +1,6 @@
 GIT
   remote: git://github.com/ministryofjustice/author.git
-  revision: 2657c630c514044d9c2974c9123cd2f897b68912
+  revision: 1b944e6bd5379712ce8c0dd58b3cd4a4d4af23d1
   branch: controller_mixin
   specs:
     author (1.2)
