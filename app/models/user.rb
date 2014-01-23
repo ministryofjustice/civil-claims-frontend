@@ -1,5 +1,5 @@
 class User < ActiveResource::Base
-  self.site = Rails.configuration.api_uri 
+  self.site = Rails.configuration.api_uri
 
   def self.profile
     # TODO: why does activeresource hate me?
@@ -7,9 +7,4 @@ class User < ActiveResource::Base
     user.profile.attributes
   end
 
-  class << self
-    def headers= headers
-      @headers = headers
-    end
-  end
 end
