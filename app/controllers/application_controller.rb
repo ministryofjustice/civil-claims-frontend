@@ -4,14 +4,10 @@ class ApplicationController < ActionController::Base
   protect_from_forgery with: :exception
 
   include Author::Controller
-  
+
   def flash_alert(message)
     flash[:alert] ||= []
     flash[:alert] << message
-  end
-
-  def api_models
-    [Claim, User]
   end
 
   def current_user
