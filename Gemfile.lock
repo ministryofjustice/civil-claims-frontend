@@ -175,12 +175,7 @@ DEPENDENCIES
   author!
   awesome_print
   byebug
-<<<<<<< HEAD
-=======
-  capybara
   civil_claims_assets!
-  coveralls
->>>>>>> bump cc-assets gem version
   dotenv-rails
   govuk_frontend_toolkit!
   govuk_template (= 0.3.8)
