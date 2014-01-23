@@ -29,6 +29,8 @@ gem 'govuk_template', '0.3.8'
 gem 'govuk_frontend_toolkit', github: 'ministryofjustice/govuk_frontend_toolkit_gem', branch: 'asset-submodule'
 # MOJ styles
 gem 'moj_boilerplate', github: 'ministryofjustice/moj_boilerplate', tag: 'v0.6.2'
+# Civil Claims shared assets
+gem 'civil_claims_assets', github: 'ministryofjustice/civil-claims-assets', tag: 'v0.2.1'
 
 
 ## BACKEND ##
