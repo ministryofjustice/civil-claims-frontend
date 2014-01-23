@@ -1,11 +1,12 @@
-%section.error-summary
-  - if defined? title
-    %h2= title
-  - if defined? subtitle
-    %h3= subtitle
-  %ul
-    - unless flash[:alert].respond_to? :each
-      %li= flash[:alert]
-    - else
-      - flash[:alert].each do |alert|
-        %li= alert
+- unless flash[:alert].nil?
+  %section.error-summary
+    - if defined? title
+      %h2= title
+    - if defined? subtitle
+      %h3= subtitle
+    %ul
+      - unless flash[:alert].respond_to? :each
+        %li= flash[:alert]
+      - else
+        - flash[:alert].each do |alert|
+          %li= alert
