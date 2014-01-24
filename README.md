@@ -1,5 +1,7 @@
 # Civil Claims Frontend Claimant
 
+[![Build Status](http://jenkins-ubuntu.dsd.io/job/civilclaims-build/badge/icon)](http://jenkins-ubuntu.dsd.io/job/civilclaims-build/)
+
 [![Build Status](https://travis-ci.org/ministryofjustice/civil-claims-frontend-claimant.png?branch=master)](https://travis-ci.org/ministryofjustice/civil-claims-frontend-claimant)
 [![Code Climate](https://codeclimate.com/github/ministryofjustice/civil-claims-frontend-claimant.png)](https://codeclimate.com/github/ministryofjustice/civil-claims-frontend-claimant)
 [![Coverage Status](https://coveralls.io/repos/ministryofjustice/civil-claims-frontend-claimant/badge.png?branch=master)](https://coveralls.io/r/ministryofjustice/civil-claims-frontend-claimant?branch=master)

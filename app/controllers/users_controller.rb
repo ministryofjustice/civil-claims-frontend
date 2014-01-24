@@ -6,9 +6,10 @@ class UsersController < ApplicationController
 
   def create_session
     author = Author::Proxy.new(Rails.application.config.auth_client)
+    
     begin
       if(author.login(params[:email], params[:password]))
-        session[:secret_token] = author.session
+        write_secure_token author.session
       else
         flash_alert "Authentication failed."
       end
@@ -21,6 +22,6 @@ class UsersController < ApplicationController
 
   def logout
     reset_session
-    redirect_to controller: 'users', action: 'login_screen' 
+    redirect_to controller: 'users', action: 'login_screen'
   end
 end

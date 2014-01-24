@@ -48,10 +48,7 @@ gem 'unicorn'
 gem 'hashie'
 
 # Authentication Proxy
-gem 'author', :github => 'ministryofjustice/author'
-
-# Authentication tools
-gem 'rack_moj_auth', :github => 'ministryofjustice/x-moj-auth'
+gem 'author', github: 'ministryofjustice/author'
 
 group :development do
   gem 'awesome_print'
