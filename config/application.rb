@@ -63,15 +63,15 @@ module CivilClaimsFrontend
         claims-global.css
         claims-layout.css
         claims-components.css
-        claims-mixins
-        claims-global
-        claims-layout
-        claims-forms
-        claims-intro
-        claims-usernav
-        claims-progressnav
-        claims-breadcrumb
-        claims-tables
+        claims-mixins.css
+        claims-global.css
+        claims-layout.css
+        claims-forms.css
+        claims-intro.css
+        claims-usernav.css
+        claims-progressnav.css
+        claims-breadcrumb.css
+        claims-tables.css
     )
 
 
