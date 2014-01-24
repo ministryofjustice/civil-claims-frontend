@@ -58,6 +58,21 @@ module CivilClaimsFrontend
     # Enable the asset pipeline
     config.assets.enabled = true
 
+    config.assets.precompile += %w(
+        moj-base.css
+        claims-global.css
+        claims-layout.css
+        claims-components.css
+        claims-mixins
+        claims-global
+        claims-layout
+        claims-components
+        components/claims-forms
+        components/claims-intro
+        components/claims-usernav
+        components/claims-progressnav
+    )
+
 
     # Api Configuration
     config.api_uri = "#{ENV['API_HOST']}/repossession_claims_api/v1"
