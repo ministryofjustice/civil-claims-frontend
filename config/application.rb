@@ -66,11 +66,12 @@ module CivilClaimsFrontend
         claims-mixins
         claims-global
         claims-layout
-        claims-components
-        components/claims-forms
-        components/claims-intro
-        components/claims-usernav
-        components/claims-progressnav
+        claims-forms
+        claims-intro
+        claims-usernav
+        claims-progressnav
+        claims-breadcrumb
+        claims-tables
     )
 
 
