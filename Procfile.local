@@ -1,0 +1,3 @@
+web: bundle exec rails server -p 3000
+auth-server: cd ../devise_authentication_api && bundle exec rackup -p 9393
+backend-api: cd ../civil-claims-backend-data-api && bundle exec rackup -p 3111
