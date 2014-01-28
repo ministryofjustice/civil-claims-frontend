@@ -50,6 +50,8 @@ gem 'hashie'
 # Authentication Proxy
 gem 'author', github: 'ministryofjustice/author'
 
+gem 'rack_moj_auth', :github => 'ministryofjustice/x-moj-auth'
+
 group :development do
   gem 'awesome_print'
  # gem 'better_errors'
@@ -57,5 +59,4 @@ group :development do
  # gem 'jazz_hands'
   gem 'byebug'
 end
-
 
