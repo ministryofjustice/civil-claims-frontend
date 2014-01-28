@@ -28,17 +28,23 @@ module CivilClaimsFrontend
     # config.i18n.load_path += Dir[Rails.root.join('my', 'locales', '*.{rb,yml}').to_s]
     # config.i18n.default_locale = :de
 
+    # HTTP default headers
+    ActionDispatch::Response.default_headers = {
+       'X-Frame-Options' => 'DENY',
+       'X-Content-Type-Options' => 'nosniff',
+       'X-XSS-Protection' => '1; mode=block',
+       'X-Content-Security-Policy' => "script-src 'self'"
+    }
+
     Dir.glob("#{Rails.root}/lib/*.rb").each { |f| require f }
 
     config.auth_client = Author::Client.new(ENV['API_HOST'])
-    
+
     # initialize Feature Flags
     require "#{Rails.root}/lib/feature/flags"
     Feature::Flags.init("#{Rails.root}/config/features.yml")
 
-
-
-     # app title appears in the header bar
+    # app title appears in the header bar
     config.app_title = 'Civil Claims'
     config.proposition_title = 'Property repossession'
     # phase governs text indicators and highlight colours
@@ -52,8 +58,6 @@ module CivilClaimsFrontend
     config.feedback_url = ''
     # Google Analytics ID (Tracking ID for the service)
     config.ga_id = ''
-
-
 
     # Enable the asset pipeline
     config.assets.enabled = true
@@ -73,7 +77,6 @@ module CivilClaimsFrontend
         claims-breadcrumb.css
         claims-tables.css
     )
-
 
     # Api Configuration
     config.api_uri = "#{ENV['API_HOST']}/repossession_claims_api/v1"
