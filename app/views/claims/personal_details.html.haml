@@ -20,8 +20,9 @@
 
 = form_for @claim do |claim_form|
   %section.property-details#property
-    %h3.section-header Property
-    .moj-panel.sub-panel
+    %span.right *required
+    %h3.section-header Property*
+    .moj-panel.sub-panel.js-address
       = claim_form.fields_for @claim.property do |f|
         .row.rel.street
           = f.label :street
@@ -97,4 +98,4 @@
 
 / handlebars templates
 
-= render :partial => 'partials/multiple_selector'
+= render :partial => 'partials/hbtemplates'

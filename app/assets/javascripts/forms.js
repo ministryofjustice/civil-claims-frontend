@@ -10,25 +10,48 @@ moj.Modules.forms = (function() {
       bindEvents,
       multiplePanels,
       showMultiples,
+      setupAddressBoxes,
+      manualAddressFields,
+      getAddresses,
+      addressDropdownFromPostcode,
+      concatAddress,
 
       //vars
-      multiples;
+      multiples,
+      addressBoxes
+      ;
 
   init = function() {
     cacheEls();
     bindEvents();
 
     multiplePanels();
+    setupAddressBoxes();
   };
 
   cacheEls = function() {
     multiples = $( '.has-multiple' );
+    addressBoxes = $( '.js-address' );
   };
 
   bindEvents = function() {
     $( document ).on( 'change', '.multiplePanelSelector', function() {
       var $this = $( this );
       showMultiples( $this.closest( '.has-multiple' ), $this.val() );
+    } );
+
+    $( document ).on( 'click', '.js-manual-address', function( e ) {
+      e.preventDefault();
+      manualAddressFields( $( e.target ) );
+    } );
+
+    $( document ).on( 'click', '.js-find-address', function( e ) {
+      e.preventDefault();
+      addressDropdownFromPostcode( $( e.target ) );
+    } );
+
+    $( document ).on( 'change', '.addressDropdown', function( e ) {
+      // TODO: write this
     } );
   };
 
@@ -94,6 +117,81 @@ moj.Modules.forms = (function() {
         $( childItems[ x ] ).prev( '.divider' ).show();
       }
     }
+  };
+
+  setupAddressBoxes = function() {
+    var x,
+        $this,
+        $postcode,
+        source,
+        template;
+
+    for( x = 0; x < addressBoxes.length; x++ ) {
+      $this = $( addressBoxes[ x ] );
+      $postcode = $this.find( 'input.smalltext' );
+      $this.find( '.street, .town' ).hide();
+
+      source = $( '#postcode-button' ).html();
+      template = Handlebars.compile( source );
+      $postcode.addClass( 'has-button' ).after( template( {} ) );
+
+      source = $( '#manual-postcode-link' ).html();
+      template = Handlebars.compile( source );
+      $postcode.closest( '.row' ).after( template( {} ) );
+    }
+  };
+
+  manualAddressFields = function( $el ) {
+    var $panel = $el.closest( '.sub-panel' ),
+        $pcRow = $el.closest( '.row' ).prev();
+
+    $panel.find( '.row.street, .row.town' ).show();
+    $pcRow.addClass( 'rel' );
+    // $pcRow.addClass( 'highlight' ).find( 'input[type="text"]' ).val( '' );
+    $el.closest( '.row' ).remove();
+
+    // moj.Modules.effects.highlights();
+  };
+
+  addressDropdownFromPostcode = function( $el ) {
+    var x,
+        addressArray = [],
+        source,
+        template,
+        context;
+
+    getAddresses( function( data ) {
+      source = $( '#address-dropdown' ).html();
+      template = Handlebars.compile( source );
+      for( x = 0; x < data.length; x++ ) {
+        addressArray[ addressArray.length ] = {
+          id:       data[ x ].id,
+          address:  concatAddress(data[ x ].address)
+        };
+      }
+      $el.closest( '.row' ).after( template( {
+        addresses: addressArray
+      } ) );
+    } );
+  };
+
+  getAddresses = function( callback ) {
+    $.getJSON( '/data/test-postcode-data.json', function( data ) {
+      callback( data );
+    } );
+  };
+
+  concatAddress = function( address ) {
+    var x,
+        arr = [];
+
+    for( x in address ) {
+      if( address[ x ] !== '' ) {
+        arr[ arr.length ] = address[ x ];
+      }
+    }
+
+    return arr.join( ', ' );
   };
 
   // public

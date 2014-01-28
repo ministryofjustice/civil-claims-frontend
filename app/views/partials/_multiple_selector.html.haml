@@ -1,8 +1,0 @@
-%script#multiple-selector(type='text/x-handlebars-template')
-  .row
-    %label(for='multiplePanelSelector_{{id}}') {{caption}}
-    %select.multiplePanelSelector.small(id='multiplePanelSelector_{{id}}')
-      {{#each items}}
-      %option(value='{{val}}') {{val}} {{text}}
-      {{/each}}
-  .row.divider
