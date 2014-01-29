@@ -9,4 +9,9 @@
 
 # Make sure your secret_key_base is kept private
 # if you're sharing your code publicly.
-CivilClaimsFrontend::Application.config.secret_key_base = '2f1177ef5664a9aa0be8968bae7bc798961dfe52b737dbbd927c6f4d2978652a85846305efea20b449c5bcd9860fb6c1d9e22cdd7f0903f8beb9a0224d17f1ff'
+
+if ENV['SECRET_KEY_BASE'].nil? && (Rails.env.test? || Rails.env.development?)
+  ENV['SECRET_KEY_BASE'] = '2f1177ef5664a9aa0be8968bae7bc798961dfe52b737dbbd927c6f4d2978652a85846305efea20b449c5bcd9860fb6c1d9e22cdd7f0903f8beb9a0224d17f1ff'
+end
+
+CivilClaimsFrontend::Application.config.secret_key_base = ENV['SECRET_KEY_BASE']
