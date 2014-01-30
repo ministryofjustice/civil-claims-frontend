@@ -17,6 +17,12 @@ Local installation
     cd civil-claims-backend-data-api
     bundle install
 
+#### Run it via Procfile
+
+After completing the step above:
+
+    foreman -f Procfile.local
+
 ### Run tests
 
 To create test user:
@@ -32,4 +38,3 @@ To create test user:
 Run specs
 
     rspec spec
-
