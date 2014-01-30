@@ -21,7 +21,7 @@ Local installation
 
 After completing the step above:
 
-    foreman -f Procfile.local
+    foreman start -f Procfile.local
 
 ### Run tests
 
