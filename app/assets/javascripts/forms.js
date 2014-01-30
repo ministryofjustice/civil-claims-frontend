@@ -51,7 +51,7 @@ moj.Modules.forms = (function() {
       addressDropdownFromPostcode( $( e.target ) );
     } );
 
-    $( document ).on( 'change', '.addressDropdown', function( e ) {
+    $( document ).on( 'change', '.addressDropdown', function() {
       fillInAddress( $( this ) );
     } );
   };
@@ -101,11 +101,8 @@ moj.Modules.forms = (function() {
   showMultiples = function( $panel, shownum ) {
     var x,
         show = shownum || 1,
-        childItemClass,
-        childItems;
-
-    childItemClass = $panel.data( 'multiple' );
-    childItems = $panel.find( '.' + childItemClass );
+        childItemClass = $panel.data( 'multiple' ),
+        childItems = $panel.find( '.' + childItemClass );
     
     for( x = 0; x < childItems.length; x++ ) {
       if( ( x + 1 ) > show ) {
@@ -157,8 +154,7 @@ moj.Modules.forms = (function() {
     var x,
         addressArray = [],
         source,
-        template,
-        context;
+        template;
 
     getAddresses( function( data ) {
       source = $( '#address-dropdown' ).html();
