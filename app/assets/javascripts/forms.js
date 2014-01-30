@@ -39,19 +39,13 @@ moj.Modules.forms = (function() {
     $( document ).on( 'change', '.multiplePanelSelector', function() {
       var $this = $( this );
       showMultiples( $this.closest( '.has-multiple' ), $this.val() );
-    } );
-
-    $( document ).on( 'click', '.js-manual-address', function( e ) {
+    } ).on( 'click', '.js-manual-address', function( e ) {
       e.preventDefault();
       manualAddressFields( $( e.target ) );
-    } );
-
-    $( document ).on( 'click', '.js-find-address', function( e ) {
+    } ).on( 'click', '.js-find-address', function( e ) {
       e.preventDefault();
       addressDropdownFromPostcode( $( e.target ) );
-    } );
-
-    $( document ).on( 'change', '.addressDropdown', function() {
+    } ).on( 'change', '.addressDropdown', function() {
       fillInAddress( $( this ) );
     } );
   };
