@@ -15,6 +15,7 @@ moj.Modules.forms = (function() {
       getAddresses,
       addressDropdownFromPostcode,
       concatAddress,
+      fillInAddress,
 
       //vars
       multiples,
@@ -51,7 +52,7 @@ moj.Modules.forms = (function() {
     } );
 
     $( document ).on( 'change', '.addressDropdown', function( e ) {
-      // TODO: write this
+      fillInAddress( $( this ) );
     } );
   };
 
@@ -145,12 +146,11 @@ moj.Modules.forms = (function() {
     var $panel = $el.closest( '.sub-panel' ),
         $pcRow = $el.closest( '.row' ).prev();
 
-    $panel.find( '.row.street, .row.town' ).show();
+    $panel.find( '.street, .town' ).show();
+    $panel.find( '.addressDropdown' ).closest( '.row' ).remove();
+    $panel.find( '.street textarea, .town input, .postcode input' ).val( '' );
     $pcRow.addClass( 'rel' );
-    // $pcRow.addClass( 'highlight' ).find( 'input[type="text"]' ).val( '' );
-    $el.closest( '.row' ).remove();
-
-    // moj.Modules.effects.highlights();
+    $el.closest( '.row' ).hide();
   };
 
   addressDropdownFromPostcode = function( $el ) {
@@ -163,15 +163,21 @@ moj.Modules.forms = (function() {
     getAddresses( function( data ) {
       source = $( '#address-dropdown' ).html();
       template = Handlebars.compile( source );
+
       for( x = 0; x < data.length; x++ ) {
         addressArray[ addressArray.length ] = {
           id:       data[ x ].id,
           address:  concatAddress(data[ x ].address)
         };
       }
+
+      $el.closest( '.sub-panel' ).find( '.street textarea, .town input' ).val( '' );
+      $el.closest( '.sub-panel' ).find( '.addressDropdown' ).closest( '.row' ).remove();
       $el.closest( '.row' ).after( template( {
         addresses: addressArray
       } ) );
+
+      $el.closest( '.row' ).next().find( '.addressDropdown' ).data( 'addresses', data );
     } );
   };
 
@@ -183,15 +189,56 @@ moj.Modules.forms = (function() {
 
   concatAddress = function( address ) {
     var x,
-        arr = [];
+        y,
+        arr = [],
+        street = [];
 
     for( x in address ) {
       if( address[ x ] !== '' ) {
-        arr[ arr.length ] = address[ x ];
+        if( x === 'street') {
+          for( y in address[ x ] ) {
+            if( address[ x ][ y ] !== '' ) {
+              street[street.length] = address[ x ][ y ];
+            }
+          }
+          arr[ arr.length ] = street.join( ', ' );
+        } else {
+          arr[ arr.length ] = address[ x ];
+        }
       }
     }
 
     return arr.join( ', ' );
+  };
+
+  fillInAddress = function( $el ) {
+    var x,
+        y,
+        i = $el.val(),
+        $panel = $el.closest( '.sub-panel' ),
+        addresses = $el.data( 'addresses' ),
+        selectedAddress,
+        streetAddressRows = [];
+
+    if( i !== '' ) {
+      for( x = 0; x < addresses.length; x++ ) {
+        if( addresses[ x ].id === i ) {
+          selectedAddress = addresses[ x ].address;
+        }
+      }
+
+      $panel.find( '.street, .town' ).show();
+
+      for( y in selectedAddress.street ) {
+        if( selectedAddress.street[ y ] !== '' ) {
+          streetAddressRows[ streetAddressRows.length ] = selectedAddress.street[ y ];
+        }
+      }
+
+      $panel.find( '.street textarea' ).val( streetAddressRows.join( '\n' ) );
+      $panel.find( '.town input' ).val( selectedAddress.town );
+      $panel.find( '.postcode input' ).val( selectedAddress.postcode );
+    }
   };
 
   // public
