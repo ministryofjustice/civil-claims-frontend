@@ -33,7 +33,8 @@ module CivilClaimsFrontend
        'X-Frame-Options' => 'DENY',
        'X-Content-Type-Options' => 'nosniff',
        'X-XSS-Protection' => '1; mode=block',
-       'X-Content-Security-Policy' => "script-src 'self'"
+       'X-Content-Security-Policy' => "script-src 'self'",
+       'Content-Security-Policy' => "script-src 'self'"
     }
 
     Dir.glob("#{Rails.root}/lib/*.rb").each { |f| require f }
