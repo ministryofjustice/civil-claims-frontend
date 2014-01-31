@@ -1,14 +1,22 @@
+require 'awesome_print'
+
 class ClaimsController < ApplicationController
 
   before_action :redirect_to_login_page_if_not_signed_in
   before_action :load_user_profile
 
   def landing
+    flash_alert 'Property must be a valid address'
+
+    flash_alert 'Property must be a valid address'
+
     @page_title = 'Property repossession'
     render 'landing', :layout => 'application-claims'
   end
 
   def new
+    flash_alert 'Property must be a valid address'
+
     @page_title = 'Step 1 - Personal details'
     build_claim
     render 'personal_details', :layout => 'application-claims'
@@ -54,8 +62,23 @@ class ClaimsController < ApplicationController
 
   def create
     @claim = Claim.new(claim_params)
-    @claim.save
-    redirect_to action: 'edit', id: @claim.id, page_id: params[:next_page]
+
+    puts "claim is "
+    pp @claim
+
+    if @claim.save
+      redirect_to action: 'edit', id: @claim.id, page_id: params[:next_page]
+    else
+      @page_title = 'Step 1 - Personal details'
+      puts "Something here"
+      puts "page id is #{params[:next_page]}"
+      pp @claim.errors
+      puts "params is: "
+      pp params
+      @claim.landlords << Landlord.new(current_user)
+      #build_claim
+      render 'personal_details', :layout => 'application-claims'
+    end
   end
 
   private
